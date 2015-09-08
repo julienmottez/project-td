@@ -1,5 +1,8 @@
 package fr.treeptik.service;
 
+import java.util.List;
+
+import javax.persistence.PersistenceException;
 import javax.transaction.Transactional;
 
 import org.apache.log4j.Logger;
@@ -9,6 +12,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 import fr.treeptik.dao.DistributorDao;
+import fr.treeptik.entity.DistributionPoint;
 import fr.treeptik.entity.Distributor;
 
 @Service
@@ -19,6 +23,8 @@ public class DistributorService {
 	@Autowired
 	private DistributorDao dao;
 	
+	
+	@Transactional()
 	public Distributor save(Distributor distributeur) throws Exception {
 		logger.debug("appel de la methode save distributeur " + distributeur.getId());
 		try {
@@ -29,6 +35,14 @@ public class DistributorService {
 		}
 	}
 	
+	@Transactional()
+	public List<Distributor> findAll() throws ServiceException {
+		try {
+			return dao.findAll();
+		} catch (PersistenceException e) {
+			throw new ServiceException("erreur findAll distributeur", e);
+		}
+	}
 
 	@Transactional()
 	public Distributor update(Distributor distributeur) throws Exception {
