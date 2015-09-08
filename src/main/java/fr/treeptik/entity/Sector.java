@@ -22,32 +22,37 @@ public class Sector {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
-	private Person managerSector;
-	
+
+	@OneToOne
+	private SectorManager managerSector;
+
 	@OneToOne
 	private Area area;
-	
-	public Person getManagerSector() {
+
+	public SectorManager getManagerSector() {
 		return managerSector;
 	}
-	public void setManagerSector(Person managerSector) {
-		this.managerSector = managerSector;
-	}
+
 	public Integer getId() {
 		return id;
 	}
 	@Column(name = "name")
 	private String name;
+
+	public void setManagerSector(SectorManager managerSector) {
+		this.managerSector = managerSector;
+	}
+
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 	@OneToMany(fetch = FetchType.LAZY)
 	private List<Distributor>distributors;
-	
+
 	@OneToMany(fetch = FetchType.LAZY)
 	private List<DistributionPoint>distributionPoints;
 
@@ -63,12 +68,12 @@ public class Sector {
 	public void setDistributionPoints(List<DistributionPoint> distributionPoints) {
 		this.distributionPoints = distributionPoints;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
+
 }
