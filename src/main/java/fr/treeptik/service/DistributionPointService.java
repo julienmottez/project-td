@@ -28,7 +28,7 @@ public class DistributionPointService {
 
 	@Transactional()
 	public DistributionPoint save(DistributionPoint distributionPoint) throws ServiceException {
-		logger.debug("appel de la methode save technician " + distributionPoint.getId());
+		logger.debug("appel de la methode save distributionPoint " + distributionPoint.getId());
 
 		try {
 			return distributionPointDAO.save(distributionPoint);
