@@ -18,19 +18,18 @@ import fr.treeptik.exception.DAOException;
 import fr.treeptik.exception.ServiceException;
 
 @Service
-@Scope(value ="singleton")
+@Scope(value = "singleton")
 public class DistributionPointService {
 
 	private Logger logger = Logger.getLogger(DistributionPointDAO.class);
 
 	@Autowired
-	
 	private DistributionPointDAO distributionPointDAO;
-	
-	
 
-	public DistributionPointService(DistributionPointDAO distributionPointDAO) {
+	public DistributionPointService() {
+	}
 	
+	public DistributionPointService(DistributionPointDAO distributionPointDAO) {
 		this.distributionPointDAO = distributionPointDAO;
 	}
 
@@ -81,17 +80,12 @@ public class DistributionPointService {
 			throw new ServiceException("erreur save distributionPoint", e);
 		}
 	}
-	
 
 	@Transactional
-	public void removeById(Integer id) throws DAOException{
-	  
+	public void removeById(Integer id) throws DAOException {
+
 		distributionPointDAO.delete(id);
-			
-	
+
 	}
-	
 
-
-	
 }

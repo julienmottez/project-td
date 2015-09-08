@@ -11,6 +11,9 @@ public class DrinkService {
 
     private DrinkDao drinkDao;
 
+    public DrinkService() {
+	}
+    
     @Autowired
     public DrinkService(DrinkDao drinkDao) {
 		this.drinkDao = drinkDao;
