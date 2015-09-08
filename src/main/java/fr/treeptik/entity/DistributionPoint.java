@@ -28,6 +28,10 @@ public class DistributionPoint implements Serializable{
 	@OneToOne 
 	private Area area;
 	
+	@ManyToOne
+	private ProductionManager productionManager;
+	
+	
 	public DistributionPoint() {
 		
 	}

@@ -22,7 +22,6 @@ public class AreaService {
 	private Logger logger = Logger.getLogger(AreaService.class);
 
 	@Autowired
-	
 	private AreaDAO AreaDAO;
 
 	@Transactional()

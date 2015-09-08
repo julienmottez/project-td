@@ -8,8 +8,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
+@Table(name = "rack")
 public class Rack implements Serializable {
 
 	/**
@@ -20,6 +23,9 @@ public class Rack implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
+
+	@Transient
+	private String name;
 
 	@ManyToOne
 	private Distributor distributor;
@@ -72,11 +78,13 @@ public class Rack implements Serializable {
 	public void setTypeRack(TypeRack typeRack) {
 		this.typeRack = typeRack;
 	}
-	
-	
-	
-	
-	
-	
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 
 }
