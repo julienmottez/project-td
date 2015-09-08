@@ -19,7 +19,7 @@ public class Technician extends Person implements Serializable {
 	@OneToOne
 	private Sector sector;
 	
-	@OneToMany(mappedBy = "technicien", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "technician", fetch = FetchType.LAZY)
 	private List<Distributor> distributors;
 	
 	
