@@ -21,7 +21,6 @@ public class RackService {
 	private Logger logger = Logger.getLogger(TechnicianService.class);
 
 	@Autowired
-	// @Qualifier("technicianDAO")
 	private RackDAO rackDAO;
 
 	// @Autowired
