@@ -79,7 +79,7 @@ public class TechnicianService {
 	public boolean login(String login, String mdp) throws ServiceException {
 		Technician technician;
 		try {
-			technician=technicianDAO.findByUsername(login);
+			technician=technicianDAO.findByName(login);
 			if (technician.getEncryptedPassword().equals(encryptionService.encrypt(mdp))) {
 				return true;
 			}

@@ -40,6 +40,12 @@ public class Technician implements Serializable {
 	private List<Distributor> distributors;
 	
 	
+	public List<Distributor> getDistributors() {
+		return distributors;
+	}
+	public void setDistributors(List<Distributor> distributors) {
+		this.distributors = distributors;
+	}
 	public Sector getSector() {
 		return sector;
 	}
