@@ -21,8 +21,8 @@ public class Rack implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 
-	// @ManyToOne
-	// private Distributor distributor;
+	@ManyToOne
+	private Distributor distributor;
 
 	@Column(name = "colonne_distributor")
 	private Integer colonneDistributor;
@@ -30,7 +30,53 @@ public class Rack implements Serializable {
 	@Column(name = "ligne_distributor")
 	private Integer ligneDistributor;
 
-	// @Column(name = "type_rack")
-	// private TypeRack typeRack;
+	@Column(name = "type_rack")
+	private TypeRack typeRack;
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Distributor getDistributor() {
+		return distributor;
+	}
+
+	public void setDistributor(Distributor distributor) {
+		this.distributor = distributor;
+	}
+
+	public Integer getColonneDistributor() {
+		return colonneDistributor;
+	}
+
+	public void setColonneDistributor(Integer colonneDistributor) {
+		this.colonneDistributor = colonneDistributor;
+	}
+
+	public Integer getLigneDistributor() {
+		return ligneDistributor;
+	}
+
+	public void setLigneDistributor(Integer ligneDistributor) {
+		this.ligneDistributor = ligneDistributor;
+	}
+
+	public TypeRack getTypeRack() {
+		return typeRack;
+	}
+
+	public void setTypeRack(TypeRack typeRack) {
+		this.typeRack = typeRack;
+	}
+	
+	
+	
+	
+	
+	
 
 }
