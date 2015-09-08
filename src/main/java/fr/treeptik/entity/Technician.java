@@ -1,12 +1,16 @@
 package fr.treeptik.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -28,6 +32,20 @@ public class Technician implements Serializable {
 	
 	private String login;
 	private String encryptedPassword;
+	
+	@OneToOne
+	private Sector sector;
+	
+	@OneToMany(mappedBy = "technicien", fetch = FetchType.LAZY)
+	private List<Distributor> distributors;
+	
+	
+	public Sector getSector() {
+		return sector;
+	}
+	public void setSector(Sector sector) {
+		this.sector = sector;
+	}
 	public Integer getId() {
 		return id;
 	}
