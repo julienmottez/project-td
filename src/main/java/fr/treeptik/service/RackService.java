@@ -36,7 +36,10 @@ public class RackService {
 			num = 1;
 		}
 		num = num + 64;
-		System.out.println((char) num + Integer.toString(rack.getColonneDistributor()));
+
+		rack.setName((char) num + Integer.toString(rack.getColonneDistributor()));
+		// System.out.println((char) num +
+		// Integer.toString(rack.getColonneDistributor()));
 	}
 
 	@Transactional()
@@ -73,12 +76,13 @@ public class RackService {
 	public Rack findById(Integer id) throws ServiceException {
 		try {
 			Rack rack = rackDAO.findOne(id);
-			setRackName(rack);
+			
 			// return rackDAO.findOne(id);
 			return rack;
 		} catch (PersistenceException e) {
 			throw new ServiceException("erreur findById rack", e);
 		}
+
 	}
 
 	@Transactional
@@ -90,4 +94,7 @@ public class RackService {
 		}
 	}
 
+	public void setRackDAO(RackDAO rackDAO) {
+		this.rackDAO = rackDAO;
+	}
 }
