@@ -1,7 +1,5 @@
 package fr.treeptik.entity;
 
-
-import java.awt.geom.Area;
 import java.util.List;
 
 import javax.persistence.Column;
