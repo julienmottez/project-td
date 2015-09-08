@@ -21,7 +21,7 @@ public class TypeRack {
 	
 	private Integer quantity;
 
-	@OneToMany(mappedBy = "typeRack")
+	@OneToMany(mappedBy = "rack")
 	private List<TypeRack> typeRacks;
 	
 	
