@@ -11,6 +11,10 @@
 		<jdbc.url>jdbc:mysql://localhost:3306/td-project</jdbc.url>
 		<jdbc.user>root</jdbc.user>
 		<jdbc.password>root</jdbc.password>
+		
+		<jsp.version>2.2</jsp.version>
+        <jstl.version>1.2</jstl.version>
+        <javax.servlet.version>3.1.0</javax.servlet.version>
 	</properties>
 
 
@@ -104,6 +108,25 @@
 			<artifactId>spring-data-jpa</artifactId>
 			<version>1.7.3.RELEASE</version>
 		</dependency>
+		
+		<dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>${javax.servlet.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet.jsp</groupId>
+            <artifactId>jsp-api</artifactId>
+            <version>${jsp.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>jstl</groupId>
+            <artifactId>jstl</artifactId>
+            <version>${jstl.version}</version>
+        </dependency>
 	</dependencies>
 
 
