@@ -1,13 +1,12 @@
 package fr.treeptik.entity;
 
 import java.io.Serializable;
-import java.util.Date;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 
@@ -23,7 +22,10 @@ public class Technician implements Serializable {
 	
 	private String name;
 	private String firstname;
-	private String adress;
+	
+	@Embedded
+	private Address adress;
+	
 	private String login;
 	private String encryptedPassword;
 	public Integer getId() {
@@ -44,10 +46,11 @@ public class Technician implements Serializable {
 	public void setFirstname(String firstname) {
 		this.firstname = firstname;
 	}
-	public String getAdress() {
+	
+	public Address getAdress() {
 		return adress;
 	}
-	public void setAdress(String adress) {
+	public void setAdress(Address adress) {
 		this.adress = adress;
 	}
 	public String getLogin() {

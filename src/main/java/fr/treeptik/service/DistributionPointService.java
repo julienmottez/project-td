@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import fr.treeptik.dao.DistributionPointDAO;
 
 import fr.treeptik.entity.DistributionPoint;
-
+import fr.treeptik.exception.DAOException;
 import fr.treeptik.exception.ServiceException;
 
 @Service
@@ -74,5 +74,13 @@ public class DistributionPointService {
 		}
 	}
 	
+
+	@Transactional
+	public void removeById(Integer id) throws DAOException{
+	  
+		distributionPointDAO.delete(id);
+			
+	
+	}
 	
 }
