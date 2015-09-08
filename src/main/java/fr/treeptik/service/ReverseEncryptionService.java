@@ -1,5 +1,8 @@
 package fr.treeptik.service;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class ReverseEncryptionService implements EncryptionService{
 
 	@Override
