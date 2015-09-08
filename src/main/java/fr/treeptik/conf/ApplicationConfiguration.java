@@ -1,8 +1,11 @@
 package fr.treeptik.conf;
 
+import java.util.Properties;
+
 import javax.persistence.EntityManagerFactory;
 
 import org.springframework.core.io.Resource;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import javax.sql.DataSource;
 
@@ -30,7 +33,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @ComponentScan(basePackages = "fr.treeptik")
 @PropertySource(value = "classpath:config.properties", name="config")
 @EnableTransactionManagement
-@EnableAspectJAutoProxy
+@EnableJpaRepositories("fr.treeptik.dao")
 public class ApplicationConfiguration {
 	@Autowired
 	private Environment environment;
@@ -52,7 +55,13 @@ public class ApplicationConfiguration {
 		lcemfb.setDataSource(dataSource());
 		lcemfb.setJpaDialect(new HibernateJpaDialect());
 		lcemfb.setJpaVendorAdapter(jpaVendorAdapter());
-		lcemfb.setPackagesToScan("fr.treeptik.model");
+		lcemfb.setPackagesToScan("fr.treeptik.entity");
+		
+		Properties properties = new Properties();
+		properties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
+		lcemfb.setJpaProperties(properties);
+		lcemfb.afterPropertiesSet();
+		
 		return lcemfb.getObject();
 	}
 
