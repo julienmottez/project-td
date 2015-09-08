@@ -12,10 +12,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 
 
-@Entity(name = "Sector")
+@Entity
+@Table(name="sector")
 public class Sector {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
