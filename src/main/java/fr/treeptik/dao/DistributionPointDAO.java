@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import fr.treeptik.entity.DistributionPoint;
+import fr.treeptik.entity.Drink;
 
 
 
@@ -15,7 +16,7 @@ import fr.treeptik.entity.DistributionPoint;
 public interface DistributionPointDAO extends JpaRepository<DistributionPoint,Integer>{
 
 
-
+	DistributionPoint findById(int id);
 	
 	
 	

@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import fr.treeptik.dao.DistributionPointDAO;
 
 import fr.treeptik.entity.DistributionPoint;
+import fr.treeptik.entity.Drink;
 import fr.treeptik.exception.DAOException;
 import fr.treeptik.exception.ServiceException;
 
@@ -25,6 +26,13 @@ public class DistributionPointService {
 	@Autowired
 	
 	private DistributionPointDAO distributionPointDAO;
+	
+	
+
+	public DistributionPointService(DistributionPointDAO distributionPointDAO) {
+	
+		this.distributionPointDAO = distributionPointDAO;
+	}
 
 	@Transactional()
 	public DistributionPoint save(DistributionPoint distributionPoint) throws ServiceException {
@@ -83,6 +91,10 @@ public class DistributionPointService {
 	
 	}
 	
+
+	public DistributionPoint getById(int id) {
+        return distributionPointDAO.findById(id);
+    }
 	
 	
 }
