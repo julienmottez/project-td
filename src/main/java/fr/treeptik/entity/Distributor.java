@@ -6,6 +6,8 @@ import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Distributor implements Serializable{
@@ -17,7 +19,15 @@ public class Distributor implements Serializable{
 	@Embedded
 	private Address address;
 	
+	@OneToOne
+	private Sector sector;
 	
+
+	@ManyToOne
+	private Technician technician;
+	
+	
+	 
 	public Integer getId() {
 		return id;
 	}
