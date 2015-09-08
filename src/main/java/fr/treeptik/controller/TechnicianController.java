@@ -1,6 +1,5 @@
 package fr.treeptik.controller;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -8,38 +7,32 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import fr.treeptik.exception.DAOException;
+import fr.treeptik.entity.Technician;
 import fr.treeptik.exception.ServiceException;
-
-import fr.treeptik.entity.Sector;
-
-import fr.treeptik.service.SectorService;
-
+import fr.treeptik.service.TechnicianService;
 
 @Controller
-@RequestMapping(value = "/sector")
-public class SectorController {
+@RequestMapping(value = "/technician")
+public class TechnicianController {
 
 	@Autowired
-	private SectorService sectorservice;
+	private TechnicianService technicianService;
 
-	
 
 	@RequestMapping(value = "/new.do", method = RequestMethod.GET)
-	public ModelAndView add() throws ServiceException, DAOException {
-		ModelAndView modelAndView = new ModelAndView("sector");
+	public ModelAndView add() throws ServiceException {
 		
-		modelAndView.addObject("sector", new Sector());
-
+		ModelAndView modelAndView = new ModelAndView("technician");
+		modelAndView.addObject("technician", new Technician());
 		return modelAndView;
 	}
 
 	@RequestMapping(value = "/edit.do", method = RequestMethod.GET)
 	public ModelAndView edit(@ModelAttribute("id") Integer id) {
 		try {
-			ModelAndView modelAndView = new ModelAndView("sector");
-			Sector sector = sectorservice.findById(id);
-			modelAndView.addObject("sector", sector);
+			ModelAndView modelAndView = new ModelAndView("technician");
+			Technician technician = technicianService.findById(id);
+			modelAndView.addObject("technician", technician);
 			return modelAndView;
 		} catch (Exception e) {
 			return list();
@@ -48,48 +41,41 @@ public class SectorController {
 
 	@RequestMapping(value = "/list.do", method = RequestMethod.GET)
 	public ModelAndView list() {
-		ModelAndView modelAndView = new ModelAndView("list-sector");
+		ModelAndView modelAndView = new ModelAndView("list-technician");
 		try {
-			modelAndView.addObject("sectors", sectorservice.findAll());
+			modelAndView.addObject("technician", technicianService.findAll());
 		} catch (Exception e) {
 			modelAndView.addObject("error", e.getMessage());
 		}
 		return modelAndView;
 
 	}
+	
 
 	@RequestMapping(value = "/save.do", method = RequestMethod.POST)
-	public ModelAndView save(Sector sector) throws ServiceException {
+	public ModelAndView save(Technician technician) throws ServiceException {
 		try {
-			if (sector.getId() == null) {
-				sectorservice.save(sector);
+			if (technician.getId() == null) {
+				technicianService.save(technician);
 			} else {
-				sectorservice.update(sector);
+				technicianService.update(technician);
 			}
 			ModelAndView modelAndView = new ModelAndView("redirect:list.do");
 			return modelAndView;
 		} catch (Exception e) {
-			ModelAndView modelAndView = edit(sector.getId());
+			ModelAndView modelAndView = edit(technician.getId());
 			modelAndView.addObject("error", e.getMessage());
 			return modelAndView;
 		}
 	}
-
-
+	
 	@RequestMapping(value = "/delete.do", method = RequestMethod.GET)
-	public ModelAndView delete(Sector sector) throws ServiceException {
-		try {
-			
-				sectorservice.delete(sector);
-			
-			ModelAndView modelAndView = new ModelAndView("redirect:list.do");
-			return modelAndView;
-		} catch (Exception e) {
+	public ModelAndView delete(Technician technician) throws ServiceException {
 		
-			ModelAndView modelAndView = null;
-			modelAndView.addObject("error", e.getMessage());
-			return modelAndView;
-		}
+		technicianService.deleteTechnician(technician);
+		ModelAndView modelAndView = new ModelAndView("redirect:list.do");
+		modelAndView.addObject("technician", new Technician());
+		return modelAndView;
 	}
 
 }

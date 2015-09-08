@@ -12,9 +12,12 @@ import fr.treeptik.exception.ServiceException;
 @Service
 @Scope(value = "singleton")
 public class SectorService {
+	
 	private Logger logger = Logger.getLogger(SectorService.class);
+	
 	@Autowired
 	private SectorDAO sectorDAO;
+	
 	@Transactional()
 	public Sector save(Sector sector) throws ServiceException {
 		logger.debug("appel de la methode save sector " + sector.getName());
@@ -25,6 +28,7 @@ public class SectorService {
 			throw new ServiceException("erreur save sector", e);
 		}
 	}
+	
 	@Transactional
 	public Sector update(Sector sector) throws ServiceException {
 		logger.debug("appel de la methode update sector " + sector.getName());
@@ -35,6 +39,7 @@ public class SectorService {
 			throw new ServiceException("erreur update sector", e);
 		}
 	}
+	
 	public List<Sector> findAll() throws ServiceException {
 		try {
 			return sectorDAO.findAll();
@@ -42,6 +47,7 @@ public class SectorService {
 			throw new ServiceException("erreur findAll sector", e);
 		}
 	}
+	
 	public Sector findById(Integer id) throws ServiceException {
 		try {
 			return sectorDAO.findOne(id);
@@ -49,8 +55,9 @@ public class SectorService {
 			throw new ServiceException("erreur findById sector", e);
 		}
 	}
+	
 	@Transactional
-	public void deleteSector(Sector sector) throws ServiceException {
+	public void delete(Sector sector) throws ServiceException {
 		try {
 			sectorDAO.delete(sector.getId());
 		} catch (PersistenceException e) {
