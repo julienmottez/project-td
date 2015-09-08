@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -24,6 +26,10 @@ public class Refrigerator implements Serializable {
 
 	@Column(name = "brand")
 	private String brand;
+
+	@ManyToOne
+	@JoinColumn(name="distributor_id")
+	private Distributor distributor;
 
 	public Integer getId() {
 		return id;
@@ -48,6 +54,16 @@ public class Refrigerator implements Serializable {
 	public void setBrand(String brand) {
 		this.brand = brand;
 	}
+
+	public Distributor getDistributor() {
+		return distributor;
+	}
+
+	public void setDistributor(Distributor distributor) {
+		this.distributor = distributor;
+	}
+	
+	
 	
 	
 }
