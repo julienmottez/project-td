@@ -18,11 +18,6 @@ public class ProductionManager extends Person {
 		
 	}
 
-	public ProductionManager(Integer id, String firstName, String lastName) {
-		super(id, firstName, lastName);
-		// TODO Auto-generated constructor stub
-	}
-
 	public ProductionManager(List<DistributionPoint> distributionPoints) {
 		super();
 		this.distributionPoints = distributionPoints;
