@@ -1,25 +1,32 @@
 package fr.treeptik.entity;
 
+import java.io.Serializable;
+
+import javax.persistence.Embedded;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-public class DistributionPoint {
+public class DistributionPoint implements Serializable{
+	
 
+	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
-	private String adress;
+	@Embedded
+	private Address address;
 	
 	public DistributionPoint() {
 		
 	}
 
-	public DistributionPoint(Integer id, String adress) {
+	public DistributionPoint(Integer id, Address address) {
 		super();
 		this.id = id;
-		this.adress = adress;
+		this.address = address;
 	}
 
 	public Integer getId() {
@@ -30,14 +37,18 @@ public class DistributionPoint {
 		this.id = id;
 	}
 
-	public String getAdress() {
-		return adress;
+	public Address getAddress() {
+		return address;
 	}
 
-	public void setAdress(String adress) {
-		this.adress = adress;
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 	
+	
+
+
+
 	
 	
 
