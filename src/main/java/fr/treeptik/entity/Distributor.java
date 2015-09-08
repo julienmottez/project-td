@@ -10,6 +10,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
+@Table(name="distributor")
 public class Distributor implements Serializable{
 
 	private static final long serialVersionUID = 1L;
