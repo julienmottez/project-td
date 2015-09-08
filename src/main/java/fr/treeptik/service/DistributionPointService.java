@@ -67,7 +67,7 @@ public class DistributionPointService {
 
 	public DistributionPoint findById(Integer id) throws ServiceException {
 		try {
-			return distributionPointDAO.findOne(id);
+			return distributionPointDAO.findById(id);
 		} catch (PersistenceException e) {
 			throw new ServiceException("erreur findById distributionPoint", e);
 		}
@@ -92,9 +92,6 @@ public class DistributionPointService {
 	}
 	
 
-	public DistributionPoint getById(int id) {
-        return distributionPointDAO.findById(id);
-    }
-	
+
 	
 }
