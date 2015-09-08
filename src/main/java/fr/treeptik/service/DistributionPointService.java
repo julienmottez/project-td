@@ -17,7 +17,7 @@ import fr.treeptik.exception.DAOException;
 import fr.treeptik.exception.ServiceException;
 
 @Service
-@Scope(value = "singleton")
+@Scope(value ="singleton")
 public class DistributionPointService {
 
 	private Logger logger = Logger.getLogger(DistributionPointDAO.class);
