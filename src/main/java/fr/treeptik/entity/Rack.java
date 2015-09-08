@@ -38,7 +38,7 @@ public class Rack implements Serializable {
 	private Integer ligneDistributor;
 
 	@ManyToOne
-	@JoinColumn(name="rack")
+	@JoinColumn(name="rack_id")
 	private TypeRack typeRack;
 
 	public Integer getId() {
