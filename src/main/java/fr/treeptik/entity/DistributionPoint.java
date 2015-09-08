@@ -25,9 +25,7 @@ public class DistributionPoint implements Serializable{
 	@Embedded
 	private Address address;
 	
-	@OneToOne 
-	private Area area;
-	
+
 	@ManyToOne
 	private ProductionManager productionManager;
 	
@@ -40,16 +38,9 @@ public class DistributionPoint implements Serializable{
 		super();
 		this.id = id;
 		this.address = address;
-		this.area=area;
+	
 	}
 
-	public Area getArea() {
-		return area;
-	}
-
-	public void setArea(Area area) {
-		this.area = area;
-	}
 
 	public Integer getId() {
 		return id;
