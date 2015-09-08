@@ -30,7 +30,7 @@ public class TechnicianService {
 
 	@Transactional()
 	public Technician save(Technician technician) throws ServiceException {
-		logger.debug("appel de la methode save technician " + technician.getName());
+		logger.debug("appel de la methode save technician " + technician.getLastName());
 
 		try {
 			return technicianDAO.save(technician);
@@ -42,7 +42,7 @@ public class TechnicianService {
 
 	@Transactional
 	public Technician update(Technician technician) throws ServiceException {
-		logger.debug("appel de la methode update technician " + technician.getName());
+		logger.debug("appel de la methode update technician " + technician.getLastName());
 		try {
 			return technicianDAO.save(technician);
 		} catch (PersistenceException e) {
@@ -79,7 +79,7 @@ public class TechnicianService {
 	public boolean login(String login, String mdp) throws ServiceException {
 		Technician technician;
 		try {
-			technician=technicianDAO.findByName(login);
+			technician=technicianDAO.findByLastName(login);
 			if (technician.getEncryptedPassword().equals(encryptionService.encrypt(mdp))) {
 				return true;
 			}
