@@ -19,6 +19,10 @@ public class Distributor implements Serializable{
 	@Embedded
 	private Address address;
 	
+	@OneToMany(mappedBy = "distributor")
+	private List<Refrigerator> refrigerators;
+	
+	
 	@OneToOne
 	private Sector sector;
 	
@@ -40,4 +44,12 @@ public class Distributor implements Serializable{
 	public void setAddress(Address address) {
 		this.address = address;
 	}
+	public List<Refrigerator> getRefrigerators() {
+		return refrigerators;
+	}
+	public void setRefrigerators(List<Refrigerator> refrigerators) {
+		this.refrigerators = refrigerators;
+	}
+	
+	
 }
