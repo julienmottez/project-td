@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -36,8 +37,8 @@ public class Rack implements Serializable {
 	@Column(name = "ligne_distributor")
 	private Integer ligneDistributor;
 
-	@Column(name = "type_rack")
 	@ManyToOne
+	@JoinColumn(name="type_rack")
 	private TypeRack typeRack;
 
 	public Integer getId() {
@@ -46,6 +47,14 @@ public class Rack implements Serializable {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public Distributor getDistributor() {
@@ -80,12 +89,6 @@ public class Rack implements Serializable {
 		this.typeRack = typeRack;
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
+	
 
 }
