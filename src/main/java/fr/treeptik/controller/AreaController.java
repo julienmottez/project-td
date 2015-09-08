@@ -1,6 +1,5 @@
 package fr.treeptik.controller;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -8,38 +7,36 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import fr.treeptik.exception.DAOException;
+import fr.treeptik.entity.Area;
+import fr.treeptik.exception.FormException;
 import fr.treeptik.exception.ServiceException;
 
-import fr.treeptik.entity.Sector;
-
-import fr.treeptik.service.SectorService;
+import fr.treeptik.service.AreaService;
 
 
 @Controller
-@RequestMapping(value = "/sector")
-public class SectorController {
+@RequestMapping(value = "/area")
+public class AreaController {
 
 	@Autowired
-	private SectorService sectorservice;
-
-	
+	private AreaService areaService;
 
 	@RequestMapping(value = "/new.do", method = RequestMethod.GET)
-	public ModelAndView add() throws ServiceException, DAOException {
-		ModelAndView modelAndView = new ModelAndView("sector");
-		
-		modelAndView.addObject("sector", new Sector());
-
+	public ModelAndView add() {
+		ModelAndView modelAndView = new ModelAndView("area");
+		modelAndView.addObject("area", new Area());
+		modelAndView.addObject("action", "Ajouter");
 		return modelAndView;
 	}
 
 	@RequestMapping(value = "/edit.do", method = RequestMethod.GET)
 	public ModelAndView edit(@ModelAttribute("id") Integer id) {
 		try {
-			ModelAndView modelAndView = new ModelAndView("sector");
-			Sector sector = sectorservice.findById(id);
-			modelAndView.addObject("sector", sector);
+			ModelAndView modelAndView = new ModelAndView("refrigerator");
+			Area area = areaService.findById(id);
+
+			modelAndView.addObject("areaMaker", area);
+			modelAndView.addObject("action", "Editer");
 			return modelAndView;
 		} catch (Exception e) {
 			return list();
@@ -48,28 +45,27 @@ public class SectorController {
 
 	@RequestMapping(value = "/list.do", method = RequestMethod.GET)
 	public ModelAndView list() {
-		ModelAndView modelAndView = new ModelAndView("list-sector");
+		ModelAndView modelAndView = new ModelAndView("list-area");
 		try {
-			modelAndView.addObject("sectors", sectorservice.findAll());
+			modelAndView.addObject("areas", areaService.findAll());
 		} catch (Exception e) {
 			modelAndView.addObject("error", e.getMessage());
 		}
 		return modelAndView;
 
 	}
-
 	@RequestMapping(value = "/save.do", method = RequestMethod.POST)
-	public ModelAndView save(Sector sector) throws ServiceException {
+	public ModelAndView save(Area area) throws ServiceException {
 		try {
-			if (sector.getId() == null) {
-				sectorservice.save(sector);
+			if (area.getId() == null) {
+				areaService.save(area);
 			} else {
-				sectorservice.update(sector);
+				areaService.update(area);
 			}
 			ModelAndView modelAndView = new ModelAndView("redirect:list.do");
 			return modelAndView;
 		} catch (Exception e) {
-			ModelAndView modelAndView = edit(sector.getId());
+			ModelAndView modelAndView = edit(area.getId());
 			modelAndView.addObject("error", e.getMessage());
 			return modelAndView;
 		}
@@ -77,10 +73,10 @@ public class SectorController {
 
 
 	@RequestMapping(value = "/delete.do", method = RequestMethod.GET)
-	public ModelAndView delete(Sector sector) throws ServiceException {
+	public ModelAndView delete(@ModelAttribute("id") Integer id) throws ServiceException {
 		try {
 			
-				sectorservice.delete(sector);
+			areaService.removeById(id);
 			
 			ModelAndView modelAndView = new ModelAndView("redirect:list.do");
 			return modelAndView;
@@ -92,4 +88,5 @@ public class SectorController {
 		}
 	}
 
+	
 }

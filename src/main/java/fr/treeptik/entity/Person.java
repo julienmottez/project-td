@@ -2,13 +2,16 @@ package fr.treeptik.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 
 @Entity
+@Table(name="person")
 public class Person implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -19,36 +22,14 @@ public class Person implements Serializable {
 
 
 	private String firstName;
-
-	
-	public String getLogin() {
-		return login;
-	}
-
-	public void setLogin(String login) {
-		this.login = login;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
 	private String lastName;
-	
 	private String login;
-	private String password;
+	private String encryptedPassword;
+	
+	@Embedded
+	private Address adress;
 
 	public Person() {
-	}
-
-	public Person(Integer id, String firstName, String lastName) {
-		this.id = id;
-		this.firstName = firstName;
-		this.lastName = lastName;
 	}
 
 	public Integer getId() {
@@ -73,6 +54,30 @@ public class Person implements Serializable {
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
+	}
+	
+	public String getLogin() {
+		return login;
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
+	}
+
+	public String getEncryptedPassword() {
+		return encryptedPassword;
+	}
+
+	public void setEncryptedPassword(String encryptedPassword) {
+		this.encryptedPassword = encryptedPassword;
+	}
+
+	public Address getAdress() {
+		return adress;
+	}
+
+	public void setAdress(Address adress) {
+		this.adress = adress;
 	}
 
 	@Override

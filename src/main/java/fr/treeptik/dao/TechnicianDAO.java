@@ -8,6 +8,6 @@ import fr.treeptik.entity.Technician;
 @Repository
 public interface TechnicianDAO extends JpaRepository<Technician, Integer> {
 	
-	Technician findByName(String login);
+	Technician findByLastName(String login);
 
 }

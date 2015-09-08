@@ -32,7 +32,7 @@ public class DistributionPointController {
 	@RequestMapping(value = "/edit.do", method = RequestMethod.GET)
 	public ModelAndView edit(@ModelAttribute("id") Integer id) {
 		try {
-			ModelAndView modelAndView = new ModelAndView("refrigerator");
+			ModelAndView modelAndView = new ModelAndView("distributionPoint");
 			DistributionPoint distributionPoint = distributionPointService.findById(id);
 
 			modelAndView.addObject("distributionPointMaker", distributionPoint);
