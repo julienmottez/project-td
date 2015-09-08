@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 import fr.treeptik.dao.DistributorDao;
-import fr.treeptik.entity.Distributeur;
+import fr.treeptik.entity.Distributor;
 
 @Service
 @Scope(value = "singleton")
@@ -19,8 +19,8 @@ public class DistributorService {
 	@Autowired
 	private DistributorDao dao;
 	
-	public Distributeur save(Distributeur distributeur) throws Exception {
-		logger.debug("appel de la methode save distributeur " + distributeur.getIdLogic());
+	public Distributor save(Distributor distributeur) throws Exception {
+		logger.debug("appel de la methode save distributeur " + distributeur.getId());
 		try {
 			return dao.save(distributeur);
 		} catch (Exception e) {
@@ -31,8 +31,8 @@ public class DistributorService {
 	
 
 	@Transactional()
-	public Distributeur update(Distributeur distributeur) throws Exception {
-		logger.debug("appel de la methode udate distributeur " + distributeur.getIdLogic());
+	public Distributor update(Distributor distributeur) throws Exception {
+		logger.debug("appel de la methode udate distributeur " + distributeur.getId());
 		try {
 			return dao.save(distributeur);
 		} catch (Exception e) {
@@ -42,8 +42,8 @@ public class DistributorService {
 	}
 	
 	@Transactional()
-	public void remove(Distributeur distributeur) throws Exception {
-		logger.debug("appel de la methode remove distributeur " + distributeur.getIdLogic());
+	public void remove(Distributor distributeur) throws Exception {
+		logger.debug("appel de la methode remove distributeur " + distributeur.getId());
 		try {
 			dao.delete(distributeur);
 		} catch (Exception e) {
@@ -53,7 +53,7 @@ public class DistributorService {
 	}
 	
 	@Transactional()
-	public Distributeur findById(Integer id) throws Exception {
+	public Distributor findById(Integer id) throws Exception {
 		logger.debug("appel de la methode find by id distributeur ");
 		try {
 			return dao.findOne(id);
