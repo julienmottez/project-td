@@ -8,3 +8,5 @@
 .settings
 .classpath
 .project
+
+/src/main/java/fr/treeptik/local
