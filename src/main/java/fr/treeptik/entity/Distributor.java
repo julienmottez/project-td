@@ -10,6 +10,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
+@Table(name="distributor")
 public class Distributor implements Serializable{
 
 	private static final long serialVersionUID = 1L;
@@ -18,6 +19,10 @@ public class Distributor implements Serializable{
 	private Integer id;
 	@Embedded
 	private Address address;
+	
+	@OneToMany(mappedBy = "distributor")
+	private List<Refrigerator> refrigerators;
+	
 	
 	@OneToOne
 	private Sector sector;
@@ -40,4 +45,12 @@ public class Distributor implements Serializable{
 	public void setAddress(Address address) {
 		this.address = address;
 	}
+	public List<Refrigerator> getRefrigerators() {
+		return refrigerators;
+	}
+	public void setRefrigerators(List<Refrigerator> refrigerators) {
+		this.refrigerators = refrigerators;
+	}
+	
+	
 }
