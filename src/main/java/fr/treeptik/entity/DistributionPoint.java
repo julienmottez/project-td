@@ -33,7 +33,7 @@ public class DistributionPoint implements Serializable{
 	@ManyToOne
 	private Sector sectordp;
 	
-	@OneToMany(mappedBy="distributorPoint")
+	@OneToMany(mappedBy="distributionPoint")
 	private List<Drink> drinks;
 	
 	
