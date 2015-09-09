@@ -90,7 +90,6 @@ public class ApplicationConfiguration {
 		res.setViewClass(JstlView.class);
 		res.setPrefix("/WEB-INF/pages/");
 		res.setSuffix(".jsp");
-
 		return res;
 	}
 }

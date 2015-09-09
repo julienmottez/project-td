@@ -17,7 +17,7 @@ import fr.treeptik.service.SectorService;
 
 
 @Controller
-@RequestMapping(value = "/sector")
+@RequestMapping(value = "/admin/sector/")
 public class SectorController {
 
 	@Autowired
@@ -25,7 +25,7 @@ public class SectorController {
 
 	
 
-	@RequestMapping(value = "/new.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/new.html", method = RequestMethod.GET)
 	public ModelAndView add() throws ServiceException, DAOException {
 		ModelAndView modelAndView = new ModelAndView("sector");
 		
@@ -34,7 +34,7 @@ public class SectorController {
 		return modelAndView;
 	}
 
-	@RequestMapping(value = "/edit.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/edit.html", method = RequestMethod.GET)
 	public ModelAndView edit(@ModelAttribute("id") Integer id) {
 		try {
 			ModelAndView modelAndView = new ModelAndView("sector");
@@ -46,9 +46,9 @@ public class SectorController {
 		}
 	}
 
-	@RequestMapping(value = "/list.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/list.html", method = RequestMethod.GET)
 	public ModelAndView list() {
-		ModelAndView modelAndView = new ModelAndView("list-sector");
+		ModelAndView modelAndView = new ModelAndView("admin/sector/list-sector");
 		try {
 			modelAndView.addObject("sectors", sectorservice.findAll());
 		} catch (Exception e) {
@@ -58,7 +58,7 @@ public class SectorController {
 
 	}
 
-	@RequestMapping(value = "/save.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/save.html", method = RequestMethod.POST)
 	public ModelAndView save(Sector sector) throws ServiceException {
 		try {
 			if (sector.getId() == null) {
@@ -66,7 +66,7 @@ public class SectorController {
 			} else {
 				sectorservice.update(sector);
 			}
-			ModelAndView modelAndView = new ModelAndView("redirect:list.do");
+			ModelAndView modelAndView = new ModelAndView("redirect:list.html");
 			return modelAndView;
 		} catch (Exception e) {
 			ModelAndView modelAndView = edit(sector.getId());
@@ -76,7 +76,7 @@ public class SectorController {
 	}
 
 
-	@RequestMapping(value = "/delete.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/delete.html", method = RequestMethod.GET)
 	public ModelAndView delete(Sector sector) throws ServiceException {
 		try {
 			

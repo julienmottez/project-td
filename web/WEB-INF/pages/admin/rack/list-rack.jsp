@@ -8,8 +8,7 @@
 </head>
 <body>
 
-	coucou
+		coucou
 	${errors}
-
 </body>
 </html>

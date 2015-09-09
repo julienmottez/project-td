@@ -12,22 +12,22 @@ import fr.treeptik.exception.ServiceException;
 import fr.treeptik.service.TechnicianService;
 
 @Controller
-@RequestMapping(value = "/technician")
+@RequestMapping(value = "admin/technician")
 public class TechnicianController {
 
 	@Autowired
 	private TechnicianService technicianService;
 
 
-	@RequestMapping(value = "/new.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/new.html", method = RequestMethod.GET)
 	public ModelAndView add() throws ServiceException {
 		
-		ModelAndView modelAndView = new ModelAndView("technician");
+		ModelAndView modelAndView = new ModelAndView("admin/technician/technician");
 		modelAndView.addObject("technician", new Technician());
 		return modelAndView;
 	}
 
-	@RequestMapping(value = "/edit.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/edit.html", method = RequestMethod.GET)
 	public ModelAndView edit(@ModelAttribute("id") Integer id) {
 		try {
 			ModelAndView modelAndView = new ModelAndView("technician");
@@ -39,11 +39,11 @@ public class TechnicianController {
 		}
 	}
 
-	@RequestMapping(value = "/list.do", method = RequestMethod.GET)
+	@RequestMapping(value = "list.html", method = RequestMethod.GET)
 	public ModelAndView list() {
-		ModelAndView modelAndView = new ModelAndView("list-technician");
+		ModelAndView modelAndView = new ModelAndView("admin/technician/list-technician");
 		try {
-			modelAndView.addObject("technician", technicianService.findAll());
+			modelAndView.addObject("technicians", technicianService.findAll());
 		} catch (Exception e) {
 			modelAndView.addObject("error", e.getMessage());
 		}
@@ -52,7 +52,7 @@ public class TechnicianController {
 	}
 	
 
-	@RequestMapping(value = "/save.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/save.html", method = RequestMethod.POST)
 	public ModelAndView save(Technician technician) throws ServiceException {
 		try {
 			if (technician.getId() == null) {
@@ -60,7 +60,7 @@ public class TechnicianController {
 			} else {
 				technicianService.update(technician);
 			}
-			ModelAndView modelAndView = new ModelAndView("redirect:list.do");
+			ModelAndView modelAndView = new ModelAndView("redirect:list.html");
 			return modelAndView;
 		} catch (Exception e) {
 			ModelAndView modelAndView = edit(technician.getId());
@@ -69,11 +69,11 @@ public class TechnicianController {
 		}
 	}
 	
-	@RequestMapping(value = "/delete.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/delete.html", method = RequestMethod.GET)
 	public ModelAndView delete(Technician technician) throws ServiceException {
 		
 		technicianService.deleteTechnician(technician);
-		ModelAndView modelAndView = new ModelAndView("redirect:list.do");
+		ModelAndView modelAndView = new ModelAndView("redirect:list.html");
 		modelAndView.addObject("technician", new Technician());
 		return modelAndView;
 	}

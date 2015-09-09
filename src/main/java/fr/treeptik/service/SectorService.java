@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import fr.treeptik.dao.SectorDAO;
+import fr.treeptik.entity.Drink;
 import fr.treeptik.entity.Sector;
 import fr.treeptik.exception.ServiceException;
 @Service
@@ -18,6 +19,14 @@ public class SectorService {
 	@Autowired
 	private SectorDAO sectorDAO;
 	
+	public SectorService(){
+		
+	}
+	
+	public SectorService(SectorDAO sectorDao) {
+		this.sectorDAO=sectorDao;
+		}
+
 	@Transactional()
 	public Sector save(Sector sector) throws ServiceException {
 		logger.debug("appel de la methode save sector " + sector.getName());
@@ -65,4 +74,7 @@ public class SectorService {
 		}
 	}
 
+	public Sector getById(int id) {
+        return sectorDAO.findById(id);
+    }
 }

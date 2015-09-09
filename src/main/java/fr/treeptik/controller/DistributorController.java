@@ -1,5 +1,6 @@
 package fr.treeptik.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -12,6 +13,7 @@ import fr.treeptik.service.DistributorService;
 @RequestMapping(value="/admin/distributor/")
 public class DistributorController {
 
+	@Autowired
 	private DistributorService service;
 	
 	
@@ -25,8 +27,7 @@ public class DistributorController {
 	@RequestMapping(value = "/list.html", method = RequestMethod.GET)
 	public ModelAndView list(){
 		ModelAndView view = new ModelAndView("admin/distributor/list");
-		System.out.println("test");
-	//	view.addObject("distributeurs",service.findAll());
+		view.addObject("distributeurs",service.findAll());
 		return view;
 	}
 	
