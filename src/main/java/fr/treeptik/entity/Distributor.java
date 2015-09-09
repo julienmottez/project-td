@@ -27,7 +27,7 @@ public class Distributor implements Serializable{
 	private List<Refrigerator> refrigerators;
 	
 	
-	@OneToOne
+	@ManyToOne
 	private Sector sector;
 	
 

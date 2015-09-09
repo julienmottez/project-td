@@ -51,7 +51,13 @@ public class DistributorController {
 	}
 
 	private ModelAndView edit(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		try {
+			ModelAndView modelAndView = new ModelAndView("distributeur");
+			Distributor distributor = service.findById(id);
+			modelAndView.addObject("personne", distributor);
+			return modelAndView;
+		} catch (Exception e) {
+			return list();
+		}
 	}
 }
