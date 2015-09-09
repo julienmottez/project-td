@@ -93,10 +93,7 @@ public class TemperatureRange implements Serializable {
 
     @Override
     public String toString() {
-        return "TemperatureRange{" +
-                "from=" + from +
-                ", to=" + to +
-                '}';
+        return String.format("%s à %s", from, to);
     }
 
     public class TemperaturesDoesNotHaveSameUnitException extends RuntimeException {

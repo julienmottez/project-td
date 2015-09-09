@@ -20,7 +20,7 @@ public class DrinkController {
 	
 	@RequestMapping(value = "/new.html", method = RequestMethod.GET)
 	public ModelAndView add() {
-		ModelAndView modelAndView = new ModelAndView("drink");
+		ModelAndView modelAndView = new ModelAndView("admin/drink/drink");
 		modelAndView.addObject("drink", new Drink());
 		modelAndView.addObject("action", "Ajouter");
 		
@@ -30,7 +30,7 @@ public class DrinkController {
 	@RequestMapping(value = "/edit.html", method = RequestMethod.GET)
 	public ModelAndView edit(@ModelAttribute("id") Integer id) {
 		try {
-			ModelAndView modelAndView = new ModelAndView("drink");
+			ModelAndView modelAndView = new ModelAndView("admin/drink/drink");
 
 			Drink drink = drinkService.findById(id);
 
@@ -46,10 +46,10 @@ public class DrinkController {
 
 	@RequestMapping(value = "/list.html", method = RequestMethod.GET)
 	public ModelAndView list() {
-		ModelAndView modelAndView = new ModelAndView("list-drink");
+		ModelAndView modelAndView = new ModelAndView("admin/drink/list-drink");
 		
 		try {
-			modelAndView.addObject("drink", drinkService.findAll());
+			modelAndView.addObject("drinks", drinkService.findAll());
 			
 		} catch (Exception e) {
 			modelAndView.addObject("error", e.getMessage());
@@ -84,16 +84,18 @@ public class DrinkController {
 
 	@RequestMapping(value = "/delete.html", method = RequestMethod.GET)
 	public ModelAndView delete(@ModelAttribute("id") Integer id) throws ServiceException {
-		ModelAndView modelAndView = new ModelAndView("/delete.html");
+		ModelAndView modelAndView = null;
 		
 		try {
 			drinkService.removeById(id);
 			
-			modelAndView.setViewName("redirect:list.html");
+			modelAndView = new ModelAndView("redirect:list.html");
 			
 			return modelAndView;
 			
 		} catch (Exception e) {
+			modelAndView = edit(id);
+			
 			modelAndView.addObject("error", e.getMessage());
 			
 			return modelAndView;
