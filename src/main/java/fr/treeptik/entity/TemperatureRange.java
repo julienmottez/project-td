@@ -6,17 +6,17 @@ import java.io.Serializable;
 @Embeddable
 public class TemperatureRange implements Serializable {
 
-    /**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
-
+	
 	public static TemperatureRange inCelsius(int from, int to) {
         return new TemperatureRange(
                 new Temperature(from, Temperature.Unit.CELSIUS),
                 new Temperature(to, Temperature.Unit.CELSIUS)
         );
     }
+	
+	public TemperatureRange() {
+	}
 
     @Column(name = "from")
     @AttributeOverrides({
