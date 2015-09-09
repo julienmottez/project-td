@@ -56,29 +56,7 @@ public class RackController {
 	@RequestMapping(value = "/save.do", method = RequestMethod.POST)
 	public ModelAndView save(Rack rack) throws ServiceException {
 		try {
-
-			// Integer coldLevel = refrigerator.getColdLevel();
-			// String brand = refrigerator.getBrand();
-			//
-			// if (coldLevel == null || coldLevel == 0) {
-			// throw new FormException("Le niveau de froid est obligatoires.");
-			// }
-			// if (brand == null || brand == "") {
-			// throw new FormException("La marque est obligatoires.");
-			// }
-
-			Integer numCol = rack.getColonneDistributor();
-			Integer numLigne = rack.getLigneDistributor();
-
-			if (numCol == null || numCol == 0) {
-				throw new FormException("Le numero de colonne est obligatoires.");
-			}
-			if (numLigne == null || numLigne == 0) {
-				throw new FormException("Le numero de ligne est obligatoires.");
-			}
-			if (rack.getTypeRack() == null) {
-				throw new FormException("Choisir un type de rack");
-			}
+			rackService.verifyRack(rack);
 			if (rack.getId() == null) {
 				rack = new Rack();
 			} else {

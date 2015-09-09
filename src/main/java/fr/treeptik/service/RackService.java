@@ -12,13 +12,14 @@ import org.springframework.transaction.annotation.Transactional;
 
 import fr.treeptik.dao.RackDAO;
 import fr.treeptik.entity.Rack;
+import fr.treeptik.exception.FormException;
 import fr.treeptik.exception.ServiceException;
 
 @Service
 @Scope(value = "singleton")
 public class RackService {
 
-	private Logger logger = Logger.getLogger(TechnicianService.class);
+	private Logger logger = Logger.getLogger(RackService.class);
 
 	@Autowired
 	private RackDAO rackDAO;
@@ -26,7 +27,7 @@ public class RackService {
 	// @Autowired
 	// private EncryptionService encryptionService;
 
-	private void setRackName(Rack rack) {
+	public void setRackName(Rack rack) {
 		int num = rack.getLigneDistributor();
 
 		if (num > 26) {
@@ -65,6 +66,29 @@ public class RackService {
 		}
 	}
 
+	public Rack verifyRack(Rack rack) {
+		try {
+			Integer numCol = rack.getColonneDistributor();
+			Integer numLigne = rack.getLigneDistributor();
+
+			if (numCol == null || numCol == 0) {
+				throw new FormException("Le numero de colonne est obligatoires.");
+			}
+			if (numLigne == null || numLigne == 0) {
+				throw new FormException("Le numero de ligne est obligatoires.");
+			}
+			if (rack.getTypeRack() == null) {
+				throw new FormException("Choisir un type de rack");
+			}
+			if (rack.getDistributor() == null) {
+				throw new FormException("Choisir un distributeur");
+			}
+			return rack;
+		} catch (Exception e) {
+			return rack;
+		}
+	}
+
 	public List<Rack> findAll() throws ServiceException {
 		try {
 			return rackDAO.findAll();
@@ -76,7 +100,7 @@ public class RackService {
 	public Rack findById(Integer id) throws ServiceException {
 		try {
 			Rack rack = rackDAO.findOne(id);
-			
+			// setRackName(rack);
 			// return rackDAO.findOne(id);
 			return rack;
 		} catch (PersistenceException e) {
@@ -86,7 +110,7 @@ public class RackService {
 	}
 
 	@Transactional
-	public void deleteTechnician(Rack rack) throws ServiceException {
+	public void deleteRack(Rack rack) throws ServiceException {
 		try {
 			rackDAO.delete(rack.getId());
 		} catch (PersistenceException e) {
