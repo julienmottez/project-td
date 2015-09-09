@@ -38,7 +38,7 @@ public class Rack implements Serializable {
 	private Integer ligneDistributor;
 
 	@ManyToOne
-	@JoinColumn(name="rack_id")
+	@JoinColumn(name = "rack_id")
 	private TypeRack typeRack;
 
 	public Integer getId() {
@@ -88,7 +88,5 @@ public class Rack implements Serializable {
 	public void setTypeRack(TypeRack typeRack) {
 		this.typeRack = typeRack;
 	}
-
-	
 
 }

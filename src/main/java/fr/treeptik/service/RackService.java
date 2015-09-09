@@ -100,7 +100,7 @@ public class RackService {
 	public Rack findById(Integer id) throws ServiceException {
 		try {
 			Rack rack = rackDAO.findOne(id);
-			// setRackName(rack);
+//			setRackName(rack);
 			// return rackDAO.findOne(id);
 			return rack;
 		} catch (PersistenceException e) {
