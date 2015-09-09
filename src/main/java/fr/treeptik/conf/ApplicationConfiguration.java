@@ -88,7 +88,7 @@ public class ApplicationConfiguration {
 	public UrlBasedViewResolver urlBasedViewResolver() {
 		UrlBasedViewResolver res = new InternalResourceViewResolver();
 		res.setViewClass(JstlView.class);
-		res.setPrefix("/pages/");
+		res.setPrefix("/WEB-INF/pages/");
 		res.setSuffix(".jsp");
 
 		return res;

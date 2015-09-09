@@ -9,23 +9,24 @@ import fr.treeptik.entity.Distributor;
 import fr.treeptik.service.DistributorService;
 
 @Controller
-@RequestMapping(value="/admin")
+@RequestMapping(value="/admin/distributor/")
 public class DistributorController {
 
 	private DistributorService service;
 	
 	
-	@RequestMapping(value = "/distributor/new.html", method = RequestMethod.GET)
+	@RequestMapping(value = "/new.html", method = RequestMethod.GET)
 	public ModelAndView add() {
-		ModelAndView modelAndView = new ModelAndView("person");
+		ModelAndView modelAndView = new ModelAndView("distributeur");
 		modelAndView.addObject("distributor", new Distributor());
 		return modelAndView;
 	}
 
-	@RequestMapping(value = "/distributor/list.html", method = RequestMethod.GET)
+	@RequestMapping(value = "/list.html", method = RequestMethod.GET)
 	public ModelAndView list(){
-		ModelAndView view = new ModelAndView("player");
-		view.addObject("distributeurs",service.findAll());
+		ModelAndView view = new ModelAndView("admin/distributor/list");
+		System.out.println("test");
+	//	view.addObject("distributeurs",service.findAll());
 		return view;
 	}
 	
