@@ -33,6 +33,7 @@ import org.springframework.web.servlet.view.UrlBasedViewResolver;
 import fr.treeptik.entity.Drink;
 import fr.treeptik.entity.TemperatureRange;
 import fr.treeptik.service.DrinkService;
+import fr.treeptik.service.PersonService;
 
 @Configuration
 @ComponentScan(basePackages = "fr.treeptik")
@@ -108,6 +109,8 @@ public class ApplicationConfiguration {
 
 		@Autowired
 		private DrinkService drinkService;
+		private PersonService personService;
+
 		
 		public StartupListener() {
 		}
