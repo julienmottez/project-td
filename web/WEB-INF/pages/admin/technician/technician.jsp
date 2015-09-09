@@ -22,7 +22,7 @@
 <!-- 		<label>Team:</label> -->
 
 <%-- 		<form:select path="team.id" id="team"> --%>
-<%-- <%-- 			<form:option value="-" label="--Please Select" /> --%> --%>
+<%-- <%-- 			<form:option value="-" label="--Please Select" /> --%> 
 <%-- 			<form:options items="${teams}" itemValue="id" itemLabel="nameTeam" /> --%>
 <%-- 		</form:select> --%>
 
