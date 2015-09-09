@@ -30,6 +30,8 @@
 				</tr>
 			</c:forEach>
 		</tbody>
-	</table>
+	</table><br />
+		<a href="new.html">New Technician</a>
+	
 </body>
 </html>
