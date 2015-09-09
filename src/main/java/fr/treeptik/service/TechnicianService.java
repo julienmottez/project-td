@@ -89,4 +89,30 @@ public class TechnicianService {
 		}
 		return false;
 	}
+
+	public Logger getLogger() {
+		return logger;
+	}
+
+	public void setLogger(Logger logger) {
+		this.logger = logger;
+	}
+
+	public TechnicianDAO getTechnicianDAO() {
+		return technicianDAO;
+	}
+
+	public void setTechnicianDAO(TechnicianDAO technicianDAO) {
+		this.technicianDAO = technicianDAO;
+	}
+
+	public EncryptionService getEncryptionService() {
+		return encryptionService;
+	}
+
+	public void setEncryptionService(EncryptionService encryptionService) {
+		this.encryptionService = encryptionService;
+	}
+	
+	 
 }
