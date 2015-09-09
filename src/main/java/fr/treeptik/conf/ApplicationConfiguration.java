@@ -7,11 +7,13 @@ import javax.sql.DataSource;
 
 import org.apache.commons.dbcp.BasicDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationListener;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.hibernate4.HibernateExceptionTranslator;
@@ -20,15 +22,17 @@ import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaDialect;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.stereotype.Component;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 import org.springframework.web.servlet.view.UrlBasedViewResolver;
+
+import fr.treeptik.entity.Drink;
+import fr.treeptik.entity.TemperatureRange;
+import fr.treeptik.service.DrinkService;
 
 @Configuration
 @ComponentScan(basePackages = "fr.treeptik")
@@ -99,6 +103,25 @@ public class ApplicationConfiguration {
 		return res;
 	}
 
-	
-	
+	@Component
+	public static class StartupListener implements ApplicationListener<ContextRefreshedEvent> {
+
+		@Autowired
+		private DrinkService drinkService;
+		
+		public StartupListener() {
+		}
+
+		@Override
+		public void onApplicationEvent(final ContextRefreshedEvent event) {
+			initDrinks();
+		}
+
+		private void initDrinks() {
+			drinkService.save(new Drink(1, TemperatureRange.inCelsius(0, 5)));
+			drinkService.save(new Drink(2, TemperatureRange.inCelsius(4, 8)));
+			drinkService.save(new Drink(3, TemperatureRange.inCelsius(3, 6)));
+			drinkService.save(new Drink(4, TemperatureRange.inCelsius(0, 2)));
+		}
+	}
 }
