@@ -6,8 +6,11 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
+import org.hibernate.annotations.DiscriminatorOptions;
+
 @Entity
 @DiscriminatorValue("ProductionManager")
+@DiscriminatorOptions(force = true) 
 public class ProductionManager extends Person {
 	
 	@OneToMany(mappedBy = "productionManager")
