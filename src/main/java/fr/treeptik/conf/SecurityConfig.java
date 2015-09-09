@@ -23,7 +23,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	  auth.inMemoryAuthentication().withUser("dba").password("123456").roles("DBA");
 	  
 //	  auth.jdbcAuthentication().dataSource(dataSource);
-//	  auth.jdbcAuthentication().usersByUsernameQuery("SELECT login, encrypted_password, enabled FROM user where login=?");
+//	  auth.jdbcAuthentication().usersByUsernameQuery("SELECT login, encrypted_password, enabled FROM person where login=?");
+//	  auth.jdbcAuthentication().authoritiesByUsernameQuery("SELECT login, role FROM person where login=?");
 	  
 	}
 
