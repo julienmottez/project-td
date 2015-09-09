@@ -19,4 +19,11 @@ public class Drink implements Serializable {
     @Column(name = "cold")
     @Embedded
     private TemperatureRange coldStorage;
+    
+    @ManyToOne
+    @JoinColumn(name="distributionPoint_id")
+    private DistributionPoint distributionPoint;
+    
+    
+    
 }
