@@ -22,7 +22,7 @@ public class DrinkServiceTest {
 	
 	@Test
 	public void testFindById() throws Exception {
-		drinkService.getById(ENTITY_ID);
+		drinkService.findById(ENTITY_ID);
 		
 		verify(mockDrinkDao).findById(ENTITY_ID);
 	}
