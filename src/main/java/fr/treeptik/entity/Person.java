@@ -24,7 +24,7 @@ public class Person implements Serializable {
 	@Column(name = "first_name")
 	private String firstName;
 	
-	@Column(name = "last name")
+	@Column(name = "last_name")
 	private String lastName;
 	private String login;
 	
