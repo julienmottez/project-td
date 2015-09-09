@@ -78,7 +78,7 @@ public class DistributionPointController {
 			
 			distributionPointService.removeById(id);
 			
-			ModelAndView modelAndView = new ModelAndView("redirect:list.do");
+			ModelAndView modelAndView = new ModelAndView("redirect:list.html");
 			return modelAndView;
 		} catch (Exception e) {
 		
