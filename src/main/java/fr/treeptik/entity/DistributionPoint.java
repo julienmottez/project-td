@@ -1,6 +1,7 @@
 package fr.treeptik.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -8,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -31,6 +33,11 @@ public class DistributionPoint implements Serializable{
 	@ManyToOne
 	private Sector sectordp;
 	
+	@OneToMany(mappedBy="distributorPoint")
+	private List<Drink> drinks;
+	
+	
+	
 	
 	public DistributionPoint() {
 		
@@ -39,13 +46,19 @@ public class DistributionPoint implements Serializable{
 
 
 
-	public DistributionPoint(Integer id, Address address, ProductionManager productionManager, Sector sectordp) {
+	
+
+	public DistributionPoint(Integer id, Address address, ProductionManager productionManager, Sector sectordp,
+			List<Drink> drinks) {
 		super();
 		this.id = id;
 		this.address = address;
 		this.productionManager = productionManager;
 		this.sectordp = sectordp;
+		this.drinks = drinks;
 	}
+
+
 
 
 
@@ -92,6 +105,24 @@ public class DistributionPoint implements Serializable{
 
 	public void setSectordp(Sector sectordp) {
 		this.sectordp = sectordp;
+	}
+
+
+
+
+
+
+	public List<Drink> getDrinks() {
+		return drinks;
+	}
+
+
+
+
+
+
+	public void setDrinks(List<Drink> drinks) {
+		this.drinks = drinks;
 	}
 	
 	
