@@ -9,6 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import fr.treeptik.entity.Technician;
 import fr.treeptik.exception.ServiceException;
+import fr.treeptik.service.SectorService;
 import fr.treeptik.service.TechnicianService;
 
 @Controller
@@ -17,6 +18,10 @@ public class TechnicianController {
 
 	@Autowired
 	private TechnicianService technicianService;
+	
+	@Autowired
+	private SectorService sectorService;
+
 
 
 	@RequestMapping(value = "/new.html", method = RequestMethod.GET)
@@ -24,6 +29,8 @@ public class TechnicianController {
 		
 		ModelAndView modelAndView = new ModelAndView("admin/technician/technician");
 		modelAndView.addObject("technician", new Technician());
+		modelAndView.addObject("sectors", sectorService.findAll());
+
 		return modelAndView;
 	}
 

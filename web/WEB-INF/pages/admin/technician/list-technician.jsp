@@ -18,12 +18,14 @@
 				<th>Id</th>
 				<th>Nom</th>
 				<th>Prenom</th>
+				<th>Sector</th>
 			</tr>
 			<c:forEach items="${technicians}" var="technician">
 				<tr>
 					<td>${technician.id}</td>
 					<td>${technician.firstName}</td>
 					<td>${technician.lastName}</td>
+					<td>${technician.sector.name}</td>
 					
 					<td><a href="edit.html?id=${technician.id}">éditer</a>
 						<a href="delete.html?id=${technician.id}">supprimer</a></td>
