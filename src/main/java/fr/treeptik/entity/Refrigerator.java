@@ -32,6 +32,7 @@ public class Refrigerator implements Serializable {
 	private Distributor distributor;
 
 	public Integer getId() {
+		System.out.println("test");
 		return id;
 	}
 
