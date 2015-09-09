@@ -9,6 +9,7 @@
 <body>
 
 	coucou
+	${errors}
 
 </body>
 </html>

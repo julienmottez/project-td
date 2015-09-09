@@ -25,8 +25,7 @@ public class DistributorController {
 	@RequestMapping(value = "/list.html", method = RequestMethod.GET)
 	public ModelAndView list(){
 		ModelAndView view = new ModelAndView("admin/distributor/list");
-		System.out.println("test");
-	//	view.addObject("distributeurs",service.findAll());
+		view.addObject("distributeurs",service.findAll());
 		return view;
 	}
 	
