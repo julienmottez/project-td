@@ -16,18 +16,14 @@
 		<tbody>
 			<tr>
 				<th>Id</th>
-				<th>Ligne</th>
-				<th>Colonne</th>
-				<th>Distributor_id</th>
-				<th>Type_Rack</th>
+				<th>Name</th>
+				<th>Quantité</th>
 			</tr>
-			<c:forEach items="${racks}" var="rack">
+			<c:forEach items="${typeRacks}" var="typeRack">
 				<tr>
-					<td>${rack.id}</td>
-					<td>${rack.ligneDistributor}</td>
-					<td>${rack.colonneDistributor}</td>
-					<td>${rack.distributor}</td>
-					<td>${rack.typeRack}</td>
+					<td>${typeRack.id}</td>
+					<td>${typeRack.name}</td>
+					<td>${typeRack.quantity}</td>
 					<td><a href="edit.html?id=${rack.id}">éditer</a> <a
 						href="delete.html?id=${rack.id}">supprimer</a></td>
 				</tr>
@@ -35,7 +31,7 @@
 		</tbody>
 	</table>
 
-	<a href="new.html">new rack</a>
+	<a href="new.html">new type Rack</a>
 
 
 </body>
