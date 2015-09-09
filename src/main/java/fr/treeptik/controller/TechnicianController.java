@@ -12,7 +12,7 @@ import fr.treeptik.exception.ServiceException;
 import fr.treeptik.service.TechnicianService;
 
 @Controller
-@RequestMapping(value = "/technician")
+@RequestMapping(value = "admin/technician")
 public class TechnicianController {
 
 	@Autowired
@@ -39,11 +39,11 @@ public class TechnicianController {
 		}
 	}
 
-	@RequestMapping(value = "/list.do", method = RequestMethod.GET)
+	@RequestMapping(value = "list.html", method = RequestMethod.GET)
 	public ModelAndView list() {
-		ModelAndView modelAndView = new ModelAndView("list-technician");
+		ModelAndView modelAndView = new ModelAndView("admin/technician/list-technician");
 		try {
-			modelAndView.addObject("technician", technicianService.findAll());
+			modelAndView.addObject("technicians", technicianService.findAll());
 		} catch (Exception e) {
 			modelAndView.addObject("error", e.getMessage());
 		}
