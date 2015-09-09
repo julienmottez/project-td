@@ -30,7 +30,7 @@ public class TechnicianController {
 	@RequestMapping(value = "/edit.html", method = RequestMethod.GET)
 	public ModelAndView edit(@ModelAttribute("id") Integer id) {
 		try {
-			ModelAndView modelAndView = new ModelAndView("technician");
+			ModelAndView modelAndView = new ModelAndView("admin/technician/technician");
 			Technician technician = technicianService.findById(id);
 			modelAndView.addObject("technician", technician);
 			return modelAndView;
@@ -39,7 +39,7 @@ public class TechnicianController {
 		}
 	}
 
-	@RequestMapping(value = "list.html", method = RequestMethod.GET)
+	@RequestMapping(value = "/list.html", method = RequestMethod.GET)
 	public ModelAndView list() {
 		ModelAndView modelAndView = new ModelAndView("admin/technician/list-technician");
 		try {

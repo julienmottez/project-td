@@ -24,6 +24,9 @@
 					<td>${technician.id}</td>
 					<td>${technician.firstName}</td>
 					<td>${technician.lastName}</td>
+					
+					<td><a href="edit.html?id=${technician.id}">éditer</a>
+						<a href="delete.html?id=${technician.id}">supprimer</a></td>
 				</tr>
 			</c:forEach>
 		</tbody>
