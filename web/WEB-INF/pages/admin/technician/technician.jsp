@@ -19,15 +19,13 @@
 		<label>Prénom:</label>
 		<form:input path="lastName" id="prenom" />
 		<br />
-<!-- 		<label>Team:</label> -->
+ 		<label>Sector:</label>
 
-<%-- 		<form:select path="team.id" id="team"> --%>
-<%-- <%-- 			<form:option value="-" label="--Please Select" /> --%> 
-<%-- 			<form:options items="${teams}" itemValue="id" itemLabel="nameTeam" /> --%>
-<%-- 		</form:select> --%>
+		<form:select path="sector.id" id="sector">
+			<form:option value="-" label="--Please Select" /> 
+			<form:options items="${sectors}" itemValue="id" itemLabel="name" />
+		</form:select>
 
-
-		<br />
 		<input type="submit" value="valider" />
 	</form:form>
 </body>
