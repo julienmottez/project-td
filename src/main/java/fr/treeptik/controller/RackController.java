@@ -10,7 +10,9 @@ import org.springframework.web.servlet.ModelAndView;
 import fr.treeptik.entity.Rack;
 import fr.treeptik.entity.Technician;
 import fr.treeptik.exception.ServiceException;
+import fr.treeptik.service.DistributorService;
 import fr.treeptik.service.RackService;
+import fr.treeptik.service.TypeRackService;
 
 @Controller
 @RequestMapping(value = "/admin/rack/")
@@ -19,10 +21,18 @@ public class RackController {
 	@Autowired
 	private RackService rackService;
 
+	@Autowired
+	private TypeRackService typeRackService;
+
+	@Autowired
+	private DistributorService distributorService;
+
 	@RequestMapping(value = "/new.html", method = RequestMethod.GET)
-	public ModelAndView add() {
+	public ModelAndView add() throws ServiceException {
 		ModelAndView modelAndView = new ModelAndView("admin/rack/rack");
 		modelAndView.addObject("rack", new Rack());
+		modelAndView.addObject("typeRacks", typeRackService.findAll());
+		modelAndView.addObject("distributors", distributorService.findAll());
 		return modelAndView;
 	}
 
@@ -32,7 +42,7 @@ public class RackController {
 			ModelAndView modelAndView = new ModelAndView("admin/rack/rack");
 			Rack rack = rackService.findById(id);
 			modelAndView.addObject("rackEdit", rack);
-//			modelAndView.addObject("action", "Editer");
+			// modelAndView.addObject("action", "Editer");
 			return modelAndView;
 		} catch (Exception e) {
 			return list();

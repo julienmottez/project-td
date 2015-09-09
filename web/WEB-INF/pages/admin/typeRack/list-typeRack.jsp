@@ -24,8 +24,8 @@
 					<td>${typeRack.id}</td>
 					<td>${typeRack.name}</td>
 					<td>${typeRack.quantity}</td>
-					<td><a href="edit.html?id=${rack.id}">éditer</a> <a
-						href="delete.html?id=${rack.id}">supprimer</a></td>
+					<td><a href="edit.html?id=${typeRack.id}">éditer</a> <a
+						href="delete.html?id=${typeRack.id}">supprimer</a></td>
 				</tr>
 			</c:forEach>
 		</tbody>

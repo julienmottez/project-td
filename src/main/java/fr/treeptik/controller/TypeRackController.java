@@ -31,7 +31,7 @@ public class TypeRackController {
 		try {
 			ModelAndView modelAndView = new ModelAndView("admin/typeRack/typeRack");
 			TypeRack typeRack = typeRackService.findById(id);
-			modelAndView.addObject("rackEdit", typeRack);
+			modelAndView.addObject("typeRackEdit", typeRack);
 			// modelAndView.addObject("action", "Editer");
 			return modelAndView;
 		} catch (Exception e) {

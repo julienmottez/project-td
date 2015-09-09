@@ -11,6 +11,7 @@
 	<c:if test="${not empty error}">
 		<label style="color: red;"><c:out value="${error}" /></label>
 	</c:if>
+	
 	<form:form action="save.html" commandName="rack" method="POST">
 		<form:hidden path="id" />
 
@@ -21,13 +22,18 @@
 		<label>Numero Ligne :</label>
 		<form:input path="ligneDistributor" id="ligneDistributor" />
 		<br />
-		
-<!-- 		<label>type:</label> -->
-<%-- 		<form:select path="typeRack.id" id="typeRack"> --%>
-<%-- 			<form:option value="-" label="--Please Select" /> --%>
-<%-- 			<form:options items="${typeRack}" itemValue="id" itemLabel="typeRack" /> --%>
-<%-- 		</form:select> --%>
 
+		<label>type rack:</label>
+		<form:select path="typeRack.id" id="typeRack">
+			<form:option value="-" label="--Please Select" />
+			<form:options items="${typeRacks}" itemValue="id" itemLabel="name" />
+		</form:select>
+
+		<label>distrib id :</label>
+		<form:select path="distributor.id" id="distributor">
+			<form:option value="-" label="--Please Select" />
+			<form:options items="${distributors}" itemValue="id" itemLabel="id" />
+		</form:select>
 
 		<br />
 		<input type="submit" value="valider" />

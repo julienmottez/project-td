@@ -26,8 +26,8 @@
 					<td>${rack.id}</td>
 					<td>${rack.ligneDistributor}</td>
 					<td>${rack.colonneDistributor}</td>
-					<td>${rack.distributor}</td>
-					<td>${rack.typeRack}</td>
+					<td>${rack.distributor.id}</td>
+					<td>${rack.typeRack.name}</td>
 					<td><a href="edit.html?id=${rack.id}">éditer</a> <a
 						href="delete.html?id=${rack.id}">supprimer</a></td>
 				</tr>
