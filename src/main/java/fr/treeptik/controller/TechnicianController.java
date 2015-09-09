@@ -73,7 +73,7 @@ public class TechnicianController {
 	public ModelAndView delete(Technician technician) throws ServiceException {
 		
 		technicianService.deleteTechnician(technician);
-		ModelAndView modelAndView = new ModelAndView("redirect:list.do");
+		ModelAndView modelAndView = new ModelAndView("redirect:list.html");
 		modelAndView.addObject("technician", new Technician());
 		return modelAndView;
 	}
