@@ -4,4 +4,6 @@ import org.springframework.stereotype.Repository;
 import fr.treeptik.entity.Sector;
 @Repository
 public interface SectorDAO extends JpaRepository<Sector, Integer> {
+	
+	Sector findById(int id);
 }
