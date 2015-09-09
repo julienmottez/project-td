@@ -42,7 +42,7 @@ public class RackController {
 
 	@RequestMapping(value = "/list.html", method = RequestMethod.GET)
 	public ModelAndView list() {
-		ModelAndView modelAndView = new ModelAndView("list-rack");
+		ModelAndView modelAndView = new ModelAndView("admin/rack/list-rack");
 		try {
 			modelAndView.addObject("rack", rackService.findAll());
 		} catch (Exception e) {
