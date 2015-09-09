@@ -12,6 +12,8 @@ import fr.treeptik.exception.FormException;
 import fr.treeptik.exception.ServiceException;
 
 import fr.treeptik.service.DistributionPointService;
+import fr.treeptik.service.PersonService;
+import fr.treeptik.service.SectorService;
 
 
 @Controller
@@ -20,11 +22,17 @@ public class DistributionPointController {
 
 	@Autowired
 	private DistributionPointService distributionPointService;
+	@Autowired
+	private SectorService sectorService;
+	@Autowired
+	private PersonService personService;
 
 	@RequestMapping(value = "/new.html", method = RequestMethod.GET)
-	public ModelAndView add() {
+	public ModelAndView add() throws ServiceException {
 		ModelAndView modelAndView = new ModelAndView("admin/distributionpoint/distributionpoint");
 		modelAndView.addObject("distributionPoint", new DistributionPoint());
+		modelAndView.addObject("sectordps", sectorService.findAll());
+		modelAndView.addObject("productionManagers", personService.findAll());
 		modelAndView.addObject("action", "Ajouter");
 		return modelAndView;
 	}
@@ -35,8 +43,8 @@ public class DistributionPointController {
 			ModelAndView modelAndView = new ModelAndView("admin/distributionpoint/distributionpoint");
 			DistributionPoint distributionPoint = distributionPointService.findById(id);
 
-			modelAndView.addObject("distributionPointMaker", distributionPoint);
-			modelAndView.addObject("action", "Editer");
+			modelAndView.addObject("distributionpoint", distributionPoint);
+		   
 			return modelAndView;
 		} catch (Exception e) {
 			return list();
@@ -48,6 +56,8 @@ public class DistributionPointController {
 		ModelAndView modelAndView = new ModelAndView("admin/distributionpoint/list-distributionPoint");
 		try {
 			modelAndView.addObject("distributionpoints", distributionPointService.findAll());
+			modelAndView.addObject("sectordps", sectorService.findAll());
+			modelAndView.addObject("productionManagers", personService.findAll());
 		} catch (Exception e) {
 			modelAndView.addObject("error", e.getMessage());
 		}

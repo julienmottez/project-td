@@ -23,20 +23,32 @@
 				<label>Town:</label>
 			<form:input path="address.tawn" id="tawn" />
 		<form:errors path="address.tawn" cssclass="error"></form:errors>
-		<label>Production Manager:</label>
-		<form:select path="productionManager" id="productionManager" />
-		<c:forEach items="${productionManagers}" var="productionManager">
-		<c:out value="${productionManager.id} "/>
-		<c:out value="${productionManager.firstName} "/>
-	
-		</c:forEach>
-		<label>Sector:</label>
-		<form:select path="sectordp" id="sectordp" />
-		<c:forEach items="${sectordps}" var="productionManager">
-		<c:out value="${sectordps.id} "/>
+<%-- 		<label>Sector:</label>
+		<form:select path="sectordp" id="sectordps" >
+		<c:forEach items="${sectordps}" var="sectordp">
+		<c:out value="${sectordp.id} "/>
 		
 	
 		</c:forEach>
+		</form:select> --%>
+		
+	<label>Sector:</label>
+		
+		<form:select path="sectordp.id" id="sectordp" >
+		<form:options items="${sectordps}" itemValue="id" itemLabel="name" />
+		
+	</form:select>
+		<label>Production Manager:</label>
+		
+		<form:select path="productionManager.id" id="productionManagers" >
+		<form:options items="${productionManagers}" itemValue="id" itemLabel="firstName" />
+		
+	</form:select>
+	
+
+
+
+		
 		
 		<br />
 		
