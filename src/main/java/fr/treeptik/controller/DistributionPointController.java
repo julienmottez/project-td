@@ -15,24 +15,24 @@ import fr.treeptik.service.DistributionPointService;
 
 
 @Controller
-@RequestMapping(value = "/distributionPoint")
+@RequestMapping(value = "/admin/distributionpoint/")
 public class DistributionPointController {
 
 	@Autowired
 	private DistributionPointService distributionPointService;
 
-	@RequestMapping(value = "/new.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/new.html", method = RequestMethod.GET)
 	public ModelAndView add() {
-		ModelAndView modelAndView = new ModelAndView("distributionPoint");
+		ModelAndView modelAndView = new ModelAndView("admin/distributionpoint/distributionpoint");
 		modelAndView.addObject("distributionPoint", new DistributionPoint());
 		modelAndView.addObject("action", "Ajouter");
 		return modelAndView;
 	}
 
-	@RequestMapping(value = "/edit.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/edit.html", method = RequestMethod.GET)
 	public ModelAndView edit(@ModelAttribute("id") Integer id) {
 		try {
-			ModelAndView modelAndView = new ModelAndView("distributionPoint");
+			ModelAndView modelAndView = new ModelAndView("admin/distributionpoint/distributionpoint");
 			DistributionPoint distributionPoint = distributionPointService.findById(id);
 
 			modelAndView.addObject("distributionPointMaker", distributionPoint);
@@ -43,18 +43,18 @@ public class DistributionPointController {
 		}
 	}
 
-	@RequestMapping(value = "/list.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/list.html", method = RequestMethod.GET)
 	public ModelAndView list() {
-		ModelAndView modelAndView = new ModelAndView("list-distributionPoint");
+		ModelAndView modelAndView = new ModelAndView("admin/distributionpoint/list-distributionPoint");
 		try {
-			modelAndView.addObject("distributionPoints", distributionPointService.findAll());
+			modelAndView.addObject("distributionpoints", distributionPointService.findAll());
 		} catch (Exception e) {
 			modelAndView.addObject("error", e.getMessage());
 		}
 		return modelAndView;
 
 	}
-	@RequestMapping(value = "/save.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/save.html", method = RequestMethod.POST)
 	public ModelAndView save(DistributionPoint distributionPoint) throws ServiceException {
 		try {
 			if (distributionPoint.getId() == null) {
@@ -62,7 +62,7 @@ public class DistributionPointController {
 			} else {
 				distributionPointService.update(distributionPoint);
 			}
-			ModelAndView modelAndView = new ModelAndView("redirect:list.do");
+			ModelAndView modelAndView = new ModelAndView("redirect:list.html");
 			return modelAndView;
 		} catch (Exception e) {
 			ModelAndView modelAndView = edit(distributionPoint.getId());
@@ -72,7 +72,7 @@ public class DistributionPointController {
 	}
 
 
-	@RequestMapping(value = "/delete.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/delete.html", method = RequestMethod.GET)
 	public ModelAndView delete(@ModelAttribute("id") Integer id) throws ServiceException {
 		try {
 			
