@@ -20,8 +20,8 @@
 					<td>${sector.id}</td>
 					<td>${sector.name}</td>
 				
-					<td><a href="edit.html?id=${sector.id}">Ã©diter</a>
-						<a href="delete.html?id=${sector.id}">supprimer</a></td>
+					<td><a href="edit.html?id=${sector.id}">Update</a>
+						<a href="delete.html?id=${sector.id}">Delete</a></td>
 				</tr>
 			</c:forEach>
 		</tbody>
