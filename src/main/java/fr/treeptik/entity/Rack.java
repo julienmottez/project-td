@@ -28,13 +28,19 @@ public class Rack implements Serializable {
 	@Transient
 	private String name;
 
+	@Column(name = "quantity_available")
+	private Integer quantityAvailable;
+
+	@ManyToOne
+	private Drink drink;
+
 	@ManyToOne
 	private Distributor distributor;
 
-	@Column(name = "colonne_distributor")
+	@Column(name = "column_distributor")
 	private Integer colonneDistributor;
 
-	@Column(name = "ligne_distributor")
+	@Column(name = "line_distributor")
 	private Integer ligneDistributor;
 
 	@ManyToOne
@@ -87,6 +93,22 @@ public class Rack implements Serializable {
 
 	public void setTypeRack(TypeRack typeRack) {
 		this.typeRack = typeRack;
+	}
+
+	public Integer getQuantityAvailable() {
+		return quantityAvailable;
+	}
+
+	public void setQuantityAvailable(Integer quantityAvailable) {
+		this.quantityAvailable = quantityAvailable;
+	}
+
+	public Drink getDrink() {
+		return drink;
+	}
+
+	public void setDrink(Drink drink) {
+		this.drink = drink;
 	}
 
 }

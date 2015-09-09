@@ -25,7 +25,7 @@ public class DistributorService {
 	
 	
 	@Transactional()
-	public Distributor save(Distributor distributeur) throws Exception {
+	public Distributor save(Distributor distributeur) throws ServiceException {
 		logger.debug("appel de la methode save distributeur " + distributeur.getId());
 		try {
 			return dao.save(distributeur);
@@ -45,7 +45,7 @@ public class DistributorService {
 	}
 
 	@Transactional()
-	public Distributor update(Distributor distributeur) throws Exception {
+	public Distributor update(Distributor distributeur) throws ServiceException {
 		logger.debug("appel de la methode udate distributeur " + distributeur.getId());
 		try {
 			return dao.save(distributeur);
@@ -56,7 +56,7 @@ public class DistributorService {
 	}
 	
 	@Transactional()
-	public void remove(Distributor distributeur) throws Exception {
+	public void remove(Distributor distributeur) throws ServiceException {
 		logger.debug("appel de la methode remove distributeur " + distributeur.getId());
 		try {
 			dao.delete(distributeur);
@@ -67,7 +67,7 @@ public class DistributorService {
 	}
 	
 	@Transactional()
-	public Distributor findById(Integer id) throws Exception {
+	public Distributor findById(Integer id) throws ServiceException {
 		logger.debug("appel de la methode find by id distributeur ");
 		try {
 			return dao.findOne(id);

@@ -142,7 +142,7 @@ public class ApplicationConfiguration {
 
 		}
 
-		// init FAB!
+		// init FAB pour les rack ! pas touche pas touche !
 		private void initRack() {
 			TypeRack typeRack1 = new TypeRack();
 			typeRack1.setName("SMALL");
@@ -168,8 +168,10 @@ public class ApplicationConfiguration {
 
 			try {
 				typeRackService.save(typeRack1);
+				typeRackService.save(typeRack2);
 				distributorService.save(distributor);
 				rackService.save(rack1);
+				rackService.save(rack2);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
