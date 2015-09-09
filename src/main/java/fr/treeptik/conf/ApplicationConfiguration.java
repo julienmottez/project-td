@@ -3,23 +3,16 @@ package fr.treeptik.conf;
 import java.util.Properties;
 
 import javax.persistence.EntityManagerFactory;
-
-import org.springframework.core.io.Resource;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-
 import javax.sql.DataSource;
 
 import org.apache.commons.dbcp.BasicDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
-import org.springframework.jdbc.datasource.init.DataSourceInitializer;
-import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.hibernate4.HibernateExceptionTranslator;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
@@ -28,12 +21,17 @@ import org.springframework.orm.jpa.vendor.HibernateJpaDialect;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import org.springframework.web.servlet.view.JstlView;
+import org.springframework.web.servlet.view.UrlBasedViewResolver;
 
 @Configuration
 @ComponentScan(basePackages = "fr.treeptik")
-@PropertySource(value = "classpath:config.properties", name="config")
+@PropertySource(value = "classpath:config.properties", name = "config")
 @EnableTransactionManagement
 @EnableJpaRepositories("fr.treeptik.dao")
+@EnableWebMvc
 public class ApplicationConfiguration {
 	@Autowired
 	private Environment environment;
@@ -56,12 +54,12 @@ public class ApplicationConfiguration {
 		lcemfb.setJpaDialect(new HibernateJpaDialect());
 		lcemfb.setJpaVendorAdapter(jpaVendorAdapter());
 		lcemfb.setPackagesToScan("fr.treeptik.entity");
-		
+
 		Properties properties = new Properties();
 		properties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
 		lcemfb.setJpaProperties(properties);
 		lcemfb.afterPropertiesSet();
-		
+
 		return lcemfb.getObject();
 	}
 
@@ -70,8 +68,7 @@ public class ApplicationConfiguration {
 		HibernateJpaVendorAdapter jpaVendorAdapter = new HibernateJpaVendorAdapter();
 		jpaVendorAdapter.setShowSql(true);
 		jpaVendorAdapter.setGenerateDdl(true);
-		jpaVendorAdapter
-				.setDatabasePlatform("org.hibernate.dialect.MySQLDialect");
+		jpaVendorAdapter.setDatabasePlatform("org.hibernate.dialect.MySQLDialect");
 		return jpaVendorAdapter;
 	}
 
@@ -87,4 +84,13 @@ public class ApplicationConfiguration {
 		return jpaTransactionManager;
 	}
 
+	@Bean
+	public UrlBasedViewResolver urlBasedViewResolver() {
+		UrlBasedViewResolver res = new InternalResourceViewResolver();
+		res.setViewClass(JstlView.class);
+		res.setPrefix("/WEB-INF/pages/");
+		res.setSuffix(".jsp");
+
+		return res;
+	}
 }
