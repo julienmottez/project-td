@@ -8,19 +8,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import fr.treeptik.entity.Rack;
-import fr.treeptik.entity.Refrigerator;
-import fr.treeptik.exception.FormException;
 import fr.treeptik.exception.ServiceException;
 import fr.treeptik.service.RackService;
 
 @Controller
-@RequestMapping(value = "/rack")
+@RequestMapping(value = "/admin/rack/")
 public class RackController {
 
 	@Autowired
 	private RackService rackService;
 
-	@RequestMapping(value = "/new.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/new.html", method = RequestMethod.GET)
 	public ModelAndView add() {
 		ModelAndView modelAndView = new ModelAndView("rack");
 		modelAndView.addObject("rack", new Rack());
@@ -28,13 +26,13 @@ public class RackController {
 		return modelAndView;
 	}
 
-	@RequestMapping(value = "/edit.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/edit.html", method = RequestMethod.GET)
 	public ModelAndView edit(@ModelAttribute("id") Integer id) {
 		try {
 			ModelAndView modelAndView = new ModelAndView("rack");
 			Rack rack = rackService.findById(id);
 
-			modelAndView.addObject("rackMaker", rack);
+			modelAndView.addObject("rackEdit", rack);
 			modelAndView.addObject("action", "Editer");
 			return modelAndView;
 		} catch (Exception e) {
@@ -42,7 +40,7 @@ public class RackController {
 		}
 	}
 
-	@RequestMapping(value = "/list.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/list.html", method = RequestMethod.GET)
 	public ModelAndView list() {
 		ModelAndView modelAndView = new ModelAndView("list-rack");
 		try {
@@ -53,7 +51,7 @@ public class RackController {
 		return modelAndView;
 	}
 
-	@RequestMapping(value = "/save.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/save.html", method = RequestMethod.POST)
 	public ModelAndView save(Rack rack) throws ServiceException {
 		try {
 			rackService.verifyRack(rack);
