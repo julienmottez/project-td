@@ -36,6 +36,18 @@ public class Distributor implements Serializable{
 	
 	
 	 
+	public Sector getSector() {
+		return sector;
+	}
+	public void setSector(Sector sector) {
+		this.sector = sector;
+	}
+	public Technician getTechnician() {
+		return technician;
+	}
+	public void setTechnician(Technician technician) {
+		this.technician = technician;
+	}
 	public Integer getId() {
 		return id;
 	}

@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -7,16 +10,22 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-	<table>
+	
+	
+	<h2>Liste des distributeurs :</h2>
+	<table border="1" width="80%">
   <tr>
-    <th>Column 1 Heading</th>
-    <th>Column 2 Heading</th>
+    <th>id</th>
+    <th>technician</th>
+    <th>sector</th>
   </tr>
+  <c:forEach items="${distributeurs}" var="distributeur">
   <tr>
-    <td>Row 1: Col 1</td>
-    <td>Row 1: Col 2</td>
+	<td>${distributeur.id}</td>
+	<td>${distributeur.technician.firstName}</td>
+	<td>${distributeur.sector.id}</td>
   </tr>
+  </c:forEach>
 </table>
 
 
