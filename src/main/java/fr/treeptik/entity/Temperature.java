@@ -10,14 +10,19 @@ import javax.persistence.Enumerated;
 @Embeddable
 public class Temperature implements Serializable {
 
-    public enum Unit {
-        FAHRENHEIT, CELSIUS
-    }
+	private static final long serialVersionUID = 1L;
 
     public static Temperature inCelsius(int value) {
         return new Temperature(value, Unit.CELSIUS);
     }
 
+    public enum Unit {
+        FAHRENHEIT, CELSIUS
+    }
+    
+    public Temperature() {
+	}
+    
     public Temperature(int value, Unit unit) {
         this.value = value;
         this.unit = unit;
