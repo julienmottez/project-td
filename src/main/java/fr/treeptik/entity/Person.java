@@ -2,6 +2,7 @@ package fr.treeptik.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,11 +21,21 @@ public class Person implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 
-
+	@Column(name = "first_name")
 	private String firstName;
+	
+	@Column(name = "last name")
 	private String lastName;
 	private String login;
+	
+	@Column(name = "encrypted_password")
 	private String encryptedPassword;
+	
+	@Column(name = "enabled")
+	private Boolean enabled;
+	
+	@Column(name = "role")
+	private String role;
 	
 	@Embedded
 	private Address adress;
@@ -74,6 +85,22 @@ public class Person implements Serializable {
 
 	public Address getAdress() {
 		return adress;
+	}
+
+	public Boolean getEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(Boolean enabled) {
+		this.enabled = enabled;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
 	}
 
 	public void setAdress(Address adress) {
