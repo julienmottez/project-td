@@ -19,15 +19,15 @@ public class TechnicianController {
 	private TechnicianService technicianService;
 
 
-	@RequestMapping(value = "/new.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/new.html", method = RequestMethod.GET)
 	public ModelAndView add() throws ServiceException {
 		
-		ModelAndView modelAndView = new ModelAndView("technician");
+		ModelAndView modelAndView = new ModelAndView("admin/technician/technician");
 		modelAndView.addObject("technician", new Technician());
 		return modelAndView;
 	}
 
-	@RequestMapping(value = "/edit.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/edit.html", method = RequestMethod.GET)
 	public ModelAndView edit(@ModelAttribute("id") Integer id) {
 		try {
 			ModelAndView modelAndView = new ModelAndView("technician");
@@ -52,7 +52,7 @@ public class TechnicianController {
 	}
 	
 
-	@RequestMapping(value = "/save.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/save.html", method = RequestMethod.POST)
 	public ModelAndView save(Technician technician) throws ServiceException {
 		try {
 			if (technician.getId() == null) {
@@ -60,7 +60,7 @@ public class TechnicianController {
 			} else {
 				technicianService.update(technician);
 			}
-			ModelAndView modelAndView = new ModelAndView("redirect:list.do");
+			ModelAndView modelAndView = new ModelAndView("redirect:list.html");
 			return modelAndView;
 		} catch (Exception e) {
 			ModelAndView modelAndView = edit(technician.getId());
@@ -69,7 +69,7 @@ public class TechnicianController {
 		}
 	}
 	
-	@RequestMapping(value = "/delete.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/delete.html", method = RequestMethod.GET)
 	public ModelAndView delete(Technician technician) throws ServiceException {
 		
 		technicianService.deleteTechnician(technician);
