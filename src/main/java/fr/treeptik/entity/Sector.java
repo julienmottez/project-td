@@ -27,6 +27,16 @@ public class Sector {
 
 	@OneToOne
 	private Area area;
+	
+	@Column(name = "name")
+	private String name;
+	
+	@OneToMany(fetch = FetchType.LAZY,mappedBy="sector")
+	private List<Distributor>distributors;
+
+	@OneToMany(fetch = FetchType.LAZY,mappedBy="sectordp")
+	private List<DistributionPoint>distributionPoints;
+
 
 	public SectorManager getManagerSector() {
 		return managerSector;
@@ -35,8 +45,7 @@ public class Sector {
 	public Integer getId() {
 		return id;
 	}
-	@Column(name = "name")
-	private String name;
+	
 
 	public void setManagerSector(SectorManager managerSector) {
 		this.managerSector = managerSector;
@@ -49,21 +58,19 @@ public class Sector {
 		this.name = name;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY)
-	private List<Distributor>distributors;
-
-	@OneToMany(fetch = FetchType.LAZY)
-	private List<DistributionPoint>distributionPoints;
-
+	
 	public List<Distributor> getDistributors() {
 		return distributors;
 	}
+	
 	public void setDistributors(List<Distributor> distributors) {
 		this.distributors = distributors;
 	}
+	
 	public List<DistributionPoint> getDistributionPoints() {
 		return distributionPoints;
 	}
+	
 	public void setDistributionPoints(List<DistributionPoint> distributionPoints) {
 		this.distributionPoints = distributionPoints;
 	}
