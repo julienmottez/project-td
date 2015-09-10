@@ -12,20 +12,24 @@ public class Temperature implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
+	public static boolean unitsAreTheSame(Temperature.Unit unit, Temperature.Unit comparedUnit) {
+        if (unit.equals(comparedUnit)) {
+            return true;
+        } else {
+        	return false;
+        }
+    }
+	
 	public static Temperature inCelsius(int value) {
 		return new Temperature(value, Unit.CELSIUS);
+	}
+	
+	public static Temperature inFahrenheit(int value) {
+		return new Temperature(value, Unit.FAHRENHEIT);
 	}
 
 	public enum Unit {
 		FAHRENHEIT, CELSIUS
-	}
-
-	public Temperature() {
-	}
-
-	public Temperature(int value, Unit unit) {
-		this.value = value;
-		this.unit = unit;
 	}
 
 	@Column(name = "temperature_value")
@@ -35,6 +39,14 @@ public class Temperature implements Serializable {
 	@Enumerated(EnumType.STRING)
 	private Unit unit;
 
+	public Temperature() {
+	}
+	
+	public Temperature(int value, Unit unit) {
+		this.value = value;
+		this.unit = unit;
+	}
+	
 	public float getValue() {
 		return value;
 	}

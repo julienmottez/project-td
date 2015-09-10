@@ -15,7 +15,11 @@ public class TemperatureRange implements Serializable {
         );
     }
 	
-	public TemperatureRange() {
+	public static TemperatureRange inFahrenheit(int from, int to) {
+		return new TemperatureRange(
+				new Temperature(from, Temperature.Unit.FAHRENHEIT),
+				new Temperature(to, Temperature.Unit.FAHRENHEIT)
+		);
 	}
 
     @Column(name = "from")
@@ -32,9 +36,10 @@ public class TemperatureRange implements Serializable {
     })
     private Temperature to;
 
+    public TemperatureRange() {
+	}
+    
     public TemperatureRange(Temperature from, Temperature to) {
-        checkTemperaturesHaveSameUnit(from, to);
-
         this.from = from;
         this.to = to;
     }
@@ -56,20 +61,8 @@ public class TemperatureRange implements Serializable {
     }
 
     public boolean contains(Temperature temperature) {
-        checkUnitsAreTheSame(temperature.getUnit(), from.getUnit());
-
         return temperature.getValue() >= from.getValue() &&
                 temperature.getValue() <= to.getValue();
-    }
-
-    private void checkTemperaturesHaveSameUnit(Temperature from, Temperature to) {
-        checkUnitsAreTheSame(from.getUnit(), to.getUnit());
-    }
-
-    private void checkUnitsAreTheSame(Temperature.Unit unit, Temperature.Unit comparedUnit) {
-        if (unit != comparedUnit) {
-            throw new TemperaturesDoesNotHaveSameUnitException();
-        }
     }
 
     @Override
@@ -93,9 +86,6 @@ public class TemperatureRange implements Serializable {
 
     @Override
     public String toString() {
-        return String.format("%s à %s", from, to);
-    }
-
-    public class TemperaturesDoesNotHaveSameUnitException extends RuntimeException {
+        return String.format("%s - %s", from, to);
     }
 }
