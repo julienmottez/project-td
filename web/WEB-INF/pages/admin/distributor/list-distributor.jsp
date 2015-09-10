@@ -19,6 +19,7 @@
 			<th>cp</th>
 			<th>technician</th>
 			<th>sector</th>
+			<th>modification</th>
 		</tr>
 		<c:forEach items="${distributors}" var="distributor">
 			<tr>
@@ -28,9 +29,18 @@
 				<td>${distributor.address.zip}</td>
 				<td>${distributor.technician.firstName}</td>
 				<td>${distributor.sector.id}</td>
+				<td><a href="edit.html?id=${distributor.id}">éditer</a> <a
+					href="delete.html?id=${distributor.id}">supprimer</a></td>
 			</tr>
 		</c:forEach>
 	</table>
+	<br />
+	<br />
+	<a href="new.html">New Distributor</a>
+	<br />
+	<br />
+	<a href="/td-frigo/admin/typeDistributor/list.html">List
+		distributor type</a>
 
 
 </body>

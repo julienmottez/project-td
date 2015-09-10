@@ -11,6 +11,7 @@ import fr.treeptik.entity.Distributor;
 import fr.treeptik.exception.ServiceException;
 import fr.treeptik.service.DistributorService;
 import fr.treeptik.service.SectorService;
+import fr.treeptik.service.TechnicianService;
 import fr.treeptik.service.TypeDistributorService;
 
 @Controller
@@ -26,19 +27,23 @@ public class DistributorController {
 	@Autowired
 	private TypeDistributorService typeDistributorService;
 
+	@Autowired
+	private TechnicianService technicianService;
+
 	@RequestMapping(value = "/new.html", method = RequestMethod.GET)
 	public ModelAndView add() throws ServiceException {
 		ModelAndView modelAndView = new ModelAndView("admin/distributor/distributor");
 		modelAndView.addObject("distributor", new Distributor());
 		modelAndView.addObject("sectors", sectorService.findAll());
 		modelAndView.addObject("typeDistributors", typeDistributorService.findAll());
+		modelAndView.addObject("technicians", technicianService.findAll());
 		return modelAndView;
 	}
 
 	@RequestMapping(value = "/edit.html", method = RequestMethod.GET)
 	public ModelAndView edit(@ModelAttribute("id") Integer id) {
 		try {
-			ModelAndView modelAndView = new ModelAndView("distributor");
+			ModelAndView modelAndView = new ModelAndView("admin/distributor/distributor");
 			Distributor distributor = serviceDistributor.findById(id);
 			modelAndView.addObject("distributor", distributor);
 			return modelAndView;

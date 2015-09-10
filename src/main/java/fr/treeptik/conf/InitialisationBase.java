@@ -71,6 +71,7 @@ public class InitialisationBase {
 
 	private Address adress1;
 	private Address adress2;
+
 	private void initAdress() {
 		adress1 = new Address("rue toto", "totoCity", "totoZIP");
 		adress2 = new Address("rue tata", "tataCity", "tataZIP");
@@ -119,7 +120,10 @@ public class InitialisationBase {
 
 	private void initSectors() {
 		sector1 = new Sector();
+		sector1.setName("secteur1");
+
 		sector2 = new Sector();
+		sector1.setName("secteur2");
 		try {
 			sectorService.save(sector1);
 			sectorService.save(sector2);
@@ -134,7 +138,16 @@ public class InitialisationBase {
 
 	private void initTechnicians() {
 		technician1 = new Technician();
+		technician1.setAdress(adress1);
+		technician1.setFirstName("robert");
+		technician1.setLastName("dupond");
+		technician1.setSector(sector1);
+
 		technician2 = new Technician();
+		technician1.setAdress(adress2);
+		technician1.setFirstName("TOTO");
+		technician1.setLastName("tata");
+		technician1.setSector(sector2);
 		try {
 			technicianService.save(technician1);
 			technicianService.save(technician2);
