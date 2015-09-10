@@ -44,7 +44,7 @@ import fr.treeptik.service.TypeRackService;
 
 @Configuration
 @ComponentScan(basePackages = "fr.treeptik")
-@Import({ SecurityConfig.class })
+@Import({ SecurityConfiguration.class })
 @EnableWebMvc
 @PropertySource(value = "classpath:config.properties", name = "config")
 @EnableTransactionManagement
