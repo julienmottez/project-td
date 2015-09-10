@@ -1,5 +1,8 @@
 package fr.treeptik.conf;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -148,12 +151,20 @@ public class InitialisationBase {
 		technician1.setFirstName("robert");
 		technician1.setLastName("dupond");
 		technician1.setSector(sector1);
+		List<Distributor>distributors=new ArrayList<Distributor>();
+		distributors.add(distributor1);
+		distributors.add(distributor2);
+		technician1.setDistributors(distributors);
 
 		technician2 = new Technician();
 		technician1.setAdress(adress2);
 		technician1.setFirstName("TOTO");
 		technician1.setLastName("tata");
 		technician1.setSector(sector2);
+		List<Distributor>distributors2=new ArrayList<Distributor>();
+		distributors2.add(distributor2);
+		distributors2.add(distributor1);
+		technician1.setDistributors(distributors2);
 		try {
 			technicianService.save(technician1);
 			technicianService.save(technician2);
