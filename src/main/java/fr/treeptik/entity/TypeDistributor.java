@@ -58,20 +58,20 @@ public class TypeDistributor implements Serializable {
 		this.name = name;
 	}
 
-	public Integer getNumberColumn() {
+	public Integer getNumberColumns() {
 		return numberColumns;
 	}
 
-	public void setNumberColumn(Integer numberColumn) {
-		this.numberColumns = numberColumn;
+	public void setNumberColumns(Integer numberColumns) {
+		this.numberColumns = numberColumns;
 	}
 
-	public Integer getNumberLine() {
+	public Integer getNumberLines() {
 		return numberLines;
 	}
 
-	public void setNumberLine(Integer numberLine) {
-		this.numberLines = numberLine;
+	public void setNumberLines(Integer numberLines) {
+		this.numberLines = numberLines;
 	}
 
 }

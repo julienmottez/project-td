@@ -29,22 +29,19 @@
 			<form:option value="-" label="--Please Select" />
 			<form:options items="${sectors}" itemValue="id" itemLabel="name" />
 		</form:select>
-
+		<br />
+		<label>Type Distributor:</label>
 		<form:select path="typeDistributor.id" id="typeDistributor">
 			<form:option value="-" label="--Please Select" />
 			<form:options items="${typeDistributors}" itemValue="id"
 				itemLabel="name" />
 		</form:select>
 
-		<form:select path="typeDistributor.id" id="typeDistributor">
-			<form:option value="-" label="--Please Select" />
-			<form:options items="${typeDistributors}" itemValue="id"
-				itemLabel="name" />
-		</form:select>
 
 
 
-
+		<br />
+		<br />
 		<input type="submit" value="valider" />
 	</form:form>
 </body>
