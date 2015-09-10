@@ -118,7 +118,6 @@ public class ApplicationConfiguration extends WebMvcConfigurerAdapter{
 
 		@Override
 		public void onApplicationEvent(final ContextRefreshedEvent event) {
-
 			initialisationBase.run();
 		}
 

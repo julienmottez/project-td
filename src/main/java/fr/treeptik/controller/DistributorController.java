@@ -54,7 +54,6 @@ public class DistributorController {
 		} catch (Exception e) {
 			view.addObject("error", e.getMessage());
 		}
-		// view.addObject("distributor", new Distributor());
 		return view;
 
 	}

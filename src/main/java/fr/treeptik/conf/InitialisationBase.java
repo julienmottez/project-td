@@ -71,7 +71,6 @@ public class InitialisationBase {
 
 	private Address adress1;
 	private Address adress2;
-
 	private void initAdress() {
 		adress1 = new Address("rue toto", "totoCity", "totoZIP");
 		adress2 = new Address("rue tata", "tataCity", "tataZIP");
@@ -104,15 +103,15 @@ public class InitialisationBase {
 
 	private void initRefregirators() {
 		refrigeratorService.getLogger();
-		// refrigerator1 = new Refrigerator();
-		// refrigerator2 = new Refrigerator();
-		// try {
-		// refrigeratorService.save(refrigerator1);
-		// refrigeratorService.save(refrigerator2);
-		// } catch (ServiceException e) {
-		// // TODO Auto-generated catch block
-		// e.printStackTrace();
-		// }
+		refrigerator1 = new Refrigerator();
+		refrigerator2 = new Refrigerator();
+		try {
+			refrigeratorService.save(refrigerator1);
+			refrigeratorService.save(refrigerator2);
+		} catch (ServiceException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	private Sector sector1;
@@ -157,7 +156,7 @@ public class InitialisationBase {
 		} catch (ServiceException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			
+
 		}
 	}
 
