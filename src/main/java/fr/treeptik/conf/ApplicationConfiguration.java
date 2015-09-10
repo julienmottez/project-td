@@ -26,6 +26,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 import org.springframework.web.servlet.view.UrlBasedViewResolver;
@@ -35,7 +37,6 @@ import fr.treeptik.entity.Drink;
 import fr.treeptik.entity.Rack;
 import fr.treeptik.entity.TemperatureRange;
 import fr.treeptik.entity.TypeRack;
-import fr.treeptik.exception.ServiceException;
 import fr.treeptik.service.DistributorService;
 import fr.treeptik.service.DrinkService;
 import fr.treeptik.service.PersonService;
@@ -50,7 +51,7 @@ import fr.treeptik.service.TypeRackService;
 @EnableTransactionManagement
 @EnableJpaRepositories("fr.treeptik.dao")
 
-public class ApplicationConfiguration {
+public class ApplicationConfiguration extends WebMvcConfigurerAdapter{
 	@Autowired
 	private Environment environment;
 
@@ -102,6 +103,11 @@ public class ApplicationConfiguration {
 		return jpaTransactionManager;
 	}
 
+	@Override
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+		registry.addResourceHandler("/style/**").addResourceLocations("/style/");
+	}
+	
 	@Bean
 	public UrlBasedViewResolver urlBasedViewResolver() {
 		UrlBasedViewResolver res = new InternalResourceViewResolver();
