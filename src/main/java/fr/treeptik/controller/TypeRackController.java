@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import fr.treeptik.entity.Rack;
 import fr.treeptik.entity.Technician;
 import fr.treeptik.entity.TypeRack;
 import fr.treeptik.exception.ServiceException;
@@ -31,7 +32,7 @@ public class TypeRackController {
 		try {
 			ModelAndView modelAndView = new ModelAndView("admin/typeRack/typeRack");
 			TypeRack typeRack = typeRackService.findById(id);
-			modelAndView.addObject("typeRackEdit", typeRack);
+			modelAndView.addObject("typeRack", typeRack);
 			// modelAndView.addObject("action", "Editer");
 			return modelAndView;
 		} catch (Exception e) {
@@ -73,7 +74,7 @@ public class TypeRackController {
 
 		typeRackService.deleteTypeRack(typeRack);
 		ModelAndView modelAndView = new ModelAndView("redirect:list.html");
-		modelAndView.addObject("typeRack", new Technician());
+		modelAndView.addObject("typeRack", new Rack());
 		return modelAndView;
 	}
 }

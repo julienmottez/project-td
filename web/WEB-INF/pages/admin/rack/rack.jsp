@@ -25,14 +25,17 @@
 
 		<label>type rack:</label>
 		<form:select path="typeRack.id" id="typeRack">
-			<form:option value="-" label="--Please Select" />
 			<form:options items="${typeRacks}" itemValue="id" itemLabel="name" />
 		</form:select>
 
 		<label>distrib id :</label>
 		<form:select path="distributor.id" id="distributor">
-			<form:option value="-" label="--Please Select" />
 			<form:options items="${distributors}" itemValue="id" itemLabel="id" />
+		</form:select>
+		
+		<label>drink id :</label>
+		<form:select path="drink.id" id="drink">
+			<form:options items="${drinks}" itemValue="id" itemLabel="id" />
 		</form:select>
 
 		<br />

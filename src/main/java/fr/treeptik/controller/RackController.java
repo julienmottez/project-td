@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import fr.treeptik.entity.Rack;
-import fr.treeptik.entity.Technician;
 import fr.treeptik.exception.ServiceException;
 import fr.treeptik.service.DistributorService;
+import fr.treeptik.service.DrinkService;
 import fr.treeptik.service.RackService;
 import fr.treeptik.service.TypeRackService;
 
@@ -26,6 +26,9 @@ public class RackController {
 
 	@Autowired
 	private DistributorService distributorService;
+	
+	@Autowired
+	private DrinkService drinkService;  
 
 	@RequestMapping(value = "/new.html", method = RequestMethod.GET)
 	public ModelAndView add() throws ServiceException {
@@ -33,6 +36,8 @@ public class RackController {
 		modelAndView.addObject("rack", new Rack());
 		modelAndView.addObject("typeRacks", typeRackService.findAll());
 		modelAndView.addObject("distributors", distributorService.findAll());
+		modelAndView.addObject("drinks", drinkService.findAll());
+
 		return modelAndView;
 	}
 
@@ -41,8 +46,7 @@ public class RackController {
 		try {
 			ModelAndView modelAndView = new ModelAndView("admin/rack/rack");
 			Rack rack = rackService.findById(id);
-			modelAndView.addObject("rackEdit", rack);
-			// modelAndView.addObject("action", "Editer");
+			modelAndView.addObject("rack", rack);
 			return modelAndView;
 		} catch (Exception e) {
 			return list();
@@ -85,7 +89,7 @@ public class RackController {
 
 		rackService.deleteRack(rack);
 		ModelAndView modelAndView = new ModelAndView("redirect:list.html");
-		modelAndView.addObject("rack", new Technician());
+		modelAndView.addObject("rack", new Rack());
 		return modelAndView;
 	}
 }
