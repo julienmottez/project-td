@@ -13,6 +13,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+	
 	@Autowired
     private DataSource dataSource;
 	
@@ -21,6 +22,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	  auth.inMemoryAuthentication().withUser("mkyong").password("123456").roles("USER");
 	  auth.inMemoryAuthentication().withUser("admin").password("123456").roles("ADMIN");
 	  auth.inMemoryAuthentication().withUser("dba").password("123456").roles("DBA");
+	  
 	  
 //	  auth.jdbcAuthentication().dataSource(dataSource);
 //	  auth.jdbcAuthentication().usersByUsernameQuery("SELECT login, encrypted_password, enabled FROM person where login=?");
