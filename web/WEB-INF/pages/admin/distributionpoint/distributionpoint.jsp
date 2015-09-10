@@ -49,11 +49,11 @@
 	 	<label>Production Manager:</label></td>
 	 	<td>
 		
-<%-- 		<form:select path="productionManager.id" id="productionManagers" >
+		<form:select path="productionManager.id" id="productionManagers" >
 		<form:options items="${productionManagers}" itemValue="id" itemLabel="firstName" />
 		
 	</form:select>  
-	
+<%-- 
 	<label>lastname:</label>
 		<form:input path="address.zip" id="zip" />
 		<form:errors path="address.zip" cssclass="error"></form:errors>
