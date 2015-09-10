@@ -30,7 +30,7 @@ public class TypeDistributorController {
 		try {
 			ModelAndView modelAndView = new ModelAndView("admin/typeDistributor/typeDistributor");
 			TypeDistributor typeDistributor = typeDistributorService.findById(id);
-			modelAndView.addObject("typeDistributorEdit", typeDistributor);
+			modelAndView.addObject("typeDistributor", typeDistributor);
 			// modelAndView.addObject("action", "Editer");
 			return modelAndView;
 		} catch (Exception e) {

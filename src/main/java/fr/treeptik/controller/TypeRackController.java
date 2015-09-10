@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import fr.treeptik.entity.Rack;
-import fr.treeptik.entity.Technician;
 import fr.treeptik.entity.TypeRack;
 import fr.treeptik.exception.ServiceException;
 import fr.treeptik.service.TypeRackService;

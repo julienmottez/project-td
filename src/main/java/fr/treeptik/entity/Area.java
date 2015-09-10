@@ -2,6 +2,10 @@ package fr.treeptik.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
+import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,10 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-
 @Table(name = "area")
 public class Area implements Serializable {
-	
 
 	private static final long serialVersionUID = 1L;
 
@@ -20,51 +22,61 @@ public class Area implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	
-	private Double northWest;
-	private Double southEast;
-
-	public Area(){
+	@Embedded
+	@Column(name = "north_west")
+    @AttributeOverrides({
+            @AttributeOverride(name = "longitude", column = @Column(name = "north_west_longitude")),
+            @AttributeOverride(name = "latitude", column = @Column(name = "north_west_latitude"))
+    })
+	private Coordinate northWest;
 	
+	@Embedded
+    @Column(name = "south_east")
+    @AttributeOverrides({
+            @AttributeOverride(name = "longitude", column = @Column(name = "south_east_longitude")),
+            @AttributeOverride(name = "latitude", column = @Column(name = "south_east_latitude"))
+    })
+	private Coordinate southEast;
+
+	public Area() {
+		
 	}
-
-
-	public Area(Integer id, Double northWest, Double southEast) {
+	
+	public Area(Coordinate northWest, Coordinate southEast) {
 		super();
-		this.id = id;
 		this.northWest = northWest;
 		this.southEast = southEast;
 	}
-
 
 	public Integer getId() {
 		return id;
 	}
 
-
 	public void setId(Integer id) {
 		this.id = id;
 	}
 
-
-	public Double getNorthWest() {
+	public Coordinate getNorthWest() {
 		return northWest;
 	}
 
-
-	public void setNorthWest(Double northWest) {
+	public void setNorthWest(Coordinate northWest) {
 		this.northWest = northWest;
 	}
 
-
-	public Double getSouthEast() {
+	public Coordinate getSouthEast() {
 		return southEast;
 	}
 
-
-	public void setSouthEast(Double southEast) {
+	public void setSouthEast(Coordinate southEast) {
 		this.southEast = southEast;
 	}
-	
+
+	@Override
+	public String toString() {
+		//return "Area [northWest=" + northWest + ", southEast=" + southEast + "]";
+		return "NW = " + northWest + ", SE = " + southEast;
+	}
 	
 	
 

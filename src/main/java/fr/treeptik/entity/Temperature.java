@@ -55,6 +55,14 @@ public class Temperature implements Serializable {
 		return unit;
 	}
 
+	public void setValue(float value) {
+		this.value = value;
+	}
+
+	public void setUnit(Unit unit) {
+		this.unit = unit;
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		if (this == o)

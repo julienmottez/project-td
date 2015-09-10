@@ -7,24 +7,40 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Liste des distributeurs</title>
 </head>
 <body>
 	<h2>Liste des distributeurs :</h2>
 	<table border="1" width="80%">
 		<tr>
 			<th>id</th>
+			<th>rue</th>
+			<th>ville</th>
+			<th>cp</th>
 			<th>technician</th>
 			<th>sector</th>
+			<th>modification</th>
 		</tr>
-		<c:forEach items="${distributeurs}" var="distributeur">
+		<c:forEach items="${distributors}" var="distributor">
 			<tr>
-				<td>${distributeur.id}</td>
-				<td>${distributeur.technician.firstName}</td>
-				<td>${distributeur.sector.id}</td>
+				<td>${distributor.id}</td>
+				<td>${distributor.address.street}</td>
+				<td>${distributor.address.tawn}</td>
+				<td>${distributor.address.zip}</td>
+				<td>${distributor.technician.firstName}</td>
+				<td>${distributor.sector.id}</td>
+				<td><a href="edit.html?id=${distributor.id}">éditer</a> <a
+					href="delete.html?id=${distributor.id}">supprimer</a></td>
 			</tr>
 		</c:forEach>
 	</table>
+	<br />
+	<br />
+	<a href="new.html">New Distributor</a>
+	<br />
+	<br />
+	<a href="/td-frigo/admin/typeDistributor/list.html">List
+		distributor type</a>
 
 
 </body>

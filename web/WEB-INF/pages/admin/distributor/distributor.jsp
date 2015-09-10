@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Liste des distributeurs</title>
 </head>
 <body>
 	<c:if test="${not empty error}">
@@ -14,30 +15,30 @@
 
 	<form:form action="save.html" commandName="distributor" method="POST">
 		<form:hidden path="id" />
-		<label>Rue:</label>
+
+		<label>Street :</label>
 		<form:input path="address.street" id="street" />
 		<br />
-		<label>Ville:</label>
+
+		<label>Town :</label>
 		<form:input path="address.tawn" id="tawn" />
 		<br />
-		<label>Code Postal:</label>
+
+		<label>ZIP:</label>
 		<form:input path="address.zip" id="zip" />
 		<br />
-		<label>Sector:</label>
 
-		<form:select path="sector.id" id="sector">
-			<form:option value="-" label="--Please Select" />
-			<form:options items="${sectors}" itemValue="id" itemLabel="name" />
+		<label>Distributor Type :</label>
+		<form:select path="typeDistributor.id" id="typeDistributor">
+			<form:options items="${typeDistributors}" itemValue="id"
+				itemLabel="id" />
 		</form:select>
 		<br />
-		<label>Type Distributor:</label>
-		<form:select path="typeDistributor.id" id="typeDistributor">
-			<form:option value="-" label="--Please Select" />
-			<form:options items="${typeDistributors}" itemValue="id"
-				itemLabel="name" />
+		<label>Technician:</label>
+		<form:select path="technician.id" id="technicians">
+			<form:options items="${technicians}" itemValue="id"
+				itemLabel="firstName" />
 		</form:select>
-
-
 
 
 		<br />
