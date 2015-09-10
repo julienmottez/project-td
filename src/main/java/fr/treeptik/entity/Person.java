@@ -35,16 +35,6 @@ public class Person implements Serializable {
 	
 	@Column(name = "last_name")
 	private String lastName;
-	private String login;
-	
-	@Column(name = "encrypted_password")
-	private String encryptedPassword;
-	
-	@Column(name = "enabled")
-	private Boolean enabled;
-	
-	@Column(name = "role")
-	private String role;
 	
 	@Embedded
 	private Address adress;
@@ -71,38 +61,6 @@ public class Person implements Serializable {
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
-	}
-
-	public String getLogin() {
-		return login;
-	}
-
-	public void setLogin(String login) {
-		this.login = login;
-	}
-
-	public String getEncryptedPassword() {
-		return encryptedPassword;
-	}
-
-	public void setEncryptedPassword(String encryptedPassword) {
-		this.encryptedPassword = encryptedPassword;
-	}
-
-	public Boolean getEnabled() {
-		return enabled;
-	}
-
-	public void setEnabled(Boolean enabled) {
-		this.enabled = enabled;
-	}
-
-	public String getRole() {
-		return role;
-	}
-
-	public void setRole(String role) {
-		this.role = role;
 	}
 
 	public Address getAdress() {

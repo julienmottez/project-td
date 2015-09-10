@@ -21,12 +21,7 @@ public class TechnicianService {
 	private Logger logger = Logger.getLogger(TechnicianService.class);
 
 	@Autowired
-	//@Qualifier("technicianDAO")
 	private TechnicianDAO technicianDAO;
-	
-	@Autowired
-	private EncryptionService encryptionService;
-
 
 	@Transactional()
 	public Technician save(Technician technician) throws ServiceException {
@@ -75,20 +70,6 @@ public class TechnicianService {
 			throw new ServiceException("erreur save technician", e);
 		}
 	}
-	
-	public boolean login(String login, String mdp) throws ServiceException {
-		Technician technician;
-		try {
-			technician=technicianDAO.findByLastName(login);
-			if (technician.getEncryptedPassword().equals(encryptionService.encrypt(mdp))) {
-				return true;
-			}
-			
-		} catch (Exception e) {
-			throw new ServiceException("erreur login", e);
-		}
-		return false;
-	}
 
 	public Logger getLogger() {
 		return logger;
@@ -106,13 +87,7 @@ public class TechnicianService {
 		this.technicianDAO = technicianDAO;
 	}
 
-	public EncryptionService getEncryptionService() {
-		return encryptionService;
-	}
-
-	public void setEncryptionService(EncryptionService encryptionService) {
-		this.encryptionService = encryptionService;
-	}
+	
 	
 	 
 }
