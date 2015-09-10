@@ -21,7 +21,9 @@
 				<tr>
 					<td>${drink.id}</td>
 					<td>${drink.coldStorage}</td>
-					
+					<c:forEach items="${drink.distributionPoints}" var="distributionPoint">
+					<td>${distributionPoint.id}</td>
+					</c:forEach>
 					<td><a href="edit.html?id=${drink.id}">éditer</a>
 						<a href="delete.html?id=${drink.id}">supprimer</a></td>
 				</tr>

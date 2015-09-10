@@ -21,7 +21,7 @@
 
 			<c:set var="temperaturesUnits" value="<%=Temperature.Unit.values()%>" />
 			<form:select path="coldStorage.from.unit">
-				<form:options items="${temperatureUnits}"/>
+				<form:options items="${temperatureUnits}" />
 			</form:select>
 		</div>
 		
@@ -31,7 +31,7 @@
 
 			<c:set var="temperaturesUnits" value="<%=Temperature.Unit.values()%>" />
 			<form:select path="coldStorage.to.unit">
-				<form:options items="${temperatureUnits}"/>
+				<form:options items="${temperatureUnits}"  />
 			</form:select>
 		</div>
 
