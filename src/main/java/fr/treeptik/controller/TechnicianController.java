@@ -9,6 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import fr.treeptik.entity.Technician;
 import fr.treeptik.exception.ServiceException;
+import fr.treeptik.service.DistributorService;
 import fr.treeptik.service.SectorService;
 import fr.treeptik.service.TechnicianService;
 
@@ -21,6 +22,10 @@ public class TechnicianController {
 	
 	@Autowired
 	private SectorService sectorService;
+	
+	@Autowired
+	private DistributorService distributorService;
+	
 
 
 
@@ -30,6 +35,7 @@ public class TechnicianController {
 		ModelAndView modelAndView = new ModelAndView("admin/technician/technician");
 		modelAndView.addObject("technician", new Technician());
 		modelAndView.addObject("sectors", sectorService.findAll());
+		modelAndView.addObject("distributorss", distributorService.findAll());
 
 		return modelAndView;
 	}
@@ -51,6 +57,9 @@ public class TechnicianController {
 		ModelAndView modelAndView = new ModelAndView("admin/technician/list-technician");
 		try {
 			modelAndView.addObject("technicians", technicianService.findAll());
+			modelAndView.addObject("sectors", sectorService.findAll());
+			modelAndView.addObject("distributorss", distributorService.findAll());
+			
 		} catch (Exception e) {
 			modelAndView.addObject("error", e.getMessage());
 		}
