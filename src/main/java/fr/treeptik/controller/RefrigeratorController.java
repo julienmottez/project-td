@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import fr.treeptik.entity.Refrigerator;
+import fr.treeptik.entity.Temperature;
 import fr.treeptik.exception.FormException;
 import fr.treeptik.exception.ServiceException;
 import fr.treeptik.service.RefrigeratorService;
@@ -57,10 +58,10 @@ public class RefrigeratorController {
 	public ModelAndView save(Refrigerator refrigerator) throws ServiceException {
 		try {
 
-			Integer coldLevel = refrigerator.getColdLevel();
+			Temperature coldLevel = refrigerator.getColdLevel();
 			String brand = refrigerator.getBrand();
 
-			if (coldLevel == null || coldLevel == 0) {
+			if (coldLevel == null) {
 				throw new FormException("Le niveau de froid est obligatoires.");
 			}
 			if (brand == null || brand == "") {

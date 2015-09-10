@@ -22,7 +22,7 @@ public class Refrigerator implements Serializable {
 	private Integer id;
 
 	@Column(name = "cold_level")
-	private Integer coldLevel;
+	private Temperature coldLevel;
 
 	@Column(name = "brand")
 	private String brand;
@@ -31,8 +31,17 @@ public class Refrigerator implements Serializable {
 	@JoinColumn(name="distributor_id")
 	private Distributor distributor;
 
+	public Refrigerator() {
+	}
+	
+	public Refrigerator(Integer id, Temperature coldLevel, String brand, Distributor distributor) {
+		this.id = id;
+		this.coldLevel = coldLevel;
+		this.brand = brand;
+		this.distributor = distributor;
+	}
+
 	public Integer getId() {
-		System.out.println("test");
 		return id;
 	}
 
@@ -40,11 +49,11 @@ public class Refrigerator implements Serializable {
 		this.id = id;
 	}
 
-	public Integer getColdLevel() {
+	public Temperature getColdLevel() {
 		return coldLevel;
 	}
 
-	public void setColdLevel(Integer coldLevel) {
+	public void setColdLevel(Temperature coldLevel) {
 		this.coldLevel = coldLevel;
 	}
 
