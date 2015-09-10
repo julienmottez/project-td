@@ -116,9 +116,15 @@ public class ApplicationConfiguration extends WebMvcConfigurerAdapter{
 			// TODO Auto-generated constructor stub
 		}
 
+		private static Integer count = 0;
 		@Override
 		public void onApplicationEvent(final ContextRefreshedEvent event) {
-			initialisationBase.run();
+			count += 1;
+			System.out.println("Passage n°" + count);
+			if (count == 1 ){ 
+				System.out.println("INIT");
+				initialisationBase.run();
+			}
 		}
 
 	}

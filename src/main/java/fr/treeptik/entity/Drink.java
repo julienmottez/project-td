@@ -1,13 +1,20 @@
 package fr.treeptik.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -25,6 +32,18 @@ public class Drink implements Serializable {
 	@Column(name = "cold")
 	@Embedded
 	private TemperatureRange coldStorage;
+	
+	
+	@OneToMany(mappedBy="drink")
+	private List<UnityDrink> unityDrinks;
+	
+	 @ManyToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
+	  @JoinTable(name="drink_distribution_point", 
+	      joinColumns=@JoinColumn(name="drink_id"),
+	      inverseJoinColumns=@JoinColumn(name="distribution_point_id"))  
+	 private List<DistributionPoint> distributionPoints;
+	 
+	 
 
 	public Drink() {
 	}
@@ -48,6 +67,30 @@ public class Drink implements Serializable {
 
 	public void setColdStorage(TemperatureRange coldStorage) {
 		this.coldStorage = coldStorage;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public List<UnityDrink> getUnityDrinks() {
+		return unityDrinks;
+	}
+
+	public void setUnityDrinks(List<UnityDrink> unityDrinks) {
+		this.unityDrinks = unityDrinks;
+	}
+
+	public List<DistributionPoint> getDistributionPoints() {
+		return distributionPoints;
+	}
+
+	public void setDistributionPoints(List<DistributionPoint> distributionPoints) {
+		this.distributionPoints = distributionPoints;
 	}
 
 	@Override

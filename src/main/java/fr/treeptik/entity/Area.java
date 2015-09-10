@@ -38,6 +38,16 @@ public class Area implements Serializable {
     })
 	private Coordinate southEast;
 
+	public Area() {
+		
+	}
+	
+	public Area(Coordinate northWest, Coordinate southEast) {
+		super();
+		this.northWest = northWest;
+		this.southEast = southEast;
+	}
+
 	public Integer getId() {
 		return id;
 	}

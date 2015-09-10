@@ -18,6 +18,9 @@ public class Coordinate implements Serializable {
 	@Column(name = "latitude")
 	private float latitude;
 	
+	public Coordinate() {
+	}
+	
 	public Coordinate(float longitude, float latitude) {
 		super();
 		this.longitude = longitude;
