@@ -20,13 +20,9 @@
 			<form:input path="coldStorage.from.value" />
 
 			<c:set var="temperaturesUnits" value="<%=Temperature.Unit.values()%>" />
-			<select>
-				<c:forEach var="unit" items="${temperaturesUnits}">
-					<option value="<c:out value="${unit}" />">
-						<c:out value="${unit}" />
-					</option>
-				</c:forEach>
-			</select>
+			<form:select path="coldStorage.from.unit">
+				<form:options items="${temperatureUnits}"/>
+			</form:select>
 		</div>
 		
 		<div>
@@ -34,13 +30,9 @@
 			<form:input path="coldStorage.to.value" />
 
 			<c:set var="temperaturesUnits" value="<%=Temperature.Unit.values()%>" />
-			<select>
-				<c:forEach var="unit" items="${temperaturesUnits}">
-					<option value="<c:out value="${unit}" />">
-						<c:out value="${unit}" />
-					</option>
-				</c:forEach>
-			</select>
+			<form:select path="coldStorage.to.unit">
+				<form:options items="${temperatureUnits}"/>
+			</form:select>
 		</div>
 
 		<input type="submit" value="valider" />

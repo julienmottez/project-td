@@ -32,9 +32,7 @@ public class DrinkController {
 		try {
 			ModelAndView modelAndView = new ModelAndView("admin/drink/drink");
 
-			Drink drink = drinkService.findById(id);
-
-			modelAndView.addObject("drink", drink);
+			modelAndView.addObject("drink", drinkService.findById(id));
 			modelAndView.addObject("action", "Editer");
 			
 			return modelAndView;
