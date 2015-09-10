@@ -201,8 +201,11 @@ public class InitialisationBase {
 	}
 	
 	
+	
 	private void initArea() {
 		try {
+
+			
 			areaService.save(new Area(new Coordinate(50.45897F, 32.98742F), new Coordinate(60.45897F, 42.98742F)));
 			areaService.save(new Area(new Coordinate(40.45897F, 42.98742F), new Coordinate(70.45897F, 82.98742F)));
 			areaService.save(new Area(new Coordinate(30.45897F, 52.98742F), new Coordinate(90.45897F, 12.98742F)));
