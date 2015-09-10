@@ -14,7 +14,7 @@
 
 
 	<header>
-		<h1>${action} un utilisateur</h1>
+		<h1>${action} un secteur</h1>
 	</header>
 
 	<article>
@@ -33,50 +33,34 @@
 				</div>
 			</div>
 			
-			<div class="form-group">
-				<label class="control-label col-sm-2" for="role">Zone : </label>
+			<div class="form-group"> 
+				<label class="control-label col-sm-2" for="area">Zone : </label>
 				<div class="col-sm-10">
-					<form:select id="role" class="form-control" path="role">
-						<form:option value="">Sélectionner une zone</form:option>
-						<form:option value="ROLE_USER">User</form:option>
-						<form:option value="ROLE_ADMIN">Admin</form:option>
-					</form:select>
+					<select id="area" class="form-control" path="area">
+					    <c:forEach items="${areas}" var="area">
+					        <option value="${area.id}">${area.toString()}</option>
+					    </c:forEach>
+					</select>
 				</div>
 			</div>
 			
 			
-			<div class="form-group">
-				<label class="control-label col-sm-2" for="password">Mot de passe :</label>
-				<div class="col-sm-10">
-					<form:input id="password" path="password" type="password" class="form-control"
-						placeholder="Mot de passe" />
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="control-label col-sm-2" for="passwordMatch">Confirmation :</label>
-				<div class="col-sm-10">
-					<form:input id="passwordMatch" path="passwordMatch" type="password"
-						class="form-control" placeholder="Mot de passe" />
-				</div>
-			</div>
-			<div class="form-group">
-				<div class="col-sm-offset-2 col-sm-10">
-					<div class="checkbox">
-						<label><form:checkbox id="enabled" path="enabled" />Activé</label>
-					</div>
-				</div>
-			</div>
+<%-- 			<form:select path="areas.id" id="areas"> --%>
+<%-- 				<form:options items="${areas}" itemValue="id" itemLabel="id" /> --%>
+<%-- 			</form:select> --%>
+			
 
-			<div class="form-group">
-				<label class="control-label col-sm-2" for="role">Role : </label>
-				<div class="col-sm-10">
-					<form:select id="role" class="form-control" path="role">
-						<form:option value="">Sélectionner un role</form:option>
-						<form:option value="ROLE_USER">User</form:option>
-						<form:option value="ROLE_ADMIN">Admin</form:option>
-					</form:select>
-				</div>
-			</div>
+<!-- 			<div class="form-group"> -->
+<!-- 				<label class="control-label col-sm-2" for="area">Zone : </label> -->
+<!-- 				<div class="col-sm-10"> -->
+<%-- 					<form:select id="area" class="form-control" path="area"> --%>
+						
+<%-- 						<form:options items="${areas}" itemValue="id" itemLabel="name" /> --%>
+<%-- 					</form:select> --%>
+<!-- 				</div> -->
+<!-- 			</div> -->
+			
+			
 
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
