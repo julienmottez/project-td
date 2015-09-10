@@ -36,7 +36,7 @@ public class DistributionPoint implements Serializable{
 	@ManyToOne(cascade=CascadeType.PERSIST)
 	private Sector sectordp;
 	
-	@ManyToMany(mappedBy="distributionPoint")
+	@ManyToMany
 	private List<Drink> drinks;
 	
 	
