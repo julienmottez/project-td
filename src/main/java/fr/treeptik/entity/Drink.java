@@ -1,6 +1,7 @@
 package fr.treeptik.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Embedded;
@@ -9,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -26,9 +29,11 @@ public class Drink implements Serializable {
     @Embedded
     private TemperatureRange coldStorage;
     
-    @ManyToOne
-    @JoinColumn(name="distributionPoint_id")
-    private DistributionPoint distributionPoint;
+    @ManyToMany
+    @JoinTable(name="distributionpoint_drink", 
+    joinColumns=@JoinColumn(name="distributionpoint_id"),
+    inverseJoinColumns=@JoinColumn(name="drink_id"))
+    private List<DistributionPoint> distributionPoint;
 
     public Drink() {
 	}
@@ -54,11 +59,11 @@ public class Drink implements Serializable {
 		this.coldStorage = coldStorage;
 	}
 
-	public DistributionPoint getDistributionPoint() {
+	public List<DistributionPoint> getDistributionPoint() {
 		return distributionPoint;
 	}
 
-	public void setDistributionPoint(DistributionPoint distributionPoint) {
+	public void setDistributionPoint(List<DistributionPoint> distributionPoint) {
 		this.distributionPoint = distributionPoint;
 	}
 }

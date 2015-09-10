@@ -7,6 +7,7 @@ import javax.persistence.PersistenceException;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
+import org.springframework.data.repository.NoRepositoryBean;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import fr.treeptik.dao.PersonDAO;
@@ -16,12 +17,12 @@ import fr.treeptik.exception.ServiceException;
 
 @Service
 @Scope(value = "singleton")
+
 public class PersonService {
 
 	private Logger logger = Logger.getLogger(PersonDAO.class);
 
 	@Autowired
-	
 	private PersonDAO personDAO;
 
 	@Transactional()
@@ -51,6 +52,7 @@ public class PersonService {
 		try {
 			return personDAO.findAll();
 		} catch (PersistenceException e) {
+			e.printStackTrace();
 			throw new ServiceException("erreur findAll person", e);
 		}
 	}

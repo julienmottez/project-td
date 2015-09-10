@@ -22,7 +22,7 @@ public class PersonController {
 	@RequestMapping(value = "/new.do", method = RequestMethod.GET)
 	public ModelAndView add() {
 		ModelAndView modelAndView = new ModelAndView("person");
-		modelAndView.addObject("person", new Person());
+		//modelAndView.addObject("person", new Person());
 		modelAndView.addObject("action", "Ajouter");
 		return modelAndView;
 	}

@@ -11,10 +11,13 @@
 	<c:if test="${not empty error}">
 		<label style="color: red;"><c:out value="${error}" /></label>
 	</c:if>
+
 	<form:form action="save.html" commandName="distributionPoint" method="POST">
 		<form:hidden path="id"  />
-		<label>Address:</label>
-		<label>zip:</label>
+			<table>
+			<tr>
+		<td><label>Address:</label></td>
+	<td>	<label>zip:</label>
 		<form:input path="address.zip" id="zip" />
 		<form:errors path="address.zip" cssclass="error"></form:errors>
 				<label>street:</label>
@@ -23,31 +26,46 @@
 				<label>Town:</label>
 			<form:input path="address.tawn" id="tawn" />
 		<form:errors path="address.tawn" cssclass="error"></form:errors>
-<%-- 		<label>Sector:</label>
-		<form:select path="sectordp" id="sectordps" >
-		<c:forEach items="${sectordps}" var="sectordp">
-		<c:out value="${sectordp.id} "/>
+		</td>
+		</tr>
+
+		<tr>
+		<td>
+	<label>Sector:</label> </td>
 		
-	
-		</c:forEach>
-		</form:select> --%>
-		
-	<label>Sector:</label>
-		
-		<form:select path="sectordp.id" id="sectordp" >
+	<td>	<form:select path="sectordp.id" id="sectordp" >
 		<form:options items="${sectordps}" itemValue="id" itemLabel="name" />
 		
+		
+		<label>lastname:</label>
+		<form:input path="address.zip" id="zip" />
+		<form:errors path="address.zip" cssclass="error"></form:errors>
+				<label>firstname:</label>
+			<form:input path="address.street" id="street" />
+		<form:errors path="address.street" cssclass="error"></form:errors>
+				<label>Town:</label>
+			<form:input path="address.tawn" id="tawn" />
+		<form:errors path="address.tawn" cssclass="error"></form:errors>
+		
+ 		
 </form:select>
-	 	<label>Production Manager:</label>
+</td>
+</tr>
+
+<tr>
+<td>
+
+	 	<label>Production Manager:</label></td>
+	 	<td>
 		
 		<form:select path="productionManager.id" id="productionManagers" >
 		<form:options items="${productionManagers}" itemValue="id" itemLabel="firstName" />
 		
 	</form:select> 
-	
+	</td>
+</tr>
 
-
-
+</table>
 		
 		
 		<br />
