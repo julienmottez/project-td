@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import fr.treeptik.entity.Address;
+import fr.treeptik.entity.Area;
+import fr.treeptik.entity.Coordinate;
 import fr.treeptik.entity.Distributor;
 import fr.treeptik.entity.Drink;
 import fr.treeptik.entity.Rack;
@@ -14,6 +16,7 @@ import fr.treeptik.entity.TemperatureRange;
 import fr.treeptik.entity.TypeDistributor;
 import fr.treeptik.entity.TypeRack;
 import fr.treeptik.exception.ServiceException;
+import fr.treeptik.service.AreaService;
 import fr.treeptik.service.DistributorService;
 import fr.treeptik.service.DrinkService;
 import fr.treeptik.service.PersonService;
@@ -49,7 +52,9 @@ public class InitialisationBase {
 	private TechnicianService technicianService;
 	@Autowired
 	private RefrigeratorService refrigeratorService;
-
+	@Autowired
+	private AreaService areaService;
+	
 	public void run() {
 		initAdress();
 		initRefregirators();
@@ -59,6 +64,7 @@ public class InitialisationBase {
 		initTypeDistributor();
 		initDistributor();
 		initRack();
+		initArea();
 	}
 
 	// attention à l'ordre d'init
@@ -104,15 +110,15 @@ public class InitialisationBase {
 
 	private void initRefregirators() {
 		refrigeratorService.getLogger();
-		// refrigerator1 = new Refrigerator();
-		// refrigerator2 = new Refrigerator();
-		// try {
-		// refrigeratorService.save(refrigerator1);
-		// refrigeratorService.save(refrigerator2);
-		// } catch (ServiceException e) {
-		// // TODO Auto-generated catch block
-		// e.printStackTrace();
-		// }
+		refrigerator1 = new Refrigerator();
+		refrigerator2 = new Refrigerator();
+		try {
+			refrigeratorService.save(refrigerator1);
+			refrigeratorService.save(refrigerator2);
+		} catch (ServiceException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	private Sector sector1;
@@ -120,7 +126,10 @@ public class InitialisationBase {
 
 	private void initSectors() {
 		sector1 = new Sector();
+		sector1.setName("secteur1");
+
 		sector2 = new Sector();
+		sector1.setName("secteur2");
 		try {
 			sectorService.save(sector1);
 			sectorService.save(sector2);
@@ -135,7 +144,16 @@ public class InitialisationBase {
 
 	private void initTechnicians() {
 		technician1 = new Technician();
+		technician1.setAdress(adress1);
+		technician1.setFirstName("robert");
+		technician1.setLastName("dupond");
+		technician1.setSector(sector1);
+
 		technician2 = new Technician();
+		technician1.setAdress(adress2);
+		technician1.setFirstName("TOTO");
+		technician1.setLastName("tata");
+		technician1.setSector(sector2);
 		try {
 			technicianService.save(technician1);
 			technicianService.save(technician2);
@@ -157,7 +175,7 @@ public class InitialisationBase {
 		} catch (ServiceException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			
+
 		}
 	}
 
@@ -194,5 +212,26 @@ public class InitialisationBase {
 		}
 
 	}
+	
+	
+	
+	private void initArea() {
+		try {
+			areaService.save(new Area(new Coordinate(50.45897F, 32.98742F), new Coordinate(60.45897F, 42.98742F)));
+			areaService.save(new Area(new Coordinate(40.45897F, 42.98742F), new Coordinate(70.45897F, 82.98742F)));
+			areaService.save(new Area(new Coordinate(30.45897F, 52.98742F), new Coordinate(90.45897F, 12.98742F)));
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+	
+	
+	
+	
+	
+	
 
 }
