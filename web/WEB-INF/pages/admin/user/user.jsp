@@ -8,8 +8,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>${action} un utilisateur</title>
-<link href="../style/bootstrap-3.3.5-dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="../style/user.css" rel="stylesheet">
 </head>
 <body>
 
