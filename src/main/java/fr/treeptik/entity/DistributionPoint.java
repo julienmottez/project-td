@@ -3,11 +3,13 @@ package fr.treeptik.entity;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -15,6 +17,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "distribution_point")
+
 public class DistributionPoint implements Serializable{
 	
 
@@ -27,13 +30,13 @@ public class DistributionPoint implements Serializable{
 	private Address address;
 	
 
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.PERSIST)
 	private ProductionManager productionManager;
 	
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.PERSIST)
 	private Sector sectordp;
 	
-	@OneToMany(mappedBy="distributionPoint")
+	@ManyToMany(mappedBy="distributionPoint")
 	private List<Drink> drinks;
 	
 	

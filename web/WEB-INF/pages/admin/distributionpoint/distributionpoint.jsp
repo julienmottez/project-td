@@ -12,7 +12,7 @@
 		<label style="color: red;"><c:out value="${error}" /></label>
 	</c:if>
 	<form:form action="save.html" commandName="distributionPoint" method="POST">
-		<form:hidden path="id" />
+		<form:hidden path="id"  />
 		<label>Address:</label>
 		<label>zip:</label>
 		<form:input path="address.zip" id="zip" />
@@ -37,13 +37,13 @@
 		<form:select path="sectordp.id" id="sectordp" >
 		<form:options items="${sectordps}" itemValue="id" itemLabel="name" />
 		
-	</form:select>
-		<label>Production Manager:</label>
+</form:select>
+	 	<label>Production Manager:</label>
 		
 		<form:select path="productionManager.id" id="productionManagers" >
 		<form:options items="${productionManagers}" itemValue="id" itemLabel="firstName" />
 		
-	</form:select>
+	</form:select> 
 	
 
 
