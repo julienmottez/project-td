@@ -18,7 +18,7 @@ import fr.treeptik.exception.ServiceException;
 @Scope(value = "singleton")
 public class TypeRackService {
 
-	private Logger logger = Logger.getLogger(RackService.class);
+	private Logger logger = Logger.getLogger(TypeRackService.class);
 
 	@Autowired
 	private TypeRackDAO typeRackDAO;

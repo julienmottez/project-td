@@ -1,12 +1,14 @@
 package fr.treeptik.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -29,6 +31,9 @@ public class TypeDistributor implements Serializable {
 
 	@Column(name = "number_lines")
 	private Integer numberLines;
+
+	@OneToMany(mappedBy = "typeDistributor")
+	private List<Distributor> distributors;
 
 	public TypeDistributor(Integer id, String name, Integer numberColumn, Integer numberLine) {
 		super();

@@ -32,17 +32,6 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 import org.springframework.web.servlet.view.UrlBasedViewResolver;
 
-import fr.treeptik.entity.Distributor;
-import fr.treeptik.entity.Drink;
-import fr.treeptik.entity.Rack;
-import fr.treeptik.entity.TemperatureRange;
-import fr.treeptik.entity.TypeRack;
-import fr.treeptik.service.DistributorService;
-import fr.treeptik.service.DrinkService;
-import fr.treeptik.service.PersonService;
-import fr.treeptik.service.RackService;
-import fr.treeptik.service.TypeRackService;
-
 @Configuration
 @ComponentScan(basePackages = "fr.treeptik")
 @Import({ SecurityConfiguration.class })
@@ -121,69 +110,18 @@ public class ApplicationConfiguration extends WebMvcConfigurerAdapter{
 	public static class StartupListener implements ApplicationListener<ContextRefreshedEvent> {
 
 		@Autowired
-		private DrinkService drinkService;
-		private PersonService personService;
-
-		@Autowired
-		private RackService rackService;
-		@Autowired
-		private TypeRackService typeRackService;
-		@Autowired
-		private DistributorService distributorService;
+		private InitialisationBase initialisationBase;
 
 		public StartupListener() {
+			// TODO Auto-generated constructor stub
 		}
 
 		@Override
 		public void onApplicationEvent(final ContextRefreshedEvent event) {
-			initDrinks();
-			initRack();
+
+			initialisationBase.run();
 		}
 
-		private void initDrinks() {
-			drinkService.save(new Drink(1, TemperatureRange.inCelsius(0, 5)));
-			drinkService.save(new Drink(2, TemperatureRange.inCelsius(4, 8)));
-			drinkService.save(new Drink(3, TemperatureRange.inCelsius(3, 6)));
-			drinkService.save(new Drink(4, TemperatureRange.inCelsius(0, 2)));
-
-		}
-
-		// init FAB pour les rack ! pas touche pas touche !
-		private void initRack() {
-			TypeRack typeRack1 = new TypeRack();
-			typeRack1.setName("SMALL");
-			typeRack1.setQuantity(10);
-
-			TypeRack typeRack2 = new TypeRack();
-			typeRack2.setName("MEDIUM");
-			typeRack2.setQuantity(20);
-
-			Distributor distributor = new Distributor();
-
-			Rack rack1 = new Rack();
-			rack1.setColonneDistributor(11);
-			rack1.setLigneDistributor(55);
-			rack1.setTypeRack(typeRack1);
-			rack1.setDistributor(distributor);
-
-			Rack rack2 = new Rack();
-			rack2.setColonneDistributor(8);
-			rack2.setLigneDistributor(6);
-			rack2.setTypeRack(typeRack2);
-			rack2.setDistributor(distributor);
-
-			try {
-				typeRackService.save(typeRack1);
-				typeRackService.save(typeRack2);
-				distributorService.save(distributor);
-				rackService.save(rack1);
-				rackService.save(rack2);
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-
-		}
 	}
 
 }

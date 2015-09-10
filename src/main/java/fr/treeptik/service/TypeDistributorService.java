@@ -18,14 +18,16 @@ import fr.treeptik.exception.ServiceException;
 @Scope(value = "singleton")
 public class TypeDistributorService {
 
-	private Logger logger = Logger.getLogger(RackService.class);
+	private Logger logger = Logger.getLogger(TypeDistributorService.class);
 
 	@Autowired
 	private TypeDistributorDAO typeDistributorDAO;
 
 	@Transactional()
 	public TypeDistributor save(TypeDistributor typeDistributor) throws ServiceException {
-		logger.debug("appel de la methode save rack " + typeDistributor.getName());
+		// logger.getName();
+		// logger.debug("appel de la methode save typeDistributor " +
+		// typeDistributor.getName());
 		try {
 			return typeDistributorDAO.save(typeDistributor);
 		} catch (PersistenceException e) {

@@ -11,6 +11,22 @@ public class Address implements Serializable{
 	private String street;
 	private String tawn;
 	private String zip;
+	
+	
+	public Address(String street, String tawn, String zip) {
+		super();
+		this.street = street;
+		this.tawn = tawn;
+		this.zip = zip;
+	}
+	
+	
+	public Address() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
 	public String getStreet() {
 		return street;
 	}
