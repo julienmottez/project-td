@@ -22,7 +22,6 @@
  		<label>Sector:</label>
 
 		<form:select path="sector.id" id="sector">
-<%-- 			<form:option value="-" label="--Please Select" />  --%>
 			<form:options items="${sectors}" itemValue="id" itemLabel="name" />
 		</form:select>
 

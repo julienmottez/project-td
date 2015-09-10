@@ -22,6 +22,7 @@ public class DistributorController {
 
 	@Autowired
 	private SectorService sectorService;
+
 	@Autowired
 	private TypeDistributorService typeDistributorService;
 

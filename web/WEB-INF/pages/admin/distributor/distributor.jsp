@@ -28,10 +28,11 @@
 		<form:input path="address.zip" id="zip" />
 		<br />
 
-<!-- 		<label>sector id :</label> -->
-<%-- 		<form:select path="sector.id" id="sector"> --%>
-<%-- 			<form:options items="${sectors}" itemValue="id" itemLabel="name" /> --%>
-<%-- 		</form:select> --%>
+		<label>Sector:</label>
+
+		<form:select path="sector.id" id="sector">
+			<form:options items="${sectors}" itemValue="id" itemLabel="name" />
+		</form:select>
 
 
 		<br />
