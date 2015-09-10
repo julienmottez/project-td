@@ -43,7 +43,7 @@ public class DistributionPointController {
 			ModelAndView modelAndView = new ModelAndView("admin/distributionpoint/distributionpoint");
 			DistributionPoint distributionPoint = distributionPointService.findById(id);
 
-			modelAndView.addObject("distributionpoint", distributionPoint);
+			modelAndView.addObject("distributionPoint", distributionPoint);
 		   
 			return modelAndView;
 		} catch (Exception e) {
