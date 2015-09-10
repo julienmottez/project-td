@@ -22,7 +22,7 @@ import javax.persistence.Table;
 @DiscriminatorValue("Person")
 
 
-public class Person implements Serializable {
+public abstract class Person implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
