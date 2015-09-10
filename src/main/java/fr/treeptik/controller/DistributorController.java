@@ -30,6 +30,7 @@ public class DistributorController {
 	public ModelAndView list(){
 		ModelAndView view = new ModelAndView("admin/distributor/list");
 		view.addObject("distributeurs",service.findAll());
+		view.addObject("distributor", new Distributor());
 		return view;
 	}
 	
@@ -42,7 +43,7 @@ public class DistributorController {
 			} else {
 				service.update(distributor);
 			}
-			ModelAndView modelAndView = new ModelAndView("redirect:list.do");
+			ModelAndView modelAndView = new ModelAndView("redirect:admin/distributor/list.html");
 			return modelAndView;
 		} catch (Exception e) {
 			ModelAndView modelAndView = edit(distributor.getId());
@@ -54,7 +55,7 @@ public class DistributorController {
 		try {
 			ModelAndView modelAndView = new ModelAndView("distributeur");
 			Distributor distributor = service.findById(id);
-			modelAndView.addObject("personne", distributor);
+			modelAndView.addObject("distributor", distributor);
 			return modelAndView;
 		} catch (Exception e) {
 			return list();
