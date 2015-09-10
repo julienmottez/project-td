@@ -20,6 +20,8 @@ public class DistributionPointServiceTest {
 	public void setUp() {
 		mockDistributionPointDAO = mock(DistributionPointDAO.class);
 		distributionPointService = new DistributionPointService(mockDistributionPointDAO);
+		
+		distributionPoint = new DistributionPoint();
 	}
 	
 	@Test
@@ -54,9 +56,10 @@ public class DistributionPointServiceTest {
 	
 	@Test
 	public void testdelete() throws Exception {
+		distributionPoint.setId(1);
 		distributionPointService.delete(distributionPoint);
 		
-		verify(mockDistributionPointDAO).delete(distributionPoint);
+		verify(mockDistributionPointDAO).delete(distributionPoint.getId());
 	}
 	
 	@Test
@@ -64,7 +67,6 @@ public class DistributionPointServiceTest {
 		distributionPointService.removeById(ENTITY_ID);
 		
 		verify(mockDistributionPointDAO).delete(ENTITY_ID);
-
 	}
 	
 	
