@@ -1,19 +1,13 @@
 package fr.treeptik.controller;
 
-
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-
 import fr.treeptik.exception.DAOException;
 import fr.treeptik.exception.ServiceException;
-import fr.treeptik.entity.DistributionPoint;
-import fr.treeptik.entity.Distributor;
 import fr.treeptik.entity.Sector;
 import fr.treeptik.service.DistributionPointService;
 import fr.treeptik.service.DistributorService;
@@ -72,33 +66,9 @@ public class SectorController {
 	@RequestMapping(value = "/save.html", method = RequestMethod.POST)
 	public ModelAndView save(Sector sector) throws ServiceException {
 		try {
+		
 			if (sector.getId() == null) {
 				sectorservice.save(sector);
-				
-		/*		List<DistributionPoint>distributionPoints = sector.getDistributionPoints();  
-				DistributionPoint dp = null;  
-				  if(distributionPoints != null){  
-				   for(DistributionPoint distributionPoint : distributionPoints){  
-				    dp = new DistributionPoint();  
-				  //  dp.s;  
-				    dp.setSectordp(sector);  
-				    distributionPointService.save(dp);  
-				    
-				    
-				    List<Distributor>distributors = sector.getDistributors();  
-				    Distributor distributor = null;  
-				    if(distributors != null){  
-				     for(Distributor dist : distributors){  
-				    	 distributor = new Distributor();  
-				    	
-				    	 distributor.setSector(sector);   
-				    	 distributorService.save(dist);  
-				     }  
-				    }  
-				      
-				   }  
-				  }  */
-				
 				
 			} else {
 				sectorservice.update(sector);
