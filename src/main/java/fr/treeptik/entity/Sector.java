@@ -3,6 +3,7 @@ package fr.treeptik.entity;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -32,10 +33,10 @@ public class Sector {
 	@Column(name = "name")
 	private String name;
 	
-	@OneToMany(fetch = FetchType.LAZY,mappedBy="sector")
+	@OneToMany(fetch = FetchType.LAZY,mappedBy="sector",cascade=CascadeType.ALL)
 	private List<Distributor>distributors;
 
-	@OneToMany(fetch = FetchType.LAZY,mappedBy="sectordp")
+	@OneToMany(fetch = FetchType.LAZY,mappedBy="sectordp",cascade=CascadeType.ALL)
 	private List<DistributionPoint>distributionPoints;
 
 
