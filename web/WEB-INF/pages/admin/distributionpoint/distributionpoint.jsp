@@ -37,15 +37,6 @@
 		<form:options items="${sectordps}" itemValue="id" itemLabel="name" />
 		
 		
-		<label>lastname:</label>
-		<form:input path="address.zip" id="zip" />
-		<form:errors path="address.zip" cssclass="error"></form:errors>
-				<label>firstname:</label>
-			<form:input path="address.street" id="street" />
-		<form:errors path="address.street" cssclass="error"></form:errors>
-				<label>Town:</label>
-			<form:input path="address.tawn" id="tawn" />
-		<form:errors path="address.tawn" cssclass="error"></form:errors>
 		
  		
 </form:select>
@@ -58,10 +49,21 @@
 	 	<label>Production Manager:</label></td>
 	 	<td>
 		
-		<form:select path="productionManager.id" id="productionManagers" >
+<%-- 		<form:select path="productionManager.id" id="productionManagers" >
 		<form:options items="${productionManagers}" itemValue="id" itemLabel="firstName" />
 		
-	</form:select> 
+	</form:select>  
+	
+	<label>lastname:</label>
+		<form:input path="address.zip" id="zip" />
+		<form:errors path="address.zip" cssclass="error"></form:errors>
+				<label>firstname:</label>
+			<form:input path="address.street" id="street" />
+		<form:errors path="address.street" cssclass="error"></form:errors>
+				<label>Town:</label>
+			<form:input path="address.tawn" id="tawn" />
+		<form:errors path="address.tawn" cssclass="error"></form:errors>
+		--%>
 	</td>
 </tr>
 
