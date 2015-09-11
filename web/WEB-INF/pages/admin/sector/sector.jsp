@@ -7,14 +7,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>${action} un utilisateur</title>
-<link href="../../style/bootstrap-3.3.5-dist/css/bootstrap.min.css" rel="stylesheet">
+<title>${action}un utilisateur</title>
+<link href="../../style/bootstrap-3.3.5-dist/css/bootstrap.min.css"
+	rel="stylesheet">
 </head>
 <body>
 
 
 	<header>
-		<h1>${action} un secteur</h1>
+		<h1>${action}un secteur</h1>
 	</header>
 
 	<article>
@@ -32,51 +33,44 @@
 					<form:input id="name" path="name" class="form-control" placeholder="Nom" />
 				</div>
 			</div>
-			
-			<div class="form-group"> 
+
+			<div class="form-group">
 				<label class="control-label col-sm-2" for="area">Zone : </label>
 				<div class="col-sm-6">
-					<select id="area" class="form-control" path="area">
-					    <c:forEach items="${areas}" var="area">
-					        <option value="${area.id}">${area.toString()}</option>
-					    </c:forEach>
-					</select>
+					<form:select id="area" class="form-control" path="area.id">
+						<option value="">Sélectionner une zone</option>
+						<form:options items="${areas}" itemValue="id" itemLabel="label" />
+					</form:select>
 				</div>
 			</div>
-			
-			<div class="form-group"> 
+
+			<div class="form-group">
 				<label class="control-label col-sm-2" for="area">Manager : </label>
 				<div class="col-sm-6">
-					<select id="manager" class="form-control" path="manager">
-					    <c:forEach items="${managers}" var="manager">
-					        <option value="${manager.id}">${manager.toString()}</option>
-					    </c:forEach>
-					</select>
+					<form:select id="manager" class="form-control" path="managerSector.id">
+						<option value="">Sélectionner un manager</option>
+						<form:options items="${managers}" itemValue="id" itemLabel="label" />
+					</form:select>
 				</div>
 			</div>
-			
-			<div class="form-group"> 
+
+			<div class="form-group">
 				<label class="control-label col-sm-2" for="distributor">Distributeurs disponibles : </label>
 				<div class="col-sm-6">
-					<select size="10" id="distributor" class="form-control" path="distributor" multiple>
-					    <c:forEach items="${distributors}" var="distributor">
-					        <option value="${distributor.id}">REF${distributor.id}</option>
-					    </c:forEach>
-					</select>
+					<form:select size="10" id="distributor" class="form-control" multiple="true" path="distributors">
+					     <form:options items="${distributors}" itemValue="id" itemLabel="label" />
+					</form:select>
 				</div>
 			</div>
-			
 
-			
-			
-			
-		
-			
-			
-			
-			
-			
-			
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="distributionPoint">Points d'approvisionement possible : </label>
+				<div class="col-sm-6">
+					<form:select size="10" id="distributionPoint" class="form-control" multiple="true" path="distributionPoints">
+					     <form:options items="${distributionPoints}" itemValue="id" itemLabel="name" />
+					</form:select>
+				</div>
+			</div>
 
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">

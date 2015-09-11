@@ -48,6 +48,11 @@ public class Area implements Serializable {
 		this.southEast = southEast;
 	}
 
+
+	public String getLabel() {
+		return this.toString();
+	}
+
 	public Integer getId() {
 		return id;
 	}

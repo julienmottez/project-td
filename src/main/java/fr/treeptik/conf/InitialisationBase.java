@@ -96,6 +96,7 @@ public class InitialisationBase {
 	
 	private DistributionPoint distributionpoint ;
 	private DistributionPoint distributionpoint2 ;
+	private DistributionPoint distributionpoint3 ;
 	
 	private void initDistributionPoint() {
 		List<Drink> drinks=new ArrayList<Drink>();
@@ -107,15 +108,18 @@ public class InitialisationBase {
 		
 		distributionpoint=new DistributionPoint();
 		distributionpoint2=new DistributionPoint();
+		distributionpoint3=new DistributionPoint();
 		distributionpoint.setId(1);
 		distributionpoint.setName("Coca Cola Factory");
 		distributionpoint2.setId(2);
 		distributionpoint2.setName("Orangina Factory");
+		distributionpoint3.setId(3);
+		distributionpoint3.setName("Lipton Company");
 		distributionpoint.setDrinks(drinks);
 		distributionpoint2.setDrinks(drinks1);
 		distributionPointService.save(distributionpoint);
 		distributionPointService.save(distributionpoint2);
-		
+		distributionPointService.save(distributionpoint3);
 	}
     
 	private Address adress1;

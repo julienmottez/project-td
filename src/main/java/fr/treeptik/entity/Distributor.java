@@ -55,6 +55,17 @@ public class Distributor implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
+	public String getLabel() {
+		return this.toString();
+	}
+	@Override
+	public String toString() {
+		return "REF" + id + " " + name;
+	}
+	
+	
+	
+	
 	public Sector getSector() {
 		return sector;
 	}
@@ -105,5 +116,7 @@ public class Distributor implements Serializable {
 	public void setTypeDistributor(TypeDistributor typeDistributor) {
 		this.typeDistributor = typeDistributor;
 	}
+
+
 
 }

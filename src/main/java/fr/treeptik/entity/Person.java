@@ -39,6 +39,15 @@ public abstract class Person implements Serializable {
 	@Embedded
 	private Address adress;
 
+	public String getLabel() {
+		return this.toString();
+	}
+	
+	
+	
+	
+	
+	
 	public Integer getId() {
 		return id;
 	}
