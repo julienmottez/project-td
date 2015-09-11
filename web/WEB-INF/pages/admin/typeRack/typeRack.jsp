@@ -6,22 +6,43 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Ajouter un type rack</title>
+<link href="../../style/bootstrap-3.3.5-dist/css/bootstrap.min.css"
+	rel="stylesheet">
 </head>
 <body>
+<header>
+		<h1>Ajouter un type rack</h1>
+	</header>
 	<c:if test="${not empty error}">
 		<label style="color: red;"><c:out value="${error}" /></label>
 	</c:if>
-	<form:form action="save.html" commandName="typeRack" method="POST">
+	<form:form action="save.html" commandName="typeRack" method="POST" class="form-horizontal">
 		<form:hidden path="id" />
-		<label>Name :</label>
-		<form:input path="name" id="name" />
-		<br />
-
-		<label>quantity :</label>
-		<form:input path="quantity" id="quantity" />
-		<br />
-		<br />
+		
+		
+		<div class="form-group">
+			<label class="control-label col-sm-2" for="colonneDistributor">Name :</label>
+			<div class="col-sm-6">
+				<form:input path="name" id="name"
+					class="form-control" />
+			</div>
+		</div>
+		
+		
+		<div class="form-group">
+			<label class="control-label col-sm-2" for="colonneDistributor">quantity :</label>
+			<div class="col-sm-6">
+				<form:input path="quantity" id="quantity"
+					class="form-control" />
+			</div>
+		</div>
+		
+		<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10">
 		<input type="submit" value="valider" />
+		</div>
+			</div>
 	</form:form>
 </body>
 </html>

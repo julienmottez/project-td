@@ -6,13 +6,18 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Liste des types rack</title>
+<link href="../../style/bootstrap-3.3.5-dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+<header>
+		<h1>Liste des types de rack</h1>
+	</header>
 	<c:if test="${not empty error}">
 		<label style="color: red;"><c:out value="${error}" /></label>
 	</c:if>
 
-	<table>
+	<table class="table-striped table-bordered table-condensed ">
 		<tbody>
 			<tr>
 				<th>Id</th>
