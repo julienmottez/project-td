@@ -2,6 +2,7 @@ package fr.treeptik.entity;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -33,9 +34,8 @@ public class Drink implements Serializable {
 	@Embedded
 	private TemperatureRange coldStorage;
 	
-	
-	@OneToMany(mappedBy="drink")
-	private List<UnityDrink> unityDrinks;
+	@ManyToMany(mappedBy="drinks")
+	private List<DistributionPoint> distributionPoints;
 
 	 
 	
@@ -51,6 +51,15 @@ public class Drink implements Serializable {
 		this.coldStorage = coldStorage;
 	
 	
+	}
+
+
+	public Drink(int id, String name, TemperatureRange coldStorage, List<DistributionPoint> distributionPoints) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.coldStorage = coldStorage;
+		this.distributionPoints = distributionPoints;
 	}
 
 
@@ -78,14 +87,19 @@ public class Drink implements Serializable {
 		this.name = name;
 	}
 
-	public List<UnityDrink> getUnityDrinks() {
-		return unityDrinks;
+
+
+
+
+
+	public List<DistributionPoint> getDistributionPoints() {
+		return distributionPoints;
 	}
 
-	public void setUnityDrinks(List<UnityDrink> unityDrinks) {
-		this.unityDrinks = unityDrinks;
-	}
 
+	public void setDistributionPoints(List<DistributionPoint> distributionPoints) {
+		this.distributionPoints = distributionPoints;
+	}
 
 
 	@Override

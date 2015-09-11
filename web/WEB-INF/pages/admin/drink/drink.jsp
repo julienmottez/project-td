@@ -33,6 +33,22 @@
 			<form:select path="coldStorage.to.unit">
 				<form:options items="${temperatureUnits}"  />
 			</form:select>
+			
+			
+			
+		</div>
+		<div>
+		<label>distribution point:</label> </td>
+		
+	<td>	<form:select path="distributionPoints" multiple="true" id="distributionPoint" style="width: 150px">
+		
+		<form:options items="${distributionpoints}" itemValue="id" itemLabel="id" />
+		
+		
+		
+ 		
+</form:select>
+</td>
 		</div>
 
 		<input type="submit" value="valider" />
