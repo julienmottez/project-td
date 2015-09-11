@@ -18,7 +18,7 @@
 				<th>Id</th>
 				<th>Ligne</th>
 				<th>Colonne</th>
-				<th>Distributor_id</th>
+				<th>Distributor</th>
 				<th>Type_Rack</th>
 				<th>Nom Rack</th>
 			</tr>
@@ -29,7 +29,7 @@
 					<td>${rack.colonneDistributor}</td>
 					<td>${rack.distributor.id}</td>
 					<td>${rack.typeRack.name}</td>
-					<td>${rack.toString()}</td>
+					<td>${rack.name}</td>
 					<td><a href="edit.html?id=${rack.id}">éditer</a> <a
 						href="delete.html?id=${rack.id}">supprimer</a></td>
 				</tr>
