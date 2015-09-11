@@ -23,9 +23,6 @@ public class Distributor implements Serializable {
 	@GeneratedValue
 	private Integer id;
 
-	@Transient
-	private String name;
-
 	@Embedded
 	private Address address;
 
@@ -42,11 +39,10 @@ public class Distributor implements Serializable {
 	@JoinColumn(name = "type_distributor")
 	private TypeDistributor typeDistributor;
 
-	public Distributor(Integer id, String name, Address address, List<Refrigerator> refrigerators, Sector sector,
+	public Distributor(Integer id, Address address, List<Refrigerator> refrigerators, Sector sector,
 			Technician technician, TypeDistributor typeDistributor) {
 		super();
 		this.id = id;
-		this.name = name;
 		this.address = address;
 		this.refrigerators = refrigerators;
 		this.sector = sector;
@@ -100,14 +96,6 @@ public class Distributor implements Serializable {
 
 	public void setRefrigerators(List<Refrigerator> refrigerators) {
 		this.refrigerators = refrigerators;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	public TypeDistributor getTypeDistributor() {
