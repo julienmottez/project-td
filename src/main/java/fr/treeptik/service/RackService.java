@@ -47,6 +47,7 @@ public class RackService {
 	public Rack save(Rack rack) throws ServiceException {
 		logger.debug("appel de la methode save rack " + rack.getName());
 
+
 		try {
 			return rackDAO.save(rack);
 		} catch (PersistenceException e) {
@@ -68,13 +69,17 @@ public class RackService {
 
 	public Rack verifyRack(Rack rack) {
 		try {
-			Integer numCol = rack.getColonneDistributor();
-			Integer numLigne = rack.getLigneDistributor();
+			
+			Integer DistributorNumberColmuns= rack.getDistributor().getTypeDistributor().getNumberColumns();
+			Integer DistributorNumberLines= rack.getDistributor().getTypeDistributor().getNumberLines();
 
-			if (numCol == null || numCol == 0) {
+			Integer RackColumnDistributor= rack.getColonneDistributor();
+			Integer RackLineDistributor= rack.getLigneDistributor();
+
+			if (RackColumnDistributor == null || RackColumnDistributor == 0) {
 				throw new FormException("Le numero de colonne est obligatoires.");
 			}
-			if (numLigne == null || numLigne == 0) {
+			if (RackLineDistributor == null || RackLineDistributor == 0) {
 				throw new FormException("Le numero de ligne est obligatoires.");
 			}
 			if (rack.getTypeRack() == null) {
@@ -83,6 +88,10 @@ public class RackService {
 			if (rack.getDistributor() == null) {
 				throw new FormException("Choisir un distributeur");
 			}
+			
+			if(RackLineDistributor>DistributorNumberLines && RackColumnDistributor>DistributorNumberColmuns)
+				throw new FormException("Erreur max");
+
 			return rack;
 		} catch (Exception e) {
 			return rack;

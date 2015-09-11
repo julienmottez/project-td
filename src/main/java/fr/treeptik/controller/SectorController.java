@@ -9,6 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 import fr.treeptik.exception.DAOException;
 import fr.treeptik.exception.ServiceException;
 import fr.treeptik.entity.Sector;
+import fr.treeptik.service.AreaService;
 import fr.treeptik.service.DistributionPointService;
 import fr.treeptik.service.DistributorService;
 import fr.treeptik.service.SectorService;
@@ -22,6 +23,9 @@ public class SectorController {
 	private SectorService sectorservice;
 	
 	@Autowired
+	private AreaService areaService;
+	
+	@Autowired
 	private DistributionPointService distributionPointService;
 	
 	@Autowired
@@ -31,8 +35,11 @@ public class SectorController {
 	@RequestMapping(value = "/new.html", method = RequestMethod.GET)
 	public ModelAndView add() throws ServiceException, DAOException {
 		ModelAndView modelAndView = new ModelAndView("admin/sector/sector");
+		
+		modelAndView.addObject("areas", areaService.findAll());
 		modelAndView.addObject("sector", new Sector());
-
+		modelAndView.addObject("action", "Ajouter");
+		
 		return modelAndView;
 	}
 

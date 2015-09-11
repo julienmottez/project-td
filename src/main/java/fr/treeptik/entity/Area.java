@@ -71,6 +71,13 @@ public class Area implements Serializable {
 	public void setSouthEast(Coordinate southEast) {
 		this.southEast = southEast;
 	}
+
+	@Override
+	public String toString() {
+		//return "Area [northWest=" + northWest + ", southEast=" + southEast + "]";
+		return "NW = " + northWest + ", SE = " + southEast;
+	}
+	
 	
 
 }

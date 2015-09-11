@@ -28,7 +28,6 @@ public class ProductionManagerController {
 		
 		ModelAndView modelAndView = new ModelAndView("admin/productionmanager/productionmanager");
 		modelAndView.addObject("productionmanager", new ProductionManager());
-	
 
 		return modelAndView;
 	}
@@ -36,7 +35,7 @@ public class ProductionManagerController {
 	@RequestMapping(value = "/edit.html", method = RequestMethod.GET)
 	public ModelAndView edit(@ModelAttribute("id") Integer id) {
 		try {
-			ModelAndView modelAndView = new ModelAndView("admin/productionmanager/productionManager");
+			ModelAndView modelAndView = new ModelAndView("admin/productionmanager/productionmanager");
 			ProductionManager productionManager = productionManagerService.findById(id);
 			modelAndView.addObject("productionManager", productionManager);
 			return modelAndView;
@@ -47,7 +46,7 @@ public class ProductionManagerController {
 
 	@RequestMapping(value = "/list.html", method = RequestMethod.GET)
 	public ModelAndView list() {
-		ModelAndView modelAndView = new ModelAndView("admin/productionmanager/list-productionManager");
+		ModelAndView modelAndView = new ModelAndView("admin/productionmanager/list-productionmanager");
 		try {
 			modelAndView.addObject("productionManagers", productionManagerService.findAll());
 		} catch (Exception e) {

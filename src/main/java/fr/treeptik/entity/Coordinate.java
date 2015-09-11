@@ -29,7 +29,7 @@ public class Coordinate implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Coordinate [longitude=" + longitude + ", latitude=" + latitude + "]";
+		return "[longitude = " + longitude + ", latitude = " + latitude + "]";
 	}
 
 	public float getLongitude() {
