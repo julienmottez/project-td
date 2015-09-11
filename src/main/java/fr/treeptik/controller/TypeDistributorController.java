@@ -13,11 +13,12 @@ import fr.treeptik.service.TypeDistributorService;
 
 @Controller
 @RequestMapping(value = "/admin/typeDistributor/")
-public class TypeDistributorController {
+public class TypeDistributorController extends AbstractController {
 
 	@Autowired
 	private TypeDistributorService typeDistributorService;
 
+	@Override
 	@RequestMapping(value = "/new.html", method = RequestMethod.GET)
 	public ModelAndView add() {
 		ModelAndView modelAndView = new ModelAndView("admin/typeDistributor/typeDistributor");
@@ -25,6 +26,7 @@ public class TypeDistributorController {
 		return modelAndView;
 	}
 
+	@Override
 	@RequestMapping(value = "/edit.html", method = RequestMethod.GET)
 	public ModelAndView edit(@ModelAttribute("id") Integer id) {
 		try {
@@ -38,6 +40,7 @@ public class TypeDistributorController {
 		}
 	}
 
+	@Override
 	@RequestMapping(value = "/list.html", method = RequestMethod.GET)
 	public ModelAndView list() {
 		ModelAndView modelAndView = new ModelAndView("admin/typeDistributor/list-typeDistributor");
@@ -49,6 +52,7 @@ public class TypeDistributorController {
 		return modelAndView;
 	}
 
+	@Override
 	@RequestMapping(value = "/save.html", method = RequestMethod.POST)
 	public ModelAndView save(TypeDistributor typeDistributor) throws ServiceException {
 		try {
@@ -67,12 +71,14 @@ public class TypeDistributorController {
 		}
 	}
 
+	@Override
 	@RequestMapping(value = "/delete.html", method = RequestMethod.GET)
 	public ModelAndView delete(TypeDistributor typeDistributor) throws ServiceException {
 
-		typeDistributorService.deleteTypeDistributor(typeDistributor);
+		typeDistributorService.delete(typeDistributor);
 		ModelAndView modelAndView = new ModelAndView("redirect:list.html");
 		modelAndView.addObject("typeDistributor", new TypeDistributor());
 		return modelAndView;
 	}
+
 }

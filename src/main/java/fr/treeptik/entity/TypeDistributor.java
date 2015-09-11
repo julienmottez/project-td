@@ -1,6 +1,5 @@
 package fr.treeptik.entity;
 
-import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -11,9 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-@Entity
 @Table(name = "type_distributor")
-public class TypeDistributor implements Serializable {
+@Entity
+public class TypeDistributor implements InterfaceEntity<Integer> {
 
 	/**
 	 * 
@@ -36,23 +35,23 @@ public class TypeDistributor implements Serializable {
 	private List<Distributor> distributors;
 
 	public TypeDistributor(Integer id, String name, Integer numberColumn, Integer numberLine) {
-		super();
 		this.id = id;
 		this.name = name;
 		this.numberColumns = numberColumn;
 		this.numberLines = numberLine;
 	}
 
-	public TypeDistributor() {
-		// TODO Auto-generated constructor stub
-	}
-
+	@Override
 	public Integer getId() {
 		return id;
 	}
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public TypeDistributor() {
+		super();
 	}
 
 	public String getName() {
@@ -77,6 +76,14 @@ public class TypeDistributor implements Serializable {
 
 	public void setNumberLines(Integer numberLines) {
 		this.numberLines = numberLines;
+	}
+
+	public List<Distributor> getDistributors() {
+		return distributors;
+	}
+
+	public void setDistributors(List<Distributor> distributors) {
+		this.distributors = distributors;
 	}
 
 }
