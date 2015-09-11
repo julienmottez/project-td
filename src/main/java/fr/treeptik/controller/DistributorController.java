@@ -67,6 +67,7 @@ public class DistributorController {
 	@RequestMapping(value = "/save.html", method = RequestMethod.POST)
 	public ModelAndView save(Distributor distributor) throws ServiceException {
 		try {
+			
 			if (distributor.getId() == null) {
 				serviceDistributor.save(distributor);
 			} else {

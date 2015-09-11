@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import fr.treeptik.entity.TypeDistributor;
+import fr.treeptik.exception.FormException;
 import fr.treeptik.exception.ServiceException;
 import fr.treeptik.service.TypeDistributorService;
 
@@ -56,6 +57,17 @@ public class TypeDistributorController extends AbstractController {
 	@RequestMapping(value = "/save.html", method = RequestMethod.POST)
 	public ModelAndView save(TypeDistributor typeDistributor) throws ServiceException {
 		try {
+
+			if (typeDistributor.getName() == null) {
+				throw new FormException("Le nom est obligatoire");
+			}
+			if (typeDistributor.getNumberColumns() == null) {
+				throw new FormException("Le nombre de colonne est obligatoire");
+			}
+			if (typeDistributor.getNumberLines() == null) {
+				throw new FormException("le nombre de lignes est obligatoire");
+			}
+
 			if (typeDistributor.getId() == null) {
 				typeDistributorService.save(typeDistributor);
 			} else {
