@@ -1,11 +1,15 @@
 package fr.treeptik.conf;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import fr.treeptik.entity.Address;
 import fr.treeptik.entity.Area;
 import fr.treeptik.entity.Coordinate;
+import fr.treeptik.entity.DistributionPoint;
 import fr.treeptik.entity.Distributor;
 import fr.treeptik.entity.Drink;
 import fr.treeptik.entity.Rack;
@@ -17,6 +21,7 @@ import fr.treeptik.entity.TypeDistributor;
 import fr.treeptik.entity.TypeRack;
 import fr.treeptik.exception.ServiceException;
 import fr.treeptik.service.AreaService;
+import fr.treeptik.service.DistributionPointService;
 import fr.treeptik.service.DistributorService;
 import fr.treeptik.service.DrinkService;
 import fr.treeptik.service.PersonService;
@@ -45,6 +50,8 @@ public class InitialisationBase {
 	@Autowired
 	private DistributorService distributorService;
 	@Autowired
+	private DistributionPointService distributionPointService;
+	@Autowired
 	private TypeDistributorService typeDistributorService;
 	@Autowired
 	private SectorService sectorService;
@@ -60,6 +67,7 @@ public class InitialisationBase {
 		initRefregirators();
 		initSectors();
 		initDrinks();
+		initDistributionPoint();
 		initTechnicians();
 		initTypeDistributor();
 		initDistributor();
@@ -68,13 +76,44 @@ public class InitialisationBase {
 	}
 
 	// attention à l'ordre d'init
+	private Drink drink;
+	private Drink drink2;
+	private Drink drink3;
+	private Drink drink4;
 	private void initDrinks() {
-		drinkService.save(new Drink(1, TemperatureRange.inCelsius(0, 5)));
-		drinkService.save(new Drink(2, TemperatureRange.inCelsius(4, 8)));
-		drinkService.save(new Drink(3, TemperatureRange.inCelsius(3, 6)));
-		drinkService.save(new Drink(4, TemperatureRange.inCelsius(0, 2)));
+		drink=new Drink(1, TemperatureRange.inCelsius(0, 5));
+		drink2=new Drink(2, TemperatureRange.inCelsius(4, 8));
+		drink3=new Drink(3, TemperatureRange.inCelsius(3, 6));
+		drink4=new Drink(4, TemperatureRange.inCelsius(0, 2));
+		drinkService.save(drink);
+		drinkService.save(drink2);
+		drinkService.save(drink3);
+		drinkService.save(drink4);
 	}
-
+	
+	
+	private DistributionPoint distributionpoint ;
+	private DistributionPoint distributionpoint2 ;
+	
+	private void initDistributionPoint() {
+		List<Drink> drinks=new ArrayList<Drink>();
+		List<Drink> drinks1=new ArrayList<Drink>();
+		drinks.add(drink);
+		drinks.add(drink3);
+		drinks1.add(drink2);
+		drinks1.add(drink4);
+		
+		distributionpoint=new DistributionPoint();
+		distributionpoint2=new DistributionPoint();
+		distributionpoint.setId(1);
+		distributionpoint2.setId(2);
+		distributionpoint.setDrinks(drinks);
+		distributionpoint2.setDrinks(drinks1);
+		distributionPointService.save(distributionpoint);
+		distributionPointService.save(distributionpoint2);
+		
+	}
+    
 	private Address adress1;
 	private Address adress2;
 
@@ -148,12 +187,20 @@ public class InitialisationBase {
 		technician1.setFirstName("robert");
 		technician1.setLastName("dupond");
 		technician1.setSector(sector1);
+		List<Distributor>distributors=new ArrayList<Distributor>();
+		distributors.add(distributor1);
+		distributors.add(distributor2);
+		technician1.setDistributors(distributors);
 
 		technician2 = new Technician();
-		technician1.setAdress(adress2);
-		technician1.setFirstName("TOTO");
-		technician1.setLastName("tata");
-		technician1.setSector(sector2);
+		technician2.setAdress(adress2);
+		technician2.setFirstName("TOTO");
+		technician2.setLastName("tata");
+		technician2.setSector(sector2);
+		List<Distributor>distributors2=new ArrayList<Distributor>();
+		distributors2.add(distributor2);
+		distributors2.add(distributor1);
+		technician2.setDistributors(distributors2);
 		try {
 			technicianService.save(technician1);
 			technicianService.save(technician2);
@@ -217,8 +264,6 @@ public class InitialisationBase {
 	
 	private void initArea() {
 		try {
-
-			
 			areaService.save(new Area(new Coordinate(50.45897F, 32.98742F), new Coordinate(60.45897F, 42.98742F)));
 			areaService.save(new Area(new Coordinate(40.45897F, 42.98742F), new Coordinate(70.45897F, 82.98742F)));
 			areaService.save(new Area(new Coordinate(30.45897F, 52.98742F), new Coordinate(90.45897F, 12.98742F)));

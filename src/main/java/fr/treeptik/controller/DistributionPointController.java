@@ -1,5 +1,8 @@
 package fr.treeptik.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -8,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import fr.treeptik.entity.DistributionPoint;
+import fr.treeptik.entity.Drink;
 import fr.treeptik.exception.FormException;
 import fr.treeptik.exception.ServiceException;
 
@@ -51,6 +55,24 @@ public class DistributionPointController {
 		}
 	}
 
+	@RequestMapping(value = "/list-drink-dp.html", method = RequestMethod.GET)
+	public ModelAndView listdp(@ModelAttribute("id") Integer id) {
+		try {
+			ModelAndView modelAndView = new ModelAndView("admin/distributionpoint/list-distributionPoint");
+			List<Drink> drinks=new ArrayList<Drink>();
+			Drink drink =new Drink();
+			drink.setId(id);
+			drinks.add(drink);
+			List<DistributionPoint> distributionPoint = distributionPointService.findByDrinks(drinks);
+
+			modelAndView.addObject("distributionpoints", distributionPoint);
+		   
+			return modelAndView;
+		} catch (Exception e) {
+			return listdp(id);
+		}
+	}
+	
 	@RequestMapping(value = "/list.html", method = RequestMethod.GET)
 	public ModelAndView list() {
 		ModelAndView modelAndView = new ModelAndView("admin/distributionpoint/list-distributionPoint");

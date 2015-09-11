@@ -36,22 +36,23 @@ public class Drink implements Serializable {
 	
 	@OneToMany(mappedBy="drink")
 	private List<UnityDrink> unityDrinks;
+
+	 
 	
-	 @ManyToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
-	  @JoinTable(name="drink_distribution_point", 
-	      joinColumns=@JoinColumn(name="drink_id"),
-	      inverseJoinColumns=@JoinColumn(name="distribution_point_id"))  
-	 private List<DistributionPoint> distributionPoints;
-	 
-	 
 
 	public Drink() {
 	}
 
+
 	public Drink(int id, TemperatureRange coldStorage) {
+	
 		this.id = id;
+		
 		this.coldStorage = coldStorage;
+	
+	
 	}
+
 
 	public Integer getId() {
 		return id;
@@ -85,13 +86,7 @@ public class Drink implements Serializable {
 		this.unityDrinks = unityDrinks;
 	}
 
-	public List<DistributionPoint> getDistributionPoints() {
-		return distributionPoints;
-	}
 
-	public void setDistributionPoints(List<DistributionPoint> distributionPoints) {
-		this.distributionPoints = distributionPoints;
-	}
 
 	@Override
 	public int hashCode() {

@@ -34,15 +34,11 @@ public class DistributionPointService {
 	}
 
 	@Transactional()
-	public DistributionPoint save(DistributionPoint distributionPoint) throws ServiceException {
+	public DistributionPoint save(DistributionPoint distributionPoint){
 		logger.debug("appel de la methode save distributionPoint " + distributionPoint.getId());
 
-		try {
-			return distributionPointDAO.save(distributionPoint);
-		} catch (PersistenceException e) {
-			logger.error("erreur save distributionPoint " + e.getMessage());
-			throw new ServiceException("erreur save distributionPoint", e);
-		}
+		return distributionPointDAO.save(distributionPoint);
+		
 	}
 
 	@Transactional
@@ -69,6 +65,14 @@ public class DistributionPointService {
 			return distributionPointDAO.findById(id);
 		} catch (PersistenceException e) {
 			throw new ServiceException("erreur findById distributionPoint", e);
+		}
+	}
+	
+	public List<DistributionPoint> findByDrinks(List<Drink> drinks) throws ServiceException {
+		try {
+			return distributionPointDAO.findByDrinks(drinks);
+		} catch (PersistenceException e) {
+			throw new ServiceException("erreur findBydrinks distributionPoint", e);
 		}
 	}
 

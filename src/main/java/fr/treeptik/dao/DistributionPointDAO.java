@@ -17,6 +17,7 @@ public interface DistributionPointDAO extends JpaRepository<DistributionPoint,In
 
 
 	DistributionPoint findById(int id);
+	List<DistributionPoint> findByDrinks(List<Drink> drinks);
 	
 	
 	
