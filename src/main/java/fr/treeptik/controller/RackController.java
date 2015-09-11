@@ -47,6 +47,10 @@ public class RackController {
 			ModelAndView modelAndView = new ModelAndView("admin/rack/rack");
 			Rack rack = rackService.findById(id);
 			modelAndView.addObject("rack", rack);
+			modelAndView.addObject("typeRacks", typeRackService.findAll());
+			modelAndView.addObject("distributors", distributorService.findAll());
+			modelAndView.addObject("drinks", drinkService.findAll());
+
 			return modelAndView;
 		} catch (Exception e) {
 			return list();

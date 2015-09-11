@@ -111,4 +111,9 @@ public class Rack implements Serializable {
 		this.drink = drink;
 	}
 
+	@Override
+	public String toString() {
+		return "Rack [name=" + name + "]";
+	}
+
 }
