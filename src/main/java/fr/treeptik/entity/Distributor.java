@@ -58,13 +58,11 @@ public class Distributor implements Serializable {
 	public String getLabel() {
 		return this.toString();
 	}
+	
 	@Override
 	public String toString() {
-		return "REF" + id;
+		return String.format("%d in %s", id, sector.getName());
 	}
-	
-	
-	
 	
 	public Sector getSector() {
 		return sector;
@@ -116,7 +114,4 @@ public class Distributor implements Serializable {
 	public void setTypeDistributor(TypeDistributor typeDistributor) {
 		this.typeDistributor = typeDistributor;
 	}
-
-
-
 }

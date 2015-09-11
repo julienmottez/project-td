@@ -228,13 +228,12 @@ public class InitialisationBase {
 	private void initTypeDistributor() {
 		typeDistributor1 = new TypeDistributor(1, "type distributor 1", 10, 5);
 		typeDistributor2 = new TypeDistributor(2, "type distributor 2", 5, 8);
+		
 		try {
 			typeDistributorService.save(typeDistributor1);
 			typeDistributorService.save(typeDistributor2);
 		} catch (ServiceException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-
 		}
 	}
 

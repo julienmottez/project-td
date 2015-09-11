@@ -11,6 +11,7 @@ import fr.treeptik.entity.Refrigerator;
 import fr.treeptik.entity.Temperature;
 import fr.treeptik.exception.FormException;
 import fr.treeptik.exception.ServiceException;
+import fr.treeptik.service.DistributorService;
 import fr.treeptik.service.RefrigeratorService;
 
 @Controller
@@ -19,24 +20,34 @@ public class RefrigeratorController {
 
 	@Autowired
 	private RefrigeratorService refrigeratorService;
+	
+	@Autowired
+	private DistributorService distributorService;
 
 	@RequestMapping(value = "/new.html", method = RequestMethod.GET)
 	public ModelAndView add() {
 		ModelAndView modelAndView = new ModelAndView("admin/refrigerator/refrigerator");
 		modelAndView.addObject("refrigerator", new Refrigerator());
-		modelAndView.addObject("action", "Ajouter");
+		modelAndView.addObject("temperature_units", Temperature.Unit.values());
+		modelAndView.addObject("distributors", distributorService.findAll());
+		
+		modelAndView.addObject("action", "Add");
 		
 		return modelAndView;
 	}
 
 	@RequestMapping(value = "/edit.html", method = RequestMethod.GET)
-	public ModelAndView edit(@ModelAttribute("id") int id) {
+	public ModelAndView edit(@ModelAttribute("id") Integer id) {
 		try {
 			ModelAndView modelAndView = new ModelAndView("admin/refrigerator/refrigerator");
+			
 			Refrigerator refrigerator = refrigeratorService.findById(id);
 
-			modelAndView.addObject("refrigeratorMaker", refrigerator);
-			modelAndView.addObject("action", "Editer");
+			modelAndView.addObject("refrigerator", refrigerator);
+			modelAndView.addObject("temperature_units", Temperature.Unit.values());
+			modelAndView.addObject("distributors", distributorService.findAll());
+			
+			modelAndView.addObject("action", "Edit");
 			
 			return modelAndView;
 			

@@ -36,6 +36,7 @@ import fr.treeptik.conf.ApplicationConfiguration;
 import fr.treeptik.entity.Distributor;
 import fr.treeptik.entity.Refrigerator;
 import fr.treeptik.entity.Temperature;
+import fr.treeptik.service.DistributorService;
 import fr.treeptik.service.RefrigeratorService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -45,6 +46,9 @@ public class RefrigeratorControllerTest {
 
 	@Mock
 	private RefrigeratorService refrigeratorService;
+	
+	@Mock
+	private DistributorService distributorService;
 
 	@InjectMocks
 	private RefrigeratorController controller;
@@ -71,8 +75,16 @@ public class RefrigeratorControllerTest {
 
 	@Test
 	public void testNew() throws Exception {
+		ArrayList<Distributor> list = new ArrayList<>();
+		list.add(new Distributor());
+		when(distributorService.findAll()).thenReturn(list);
+		
 		mockMvc.perform(get("/admin/refrigerator/new.html"))
-				.andExpect(status().isOk());
+				.andExpect(status().isOk())
+				.andExpect(model().attribute("distributors", is(not(empty()))))
+				.andExpect(model().attribute("temperature_units", is(not(empty()))));
+		
+		verify(distributorService, times(1)).findAll();
 	}
 
 	@Test

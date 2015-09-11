@@ -29,7 +29,7 @@ public class Temperature implements Serializable {
 	}
 
 	public enum Unit {
-		FAHRENHEIT, CELSIUS
+		CELSIUS, FAHRENHEIT
 	}
 
 	@Column(name = "temperature_value")
