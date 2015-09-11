@@ -32,6 +32,10 @@
 	</table>
 
 	<a href="new.html">new type Rack</a>
+	<br />
+	<br />
+	<a href="/td-frigo/admin/rack/list.html">List
+		rack</a>
 
 
 </body>

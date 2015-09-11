@@ -29,7 +29,7 @@
 					<td>${rack.colonneDistributor}</td>
 					<td>${rack.distributor.id}</td>
 					<td>${rack.typeRack.name}</td>
-					<td>${rack.name}</td>
+					<td>${rack.toString()}</td>
 					<td><a href="edit.html?id=${rack.id}">éditer</a> <a
 						href="delete.html?id=${rack.id}">supprimer</a></td>
 				</tr>
@@ -38,6 +38,11 @@
 	</table>
 
 	<a href="new.html">new rack</a>
+	
+	<br />
+	<br />
+	<a href="/td-frigo/admin/typeRack/list.html">List
+		rack type</a>
 
 
 </body>
