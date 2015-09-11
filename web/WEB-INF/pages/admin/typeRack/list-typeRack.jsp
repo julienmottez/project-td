@@ -18,18 +18,22 @@
 				<th>Id</th>
 				<th>Name</th>
 				<th>Quantité</th>
+				<th>Rack</th>
+				
 			</tr>
 			<c:forEach items="${typeRacks}" var="typeRack">
 				<tr>
 					<td>${typeRack.id}</td>
 					<td>${typeRack.name}</td>
 					<td>${typeRack.quantity}</td>
+					<td><a href="listRackTypeRack.html?id=${typeRack.id}">Liste Rack</a></td>
 					<td><a href="edit.html?id=${typeRack.id}">éditer</a> <a
 						href="delete.html?id=${typeRack.id}">supprimer</a></td>
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
+	<br />
 
 	<a href="new.html">new type Rack</a>
 	<br />

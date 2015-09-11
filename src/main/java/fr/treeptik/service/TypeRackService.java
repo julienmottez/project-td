@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import fr.treeptik.dao.TypeRackDAO;
+import fr.treeptik.entity.Rack;
 import fr.treeptik.entity.TypeRack;
 import fr.treeptik.exception.ServiceException;
 

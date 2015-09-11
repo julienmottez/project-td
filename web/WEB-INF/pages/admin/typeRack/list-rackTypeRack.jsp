@@ -22,7 +22,7 @@
 				<th>Type_Rack</th>
 				<th>Nom Rack</th>
 			</tr>
-			<c:forEach items="${racks}" var="rack">
+			<c:forEach items="${RackTypeRack}" var="rack">
 				<tr>
 					<td>${rack.id}</td>
 					<td>${rack.ligneDistributor}</td>
@@ -36,11 +36,10 @@
 			</c:forEach>
 		</tbody>
 	</table>
-	<br />
 
-	<a href="new.html">new rack</a>
+<!-- 	<a href="new.html">new rack</a> -->
 	
-	<br />
+
 	<br />
 	<a href="/td-frigo/admin/typeRack/list.html">List
 		rack type</a>

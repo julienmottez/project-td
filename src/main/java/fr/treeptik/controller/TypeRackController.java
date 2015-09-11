@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 import fr.treeptik.entity.Rack;
 import fr.treeptik.entity.TypeRack;
 import fr.treeptik.exception.ServiceException;
+import fr.treeptik.service.RackService;
 import fr.treeptik.service.TypeRackService;
 
 @Controller
@@ -18,6 +19,9 @@ public class TypeRackController {
 
 	@Autowired
 	private TypeRackService typeRackService;
+	
+	@Autowired
+	private RackService rackService;
 
 	@RequestMapping(value = "/new.html", method = RequestMethod.GET)
 	public ModelAndView add() {
@@ -66,6 +70,18 @@ public class TypeRackController {
 			modelAndView.addObject("error", e.getMessage());
 			return modelAndView;
 		}
+	}
+	
+	@RequestMapping(value = "/listRackTypeRack.html", method = RequestMethod.GET)
+	public ModelAndView listTeam(@ModelAttribute("id") Integer id) {
+		ModelAndView modelAndView = new ModelAndView("admin/typeRack/list-rackTypeRack");
+		try {
+			modelAndView.addObject("RackTypeRack", rackService.findByTypeRackId(id));
+		} catch (Exception e) {
+			modelAndView.addObject("error", e.getMessage());
+		}
+		return modelAndView;
+
 	}
 	
 	@RequestMapping(value = "/delete.html", method = RequestMethod.GET)

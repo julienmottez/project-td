@@ -77,6 +77,20 @@ public class RackService {
 			throw new ServiceException("erreur update rack", e);
 		}
 	}
+	
+	public List<Rack> findByTypeRackId(Integer idTypeRack) throws ServiceException {
+		try {
+			
+			List<Rack> findByTypeRackId = rackDAO.findByTypeRack_Id(idTypeRack);
+			findByTypeRackId.stream().forEach(e -> e.setName(generateName(e)));
+			
+			return findByTypeRackId;
+			
+		} catch (PersistenceException e) {
+			throw new ServiceException("erreur findById rack", e);
+		}
+	}
+
 
 	public Rack verifyRack(Rack rack) {
 		try {

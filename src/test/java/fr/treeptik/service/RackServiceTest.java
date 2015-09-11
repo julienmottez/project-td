@@ -1,9 +1,9 @@
 package fr.treeptik.service;
 
 import static org.junit.Assert.assertFalse;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
+import org.hibernate.jpa.criteria.expression.SearchedCaseExpression.WhenClause;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -42,7 +42,10 @@ public class RackServiceTest {
 
 	@Test
 	public void testFindById() throws Exception {
+		when(mockRackDao.findOne(ENTITY_ID)).thenReturn(rack);
+		
 		rackService.findById(ENTITY_ID);
+		
 		verify(mockRackDao).findOne(ENTITY_ID);
 	}
 
@@ -65,7 +68,10 @@ public class RackServiceTest {
 
 	@Test
 	public void testUpdateRack() throws ServiceException {
+		when(mockRackDao.save(rack)).thenReturn(rack);
+		
 		rackService.update(rack);
+		
 		verify(mockRackDao).save(rack);
 	}
 
