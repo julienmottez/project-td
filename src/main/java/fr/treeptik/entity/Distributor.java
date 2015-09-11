@@ -60,7 +60,7 @@ public class Distributor implements Serializable {
 	}
 	@Override
 	public String toString() {
-		return "REF" + id + " " + name;
+		return "REF" + id;
 	}
 	
 	
