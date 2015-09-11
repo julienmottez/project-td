@@ -46,6 +46,5 @@
 	<a href="/td-frigo/admin/rack/list.html">List
 		rack</a>
 
-
 </body>
 </html>
