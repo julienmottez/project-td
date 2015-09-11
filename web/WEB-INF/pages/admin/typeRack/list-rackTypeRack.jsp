@@ -44,7 +44,6 @@
 
 <!-- 	<a href="new.html">new rack</a> -->
 	
-
 	<br />
 	<a href="/td-frigo/admin/typeRack/list.html">List
 		rack type</a>
