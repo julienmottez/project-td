@@ -199,7 +199,7 @@ public class InitialisationBase {
 		distributors.add(distributor1);
 		distributors.add(distributor2);
 		technician1.setDistributors(distributors);
-
+		
 		technician2 = new Technician();
 		technician2.setAdress(adress2);
 		technician2.setFirstName("TOTO");
@@ -208,7 +208,7 @@ public class InitialisationBase {
 		List<Distributor>distributors2=new ArrayList<Distributor>();
 		distributors2.add(distributor2);
 		distributors2.add(distributor1);
-		technician2.setDistributors(distributors2);
+		technician1.setDistributors(distributors2);
 		try {
 			technicianService.save(technician1);
 			technicianService.save(technician2);

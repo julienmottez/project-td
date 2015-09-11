@@ -6,6 +6,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript">
+
+   function changeFunc($i) {
+    alert($i);
+   }
+
+  </script>
 </head>
 <body>
 	<c:if test="${not empty error}">
@@ -27,7 +34,7 @@
 	<br />	
 		<label>Distributor :</label>
 		<form:select  path="distributors" id="distributor">
-			<form:options items="${distributorss}" itemValue="id" itemLabel="id" />
+			<form:options items="${distributorss}" itemValue="id" itemLabel="id" onClick="javascript:OnSelect(this);"/>
 		</form:select>
 		<br />
 </br>
