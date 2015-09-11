@@ -20,7 +20,6 @@
 	<form:form action="save.html" commandName="typeRack" method="POST" class="form-horizontal">
 		<form:hidden path="id" />
 		
-		
 		<div class="form-group">
 			<label class="control-label col-sm-2" for="colonneDistributor">Name :</label>
 			<div class="col-sm-6">
