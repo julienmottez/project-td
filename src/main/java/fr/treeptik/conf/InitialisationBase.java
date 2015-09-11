@@ -245,7 +245,7 @@ public class InitialisationBase {
 
 		Rack rack1 = new Rack();
 		rack1.setColonneDistributor(11);
-		rack1.setLigneDistributor(55);
+		rack1.setLigneDistributor(5);
 		rack1.setTypeRack(typeRack1);
 		rack1.setDistributor(distributor1);
 
