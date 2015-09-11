@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -29,6 +30,10 @@ public class DistributionPoint implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
+	
+	@Column
+	private String name;
+	
 	@Embedded
 	private Address address;
 	
@@ -74,17 +79,52 @@ public class DistributionPoint implements Serializable{
 		return id;
 	}
 
+
+
+
+
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
+
+
+
+
+
+
+	public String getName() {
+		return name;
+	}
+
+
+
+
+
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+
+
+
+
 
 	public Address getAddress() {
 		return address;
 	}
 
+
+
+
+
+
 	public void setAddress(Address address) {
 		this.address = address;
 	}
+
+
 
 
 
@@ -96,6 +136,8 @@ public class DistributionPoint implements Serializable{
 
 
 
+
+
 	public void setProductionManager(ProductionManager productionManager) {
 		this.productionManager = productionManager;
 	}
@@ -103,9 +145,13 @@ public class DistributionPoint implements Serializable{
 
 
 
+
+
 	public Sector getSectordp() {
 		return sectordp;
 	}
+
+
 
 
 
@@ -131,6 +177,22 @@ public class DistributionPoint implements Serializable{
 	public void setDrinks(List<Drink> drinks) {
 		this.drinks = drinks;
 	}
+
+
+
+
+
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+
+
+
+
+
+	
 	
 	
 

@@ -45,6 +45,8 @@ public class SectorController {
 		
 		modelAndView.addObject("distributors", distributorService.findAll());
 		
+		modelAndView.addObject("distributionpoints", distributionPointService.findAll());	
+		
 		modelAndView.addObject("sector", new Sector());
 		modelAndView.addObject("action", "Ajouter");
 		

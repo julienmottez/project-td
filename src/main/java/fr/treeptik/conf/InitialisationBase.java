@@ -108,7 +108,9 @@ public class InitialisationBase {
 		distributionpoint=new DistributionPoint();
 		distributionpoint2=new DistributionPoint();
 		distributionpoint.setId(1);
+		distributionpoint.setName("Coca Cola Factory");
 		distributionpoint2.setId(2);
+		distributionpoint2.setName("Orangina Factory");
 		distributionpoint.setDrinks(drinks);
 		distributionpoint2.setDrinks(drinks1);
 		distributionPointService.save(distributionpoint);

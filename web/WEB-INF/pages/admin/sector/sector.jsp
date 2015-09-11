@@ -28,14 +28,14 @@
 
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="name">Nom :</label>
-				<div class="col-sm-10">
+				<div class="col-sm-6">
 					<form:input id="name" path="name" class="form-control" placeholder="Nom" />
 				</div>
 			</div>
 			
 			<div class="form-group"> 
 				<label class="control-label col-sm-2" for="area">Zone : </label>
-				<div class="col-sm-10">
+				<div class="col-sm-6">
 					<select id="area" class="form-control" path="area">
 					    <c:forEach items="${areas}" var="area">
 					        <option value="${area.id}">${area.toString()}</option>
@@ -46,7 +46,7 @@
 			
 			<div class="form-group"> 
 				<label class="control-label col-sm-2" for="area">Manager : </label>
-				<div class="col-sm-10">
+				<div class="col-sm-6">
 					<select id="manager" class="form-control" path="manager">
 					    <c:forEach items="${managers}" var="manager">
 					        <option value="${manager.id}">${manager.toString()}</option>
@@ -55,18 +55,18 @@
 				</div>
 			</div>
 			
-			
 			<div class="form-group"> 
-				<label class="control-label col-sm-2" for="area">Manager : </label>
-				<div class="col-sm-10">
-					<select size="10" id="distributeur_disponible" class="form-control" path="distributor" multiple>
+				<label class="control-label col-sm-2" for="distributor">Distributeurs disponibles : </label>
+				<div class="col-sm-6">
+					<select size="10" id="distributor" class="form-control" path="distributor" multiple>
 					    <c:forEach items="${distributors}" var="distributor">
-					        <option value="${distributor.id}">${distributor.toString()}</option>
+					        <option value="${distributor.id}">REF${distributor.id}</option>
 					    </c:forEach>
 					</select>
 				</div>
 			</div>
 			
+
 			
 			
 			
