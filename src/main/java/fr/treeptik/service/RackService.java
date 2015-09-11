@@ -1,6 +1,7 @@
 package fr.treeptik.service;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 import javax.persistence.PersistenceException;
 
@@ -27,20 +28,26 @@ public class RackService {
 	// @Autowired
 	// private EncryptionService encryptionService;
 
-	public void setRackName(Rack rack) {
+	public String generateName(Rack rack) {
 		int num = rack.getLigneDistributor();
 
 		if (num > 26) {
 			num = 26;
 		}
+		
 		if (num < 1) {
 			num = 1;
 		}
+		
 		num = num + 64;
 
-		rack.setName((char) num + Integer.toString(rack.getColonneDistributor()));
-		// System.out.println((char) num +
-		// Integer.toString(rack.getColonneDistributor()));
+		return (char) num + Integer.toString(rack.getColonneDistributor());
+	}
+	
+	
+	
+	public void setRackName(Rack rack) {
+		rack.setName(generateName(rack));
 	}
 
 	@Transactional()
@@ -60,7 +67,11 @@ public class RackService {
 	public Rack update(Rack rack) throws ServiceException {
 		logger.debug("appel de la methode update rack " + rack.getName());
 		try {
-			return rackDAO.save(rack);
+			Rack savedRack = rackDAO.save(rack);
+			savedRack.setName(generateName(savedRack));
+			
+			return savedRack;
+			
 		} catch (PersistenceException e) {
 			logger.error("erreur update rack " + e.getMessage());
 			throw new ServiceException("erreur update rack", e);
@@ -100,7 +111,11 @@ public class RackService {
 
 	public List<Rack> findAll() throws ServiceException {
 		try {
-			return rackDAO.findAll();
+			List<Rack> findAll = rackDAO.findAll();
+			findAll.stream().forEach(e -> e.setName(generateName(e)));
+			
+			return findAll;
+			
 		} catch (PersistenceException e) {
 			throw new ServiceException("erreur findAll rack", e);
 		}
@@ -109,8 +124,8 @@ public class RackService {
 	public Rack findById(Integer id) throws ServiceException {
 		try {
 			Rack rack = rackDAO.findOne(id);
-//			setRackName(rack);
-			// return rackDAO.findOne(id);
+			rack.setName(generateName(rack));;
+			
 			return rack;
 		} catch (PersistenceException e) {
 			throw new ServiceException("erreur findById rack", e);
