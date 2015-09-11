@@ -44,21 +44,37 @@
 				</div>
 			</div>
 			
+			<div class="form-group"> 
+				<label class="control-label col-sm-2" for="area">Manager : </label>
+				<div class="col-sm-10">
+					<select id="manager" class="form-control" path="manager">
+					    <c:forEach items="${managers}" var="manager">
+					        <option value="${manager.id}">${manager.toString()}</option>
+					    </c:forEach>
+					</select>
+				</div>
+			</div>
 			
-<%-- 			<form:select path="areas.id" id="areas"> --%>
-<%-- 				<form:options items="${areas}" itemValue="id" itemLabel="id" /> --%>
-<%-- 			</form:select> --%>
 			
-
-<!-- 			<div class="form-group"> -->
-<!-- 				<label class="control-label col-sm-2" for="area">Zone : </label> -->
-<!-- 				<div class="col-sm-10"> -->
-<%-- 					<form:select id="area" class="form-control" path="area"> --%>
-						
-<%-- 						<form:options items="${areas}" itemValue="id" itemLabel="name" /> --%>
-<%-- 					</form:select> --%>
-<!-- 				</div> -->
-<!-- 			</div> -->
+			<div class="form-group"> 
+				<label class="control-label col-sm-2" for="area">Manager : </label>
+				<div class="col-sm-10">
+					<select size="10" id="distributeur_disponible" class="form-control" path="distributor" multiple>
+					    <c:forEach items="${distributors}" var="distributor">
+					        <option value="${distributor.id}">${distributor.toString()}</option>
+					    </c:forEach>
+					</select>
+				</div>
+			</div>
+			
+			
+			
+			
+		
+			
+			
+			
+			
 			
 			
 

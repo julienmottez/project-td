@@ -12,6 +12,7 @@ import fr.treeptik.entity.Sector;
 import fr.treeptik.service.AreaService;
 import fr.treeptik.service.DistributionPointService;
 import fr.treeptik.service.DistributorService;
+import fr.treeptik.service.PersonService;
 import fr.treeptik.service.SectorService;
 
 
@@ -26,6 +27,9 @@ public class SectorController {
 	private AreaService areaService;
 	
 	@Autowired
+	private PersonService personService;
+	
+	@Autowired
 	private DistributionPointService distributionPointService;
 	
 	@Autowired
@@ -37,6 +41,10 @@ public class SectorController {
 		ModelAndView modelAndView = new ModelAndView("admin/sector/sector");
 		
 		modelAndView.addObject("areas", areaService.findAll());
+		modelAndView.addObject("managers", personService.findAllSectorManager());
+		
+		modelAndView.addObject("distributors", distributorService.findAll());
+		
 		modelAndView.addObject("sector", new Sector());
 		modelAndView.addObject("action", "Ajouter");
 		

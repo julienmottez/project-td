@@ -71,6 +71,11 @@ public abstract class Person implements Serializable {
 		this.adress = adress;
 	}
 
+	@Override
+	public String toString() {
+		return firstName + " " + lastName;
+	}
+
 	
 
 	

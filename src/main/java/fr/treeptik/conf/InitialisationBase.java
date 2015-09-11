@@ -15,6 +15,7 @@ import fr.treeptik.entity.Drink;
 import fr.treeptik.entity.Rack;
 import fr.treeptik.entity.Refrigerator;
 import fr.treeptik.entity.Sector;
+import fr.treeptik.entity.SectorManager;
 import fr.treeptik.entity.Technician;
 import fr.treeptik.entity.TemperatureRange;
 import fr.treeptik.entity.TypeDistributor;
@@ -73,6 +74,7 @@ public class InitialisationBase {
 		initDistributor();
 		initRack();
 		initArea();
+		initManagers();
 	}
 
 	// attention à l'ordre d'init
@@ -275,7 +277,23 @@ public class InitialisationBase {
 
 	}
 	
-	
+	private void initManagers() {
+		try {
+			SectorManager sectorManager = new SectorManager();
+			sectorManager.setFirstName("Jean");
+			sectorManager.setLastName("Dupont");
+			personService.save(sectorManager);
+			
+			sectorManager = new SectorManager();
+			sectorManager.setFirstName("Jack");
+			sectorManager.setLastName("Boulet");
+			personService.save(sectorManager);
+			
+		} catch (ServiceException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	
 	
 	

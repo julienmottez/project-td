@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import fr.treeptik.dao.PersonDAO;
 import fr.treeptik.entity.Person;
+import fr.treeptik.entity.SectorManager;
 import fr.treeptik.exception.DAOException;
 import fr.treeptik.exception.ServiceException;
 
@@ -57,6 +58,15 @@ public class PersonService {
 		}
 	}
 
+	public List<SectorManager> findAllSectorManager() throws ServiceException {
+		try {
+			return personDAO.findAllSectorManager();
+		} catch (PersistenceException e) {
+			throw new ServiceException("erreur findAllSectorManager SectorManager", e);
+		}
+	}
+	
+	
 	public Person findById(Integer id) throws ServiceException {
 		try {
 			return personDAO.findOne(id);
