@@ -168,9 +168,13 @@ public class InitialisationBase {
 	private void initSectors() {
 		sector1 = new Sector();
 		sector1.setName("secteur1");
+		sector1.setManagerSector(sectorManager1);
+	
+		
 
 		sector2 = new Sector();
-		sector1.setName("secteur2");
+		sector2.setName("secteur2");
+		sector2.setManagerSector(sectorManager2);
 		try {
 			sectorService.save(sector1);
 			sectorService.save(sector2);
@@ -277,17 +281,20 @@ public class InitialisationBase {
 
 	}
 	
+	private SectorManager sectorManager1; 
+	private SectorManager sectorManager2;
+	
 	private void initManagers() {
 		try {
-			SectorManager sectorManager = new SectorManager();
-			sectorManager.setFirstName("Jean");
-			sectorManager.setLastName("Dupont");
-			personService.save(sectorManager);
+			sectorManager1 = new SectorManager();
+			sectorManager1.setFirstName("Jean");
+			sectorManager1.setLastName("Dupont");
+			personService.save(sectorManager1);
 			
-			sectorManager = new SectorManager();
-			sectorManager.setFirstName("Jack");
-			sectorManager.setLastName("Boulet");
-			personService.save(sectorManager);
+			sectorManager2 = new SectorManager();
+			sectorManager2.setFirstName("Jack");
+			sectorManager2.setLastName("Boulet");
+			personService.save(sectorManager2);
 			
 		} catch (ServiceException e) {
 			// TODO Auto-generated catch block

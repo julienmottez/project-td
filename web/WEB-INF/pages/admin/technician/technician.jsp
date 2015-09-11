@@ -15,20 +15,21 @@
 		<form:hidden path="id" />
 		<label>First Name:</label>
 		<form:input path="firstName" id="nom" />
-	
+	<br />
 		<label>Last Name:</label>
 		<form:input path="lastName" id="prenom" />
-	
+	<br />
  		<label>Sector:</label>
 
 		<form:select path="sector.id" id="sector">
 			<form:options items="${sectors}" itemValue="id" itemLabel="name" />
 		</form:select>
-		
+	<br />	
 		<label>Distributor :</label>
 		<form:select  path="distributors" id="distributor">
 			<form:options items="${distributorss}" itemValue="id" itemLabel="id" />
 		</form:select>
+		<br />
 </br>
 </br>
 		<input type="submit" value="Submit" />

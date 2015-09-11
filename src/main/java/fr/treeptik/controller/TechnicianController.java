@@ -46,6 +46,7 @@ public class TechnicianController {
 			ModelAndView modelAndView = new ModelAndView("admin/technician/technician");
 			Technician technician = technicianService.findById(id);
 			modelAndView.addObject("technician", technician);
+			modelAndView.addObject("sectors", sectorService.findAll());
 			return modelAndView;
 		} catch (Exception e) {
 			return list();
@@ -59,7 +60,6 @@ public class TechnicianController {
 			modelAndView.addObject("technicians", technicianService.findAll());
 			modelAndView.addObject("sectors", sectorService.findAll());
 			modelAndView.addObject("distributorss", distributorService.findAll());
-			
 		} catch (Exception e) {
 			modelAndView.addObject("error", e.getMessage());
 		}

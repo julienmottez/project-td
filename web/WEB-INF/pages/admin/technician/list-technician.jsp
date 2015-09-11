@@ -27,11 +27,11 @@
 					<td>${technician.id}</td>
 					<td>${technician.firstName}</td>
 					<td>${technician.lastName}</td>
-					<td>${technician.sector.name}</td>
+					<td>${technician.sector.id}</td>
 					
 					<td width="500" height="20"><a href="edit.html?id=${technician.id}">Edit</a>
 						<a href="delete.html?id=${technician.id}">Delete</a>
-						<a href="../distributor/list.html">Distributor</a></td>
+						</td>
 						
 				</tr>
 			</c:forEach>
@@ -42,7 +42,11 @@
 
  <tr>  
   <td colspan="3" align="center">  
-	<a href="new.html">New Technician</a>
+	<a href="new.html">New Technician</a></td>
+	<td>
+	<br />
+	<br />
+	<a href="../distributor/list.html">List Distributor</a>
   </td>  
      </tr>
 	
