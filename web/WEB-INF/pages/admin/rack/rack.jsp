@@ -41,8 +41,6 @@
 			</div>
 		</div>
 
-
-
 		<div class="form-group">
 			<label class="control-label col-sm-2" for="typeRack.id">type
 				rack:</label>
