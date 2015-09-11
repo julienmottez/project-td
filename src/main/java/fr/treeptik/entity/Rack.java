@@ -110,10 +110,27 @@ public class Rack implements Serializable {
 	public void setDrink(Drink drink) {
 		this.drink = drink;
 	}
+	
+	public String setRackName() {
+		int num = getLigneDistributor();
+
+		if (num > 26) {
+			num = 26;
+		}
+		if (num < 1) {
+			num = 1;
+		}
+		num = num + 64;
+
+	 setName((char) num + Integer.toString(getColonneDistributor()));
+		// System.out.println((char) num +
+		// Integer.toString(rack.getColonneDistributor()));
+	return name;
+	}
 
 	@Override
 	public String toString() {
-		return "Rack [name=" + name + "]";
+		return  setRackName();
 	}
 
 }
