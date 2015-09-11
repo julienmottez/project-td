@@ -72,6 +72,55 @@ public class Refrigerator implements Serializable {
 	public void setDistributor(Distributor distributor) {
 		this.distributor = distributor;
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((brand == null) ? 0 : brand.hashCode());
+		result = prime * result + ((coldLevel == null) ? 0 : coldLevel.hashCode());
+		result = prime * result + ((distributor == null) ? 0 : distributor.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Refrigerator other = (Refrigerator) obj;
+		if (brand == null) {
+			if (other.brand != null)
+				return false;
+		} else if (!brand.equals(other.brand))
+			return false;
+		if (coldLevel == null) {
+			if (other.coldLevel != null)
+				return false;
+		} else if (!coldLevel.equals(other.coldLevel))
+			return false;
+		if (distributor == null) {
+			if (other.distributor != null)
+				return false;
+		} else if (!distributor.equals(other.distributor))
+			return false;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Refrigerator [id=" + id + ", coldLevel=" + coldLevel + ", brand=" + brand + ", distributor="
+				+ distributor + "]";
+	}
 	
 	
 	
