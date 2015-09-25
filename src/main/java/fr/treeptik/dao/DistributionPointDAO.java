@@ -14,8 +14,6 @@ import fr.treeptik.entity.Drink;
 
 @Repository
 public interface DistributionPointDAO extends JpaRepository<DistributionPoint,Integer>{
-
-
 	DistributionPoint findById(int id);
 	List<DistributionPoint> findByDrinks(List<Drink> drinks);
 	
